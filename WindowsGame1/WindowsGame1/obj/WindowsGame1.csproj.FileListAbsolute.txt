@@ -1,0 +1,74 @@
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\testtex.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\texturemap.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\effects.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox2.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_back.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_bottom.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_front.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_left.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_right.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_top.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Top~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Right~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Left~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Front~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Back~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Bottom~0.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\bullet.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\target.xnb
+C:\Documents and Settings\Administrator\My Documents\Visual Studio 2005\Projects\WindowsGame1\WindowsGame1\bin\x86\Debug\xwing.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\testtex.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\texturemap.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\bullet.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_back.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_bottom.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_front.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_left.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_right.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_top.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\effects.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox2.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\target.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\xwing.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Top~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Right~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Left~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Front~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Back~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Bottom~0.xnb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.exe
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.pdb
+C:\cygwin\home\stevenej\455group\WindowsGame1\WindowsGame1\bin\x86\Debug\tower.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\testtex.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\texturemap.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\bullet.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_back.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_bottom.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_front.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_left.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_right.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox_top.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\effects.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skybox2.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\target.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\xwing.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\tower.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Top~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Right~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Left~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Front~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Back~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\SkyBox_Bottom~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.exe
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.pdb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
