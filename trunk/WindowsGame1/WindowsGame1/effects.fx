@@ -88,7 +88,7 @@ technique Colored
 	pass Pass0
     {   
     	VertexShader = compile vs_1_1 ColoredVS();
-        PixelShader  = compile ps_1_1 ColoredPS();
+        //PixelShader  = compile ps_1_1 ColoredPS();
     }
 }
 
@@ -106,7 +106,7 @@ VertexToPixel TexturedVS( float4 inPos : POSITION, float3 inNormal: NORMAL, floa
 	float3 Normal = normalize(mul(normalize(inNormal), xWorld));	
 	Output.LightingFactor = 1;
 	//if (xEnableLighting)
-		Output.LightingFactor = dot(Normal, -xLightDirection);
+	//	Output.LightingFactor = dot(Normal, -xLightDirection);
     
 	return Output;    
 }

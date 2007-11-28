@@ -72,3 +72,8 @@ C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGam
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.exe
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\WindowsGame1.pdb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\knot.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\heli.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\shapes1.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\skullocc.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\sphere0.xnb
