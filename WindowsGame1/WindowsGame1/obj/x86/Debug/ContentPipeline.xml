@@ -89,7 +89,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\effects.xnb</Output>
-      <Time>2007-11-13T13:35:35.8533248-07:00</Time>
+      <Time>2007-11-27T21:21:11.142472-07:00</Time>
     </Item>
     <Item>
       <Source>skybox2.x</Source>
@@ -224,6 +224,106 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\tower~0.xml</Output>
       <Time>2007-10-22T16:49:21.46148-06:00</Time>
+    </Item>
+    <Item>
+      <Source>knot.x</Source>
+      <Name>knot</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\knot.xnb</Output>
+      <Time>2007-07-02T15:50:14-06:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\knot~0.xml</Key>
+        <Value>2007-11-27T21:06:02.5660032-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>knot.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\knot~0.xml</Output>
+      <Time>2007-07-02T15:50:14-06:00</Time>
+    </Item>
+    <Item>
+      <Source>heli.x</Source>
+      <Name>heli</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\heli.xnb</Output>
+      <Time>2007-07-02T15:50:14-06:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\heli~0.xml</Key>
+        <Value>2007-11-27T21:07:43.230752-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>heli.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\heli~0.xml</Output>
+      <Time>2007-07-02T15:50:14-06:00</Time>
+    </Item>
+    <Item>
+      <Source>shapes1.x</Source>
+      <Name>shapes1</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\shapes1.xnb</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\shapes1~0.xml</Key>
+        <Value>2007-11-27T21:10:29.1793744-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>skullocc.x</Source>
+      <Name>skullocc</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\skullocc.xnb</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\skullocc~0.xml</Key>
+        <Value>2007-11-27T21:10:30.9619376-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>shapes1.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\shapes1~0.xml</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+    </Item>
+    <Item>
+      <Source>skullocc.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\skullocc~0.xml</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+    </Item>
+    <Item>
+      <Source>sphere0.x</Source>
+      <Name>sphere0</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\sphere0.xnb</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\sphere0~0.xml</Key>
+        <Value>2007-11-27T21:19:12.1914288-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>sphere0.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\sphere0~0.xml</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
     </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

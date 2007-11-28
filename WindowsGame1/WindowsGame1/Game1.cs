@@ -128,7 +128,7 @@ namespace TD3d
 
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             Window.Title = "Tower Defense";
         }
@@ -220,8 +220,8 @@ namespace TD3d
 
         private void LoadModels()
         {
-            spacemodel = FillModelFromFile("tower");
-            targetmodel = FillModelFromFile("target");
+            spacemodel = FillModelFromFile("shapes1");
+            targetmodel = FillModelFromFile("sphere0");
 
 
             skybox = content.Load<Model>("skybox2");
@@ -453,7 +453,7 @@ namespace TD3d
                     foreach (Effect currenteffect in modmesh.Effects)
                     {
                         currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                        worldMatrix = Matrix.CreateRotationX(3.14f/2)*Matrix.CreateScale(0.5f, 0.5f, 0.5f)*Matrix.CreateTranslation(new Vector3(t.getPosition().getX() + 1, t.getPosition().getY()+1,0.0f));
+                        worldMatrix = Matrix.CreateRotationX(3.14f/2)*Matrix.CreateScale(0.01f, 0.01f, 0.01f)*Matrix.CreateTranslation(new Vector3(t.getPosition().getX() + 1, t.getPosition().getY()+1,0.0f));
                         currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                         currenteffect.Parameters["xView"].SetValue(viewMatrix);
                         currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
@@ -471,7 +471,7 @@ namespace TD3d
                     foreach (Effect currenteffect in modmesh.Effects)
                     {
                         currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                        worldMatrix = Matrix.CreateScale(0.25f, 0.25f, 0.25f)*Matrix.CreateTranslation(new Vector3(creep.getPosition().getX()+.25f, creep.getPosition().getY()+.25f,0.40f));
+                        worldMatrix = Matrix.CreateScale(0.15f, 0.15f, 0.15f)*Matrix.CreateTranslation(new Vector3(creep.getPosition().getX()+.25f, creep.getPosition().getY()+.25f,0.40f));
                         currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                         currenteffect.Parameters["xView"].SetValue(viewMatrix);
                         currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
