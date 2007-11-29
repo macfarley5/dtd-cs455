@@ -250,6 +250,152 @@
       <Name>sphere0</Name>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cube.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>Cube</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="teapot.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>teapot</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bigship1.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>bigship1</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bigship1_ndx.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>bigship1_ndx</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Armor.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Armor</Name>
+    </Content>
+    <Content Include="Armor_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Armor_bumpmap</Name>
+    </Content>
+    <Content Include="Body.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Body</Name>
+    </Content>
+    <Content Include="Body_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Body_bumpmap</Name>
+    </Content>
+    <Content Include="DwarfHead.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>DwarfHead</Name>
+    </Content>
+    <Content Include="DwarfHead_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>DwarfHead_bumpmap</Name>
+    </Content>
+    <Content Include="Headgear.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Headgear</Name>
+    </Content>
+    <Content Include="Headgear_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Headgear_bumpmap</Name>
+    </Content>
+    <Content Include="Helmet.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Helmet</Name>
+    </Content>
+    <Content Include="Helmet_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Helmet_bumpmap</Name>
+    </Content>
+    <Content Include="Pack.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Pack</Name>
+    </Content>
+    <Content Include="Pack_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Pack_bumpmap</Name>
+    </Content>
+    <Content Include="reflect.fx">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Name>reflect</Name>
+    </Content>
+    <Content Include="specular.fx">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Name>specular</Name>
+    </Content>
+    <Content Include="Weapons.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Weapons</Name>
+    </Content>
+    <Content Include="Weapons_bumpmap.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>Weapons_bumpmap</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DwarfWithEffectInstance_ndx.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>DwarfWithEffectInstance_ndx</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LobbyCube.dds">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>LobbyCube</Name>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.ContentPipeline.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.Common.targets" />

@@ -102,7 +102,7 @@ namespace TD3d
         {
             this.theMap = new Map(WIDTH, HEIGHT);
 
-            Random r = new Random(0);
+             Random r = new Random(0);
             for (int i = 0; i < 30; i++)
             {
                 Tower t = new Tower();
@@ -128,7 +128,7 @@ namespace TD3d
 
             graphics.PreferredBackBufferWidth = 1024;
             graphics.PreferredBackBufferHeight = 768;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "Tower Defense";
         }
@@ -177,29 +177,7 @@ namespace TD3d
 
         private void AddTargets()
         {
-            /*while (targetlist.Count < maxtargets)
-            {
-                Random random = new Random();
-                int x = random.Next(WIDTH);
-                int y = random.Next(HEIGHT);
-                float z = (float)random.Next(2000) / 1000f + 1;
-                float radius = (float)random.Next(1000) / 1000f * 0.2f + 0.01f;
 
-                bool acceptableposition = true;
-                if (int_Floorplan[x, y] > 0) acceptableposition = false;
-                foreach (targetstruct currenttarget in targetlist)
-                {
-                    if (((int)currenttarget.position.X == x) && ((int)currenttarget.position.Y == y)) acceptableposition = false;
-                }
-
-                if (acceptableposition)
-                {
-                    targetstruct newtarget = new targetstruct();
-                    newtarget.position = new Vector3(x + 0.5f, y + 0.5f, z);
-                    newtarget.radius = radius;
-                    targetlist.Add(newtarget);
-                }
-            }*/
         }
 
         protected override void LoadGraphicsContent(bool loadAllContent)
@@ -220,8 +198,8 @@ namespace TD3d
 
         private void LoadModels()
         {
-            spacemodel = FillModelFromFile("shapes1");
-            targetmodel = FillModelFromFile("sphere0");
+            spacemodel = FillModelFromFile("dwarfWithEffectInstance_ndx");
+            targetmodel = FillModelFromFile("bigship1_ndx");
 
 
             skybox = content.Load<Model>("skybox2");
@@ -246,9 +224,9 @@ namespace TD3d
         {
 
             Model mod = content.Load<Model>(asset);
-            foreach (ModelMesh modmesh in mod.Meshes)
+            /*foreach (ModelMesh modmesh in mod.Meshes)
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
-                    modmeshpart.Effect = effect.Clone(device);
+                    modmeshpart.Effect = effect.Clone(device);*/
             return mod;
         }
 
@@ -319,26 +297,6 @@ namespace TD3d
                 this.cameraDist -= .5f;
                 if (this.cameraDist < .25f)
                     this.cameraDist = .25f;
-            }
-
-            //Quaternion additionalRot = Quaternion.CreateFromAxisAngle(new Vector3(0, 1, 0), yRot) * Quaternion.CreateFromAxisAngle(new Vector3(0, 0, 1), xRot);
-            //spacemeshrotation *= additionalRot;
-
-            if (keys.IsKeyDown(Keys.Space))
-            {
-                double distance = 0;
-                if (spritelist.Count > 0)
-                {
-                    spritestruct lastsprite = (spritestruct)spritelist[spritelist.Count - 1];
-                    distance = Math.Sqrt(Math.Pow(lastsprite.position.X - cameraposition.X, 2) + Math.Pow(lastsprite.position.Y - cameraposition.Y, 2) + Math.Pow(lastsprite.position.Z - cameraposition.Z, 2));
-                }
-                if ((distance > 0.8f) || (spritelist.Count == 0))
-                {
-                    spritestruct newsprite = new spritestruct();
-                    newsprite.position = cameraposition;
-                    newsprite.rotation = spacemeshrotation;
-                    spritelist.Add(newsprite);
-                }
             }
         }
 
@@ -448,15 +406,32 @@ namespace TD3d
 
             foreach (Tower t in this.theMap.towers)
             {
+                worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(2.0f, 2.0f, 2.0f) * Matrix.CreateTranslation(new Vector3(t.getPosition().getX() + 1, t.getPosition().getY() + 1, 0.0f));
                 foreach (ModelMesh modmesh in spacemodel.Meshes)
                 {
-                    foreach (Effect currenteffect in modmesh.Effects)
+                    foreach (Effect e in modmesh.Effects)
                     {
-                        currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                        worldMatrix = Matrix.CreateRotationX(3.14f/2)*Matrix.CreateScale(0.01f, 0.01f, 0.01f)*Matrix.CreateTranslation(new Vector3(t.getPosition().getX() + 1, t.getPosition().getY()+1,0.0f));
-                        currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
-                        currenteffect.Parameters["xView"].SetValue(viewMatrix);
-                        currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
+                        e.CurrentTechnique = e.Techniques[0];
+                        if (e is BasicEffect)
+                        {
+                            BasicEffect basicEffect = (BasicEffect)e;                            
+                            basicEffect.World = worldMatrix;
+                            basicEffect.View = viewMatrix;
+                            basicEffect.Projection = projectionMatrix;
+                        }
+                        else
+                        {
+                           /*foreach (EffectParameter ep in e.Parameters)
+                           {
+                               String n = ep.Name;
+                               Console.Out.WriteLine(n);
+                           }*/
+                            e.Parameters["g_mWorld"].SetValue(worldMatrix);
+                           e.Parameters["g_mView"].SetValue(viewMatrix);
+                           e.Parameters["g_mProj"].SetValue(projectionMatrix);
+                           //basicEffect.Projection = projectionMatrix;
+                        }
+
                     }
                     modmesh.Draw();
                 }
@@ -466,15 +441,22 @@ namespace TD3d
             {
 
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
+                worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(0.1f, 0.1f, 0.1f) * Matrix.CreateTranslation(new Vector3(creep.getPosition().getX() + .25f, creep.getPosition().getY() + .25f, 0.40f));
                 foreach (ModelMesh modmesh in targetmodel.Meshes)
                 {
-                    foreach (Effect currenteffect in modmesh.Effects)
+                    foreach (BasicEffect basicEffect in modmesh.Effects)
                     {
-                        currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                        worldMatrix = Matrix.CreateScale(0.15f, 0.15f, 0.15f)*Matrix.CreateTranslation(new Vector3(creep.getPosition().getX()+.25f, creep.getPosition().getY()+.25f,0.40f));
-                        currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
-                        currenteffect.Parameters["xView"].SetValue(viewMatrix);
-                        currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
+                        
+                        basicEffect.World = worldMatrix;
+                        basicEffect.View = viewMatrix;
+                        basicEffect.Projection = projectionMatrix;
+
+                        basicEffect.SpecularPower = 5.0f;
+                        basicEffect.LightingEnabled = true;
+                        basicEffect.DirectionalLight0.Enabled = true;
+                        basicEffect.DirectionalLight0.DiffuseColor = Vector3.One;
+                        basicEffect.DirectionalLight0.Direction = Vector3.Normalize(new Vector3(-1.0f, -1.0f, -1.0f));
+                        basicEffect.DirectionalLight0.SpecularColor = Vector3.One;
                     }
                     modmesh.Draw();
                 }
