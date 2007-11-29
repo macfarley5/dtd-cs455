@@ -1,11 +1,24 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Storage;
 using System.Text;
 
 namespace TD3d
 {
     public abstract class Tile
     {
+        protected Effect effect;
+        protected string modelAsset;
+        protected Model model;
+        protected string worldEffectString = "g_mWorld";
+        protected string viewEffectString = "g_mView";
+        protected string projectionEffectString = "g_mProj";
+
         public enum TileType { Tower, Wall, Exit, Entrance };
         public enum Player { p1, p2 };
 
@@ -38,6 +51,6 @@ namespace TD3d
 
         public abstract bool isOccupied();
         public abstract TileType getTileType();
-        public abstract void draw();
+        public abstract void draw( Matrix viewMatrix,Matrix projectionMatrix);
     }
 }

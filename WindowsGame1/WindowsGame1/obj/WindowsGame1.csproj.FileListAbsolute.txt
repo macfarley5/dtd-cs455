@@ -106,3 +106,5 @@ C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGam
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\DwarfWithEffectInstance_ndx.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\LobbyCube.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Lobby\LobbyCube~0.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\smallnoise3d.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\MetallicFlakes.xnb

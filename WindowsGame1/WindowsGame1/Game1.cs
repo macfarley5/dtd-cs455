@@ -19,33 +19,6 @@ namespace TD3d
             public float radius;
         }
 
-        struct spritestruct
-        {
-            public Vector3 position;
-            public Quaternion rotation;
-        }
-
-        private struct ourspritevertexformat
-        {
-            private Vector3 position;
-            private float pointSize;
-
-            public ourspritevertexformat(Vector3 position, float pointSize)
-            {
-                this.position = position;
-                this.pointSize = pointSize;
-            }
-
-            public static VertexElement[] Elements =
-              {
-                  new VertexElement(0, 0, VertexElementFormat.Vector3, VertexElementMethod.Default, VertexElementUsage.Position, 0),
-                  new VertexElement(0, sizeof(float)*3, VertexElementFormat.Single, VertexElementMethod.Default, VertexElementUsage.PointSize, 0),
-              };
-            public static int SizeInBytes = sizeof(float) * (3 + 1);
-        }
-
-
-
         /// <summary>
         /// ///////////////////////////// OUR VARIABLES //////////////////////////
         /// </summary>
@@ -57,7 +30,7 @@ namespace TD3d
         GraphicsDeviceManager graphics;
         ContentManager content;
         GraphicsDevice device;
-        Effect effect;
+        Effect effect, effect2;
         Matrix viewMatrix;
         Matrix projectionMatrix;
         Texture2D scenerytexture;
@@ -92,10 +65,10 @@ namespace TD3d
 
         protected override void Initialize()
         {
+            base.Initialize();
             LoadFloorplan();
             SetUpVertices();
-            AddTargets();
-            base.Initialize();
+            this.IsMouseVisible = true;
         }
 
         private void LoadFloorplan()
@@ -105,7 +78,7 @@ namespace TD3d
              Random r = new Random(0);
             for (int i = 0; i < 30; i++)
             {
-                Tower t = new Tower();
+                Tower t = new Tower(graphics, content, device);
                 t.setPosition(r.Next(WIDTH-1), r.Next(HEIGHT-1));
                 this.theMap.placeTower(t);
             }
@@ -116,7 +89,12 @@ namespace TD3d
                 int y = r.Next(HEIGHT - 1);
                 if (this.theMap.layout[x, y] == null)
                 {
-                    Creep c = new FastCreep(new Position(x, y), 0);
+                    int whichCreep = r.Next(2);
+                    Creep c;
+                    if (whichCreep==0)
+                        c = new FastCreep(new Position(x, y), 0,graphics,content,device);
+                    else
+                        c = new NormalCreep(new Position(x, y), 0,graphics,content,device);
                     this.creeps.Add(c);
                 }
             }
@@ -138,13 +116,16 @@ namespace TD3d
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../effects.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
 
+            CompiledEffect compiledEffect2 = Effect.CompileEffectFromFile("@/../../../../MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
+            effect2 = new Effect(graphics.GraphicsDevice, compiledEffect2.GetEffectCode(), CompilerOptions.None, null);
+            effect2.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("smallnoise3d"));
+
             viewMatrix = Matrix.CreateLookAt(new Vector3(20, 5, 13), new Vector3(8, 7, 0), new Vector3(0, 0, 1));
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, this.Window.ClientBounds.Width / this.Window.ClientBounds.Height, 0.2f, 500.0f);
 
             effect.Parameters["xView"].SetValue(viewMatrix);
             effect.Parameters["xProjection"].SetValue(projectionMatrix);
             effect.Parameters["xWorld"].SetValue(Matrix.Identity);
-
 
             effect.Parameters["xEnableLighting"].SetValue(true);
             effect.Parameters["xLightDirection"].SetValue(new Vector3(0.5f, -1, -1));
@@ -175,11 +156,6 @@ namespace TD3d
             verticesarray = (VertexPositionNormalTexture[])verticeslist.ToArray(typeof(VertexPositionNormalTexture));
         }
 
-        private void AddTargets()
-        {
-
-        }
-
         protected override void LoadGraphicsContent(bool loadAllContent)
         {
             if (loadAllContent)
@@ -198,10 +174,6 @@ namespace TD3d
 
         private void LoadModels()
         {
-            spacemodel = FillModelFromFile("dwarfWithEffectInstance_ndx");
-            targetmodel = FillModelFromFile("bigship1_ndx");
-
-
             skybox = content.Load<Model>("skybox2");
 
             int i = 0;
@@ -238,21 +210,25 @@ namespace TD3d
             }
         }
 
+        protected void doMouseStuff(){
+            MouseState ms = Mouse.GetState();
+            if (ms.LeftButton==ButtonState.Pressed){
+                Console.Out.WriteLine("It's down");
+                
+            }
+        }
+
         protected override void Update(GameTime gameTime)
         {
+            doMouseStuff();
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
-            ProcessKeyboard(gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
-            UpdatePosition(ref cameraposition, spacemeshrotation, gameTime.ElapsedGameTime.Milliseconds / 20000.0f * gamespeed);
-            UpdateCamera();
-            UpdateSpritePositions(gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
 
-            if (CheckCollision(cameraposition, spacemodel.Meshes[0].BoundingSphere.Radius * 0.0005f) > 0)
-            {
-                cameraposition = new Vector3(1, 2, 11);
-                spacemeshrotation = Quaternion.CreateFromYawPitchRoll(0, -1f, 0);
-                gamespeed /= 1.1f;
-            }
+            ProcessKeyboard(gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
+            
+            UpdateCamera();
+           
+
 
             base.Update(gameTime);
         }
@@ -300,90 +276,11 @@ namespace TD3d
             }
         }
 
-        private void UpdatePosition(ref Vector3 position, Quaternion rotationquat, float speed)
-        {
-            Vector3 addvector = new Vector3(0, 1, 0);
-            addvector = Vector3.Transform(addvector, Matrix.CreateFromQuaternion(rotationquat));
-            addvector.Normalize();
-
-            position += addvector*speed;
-        }
-
-        private int CheckCollision(Vector3 position, float radius)
-        {
-            if (position.Z - radius < 0) return 1;
-            if (position.Z + radius > 35) return 10;
-
-            if ((position.X < -15) || (position.X > WIDTH + 15)) return 2;
-            if ((position.Y < -15) || (position.Y > HEIGHT + 15)) return 2;
-
-            return 0;
-        }
-
-        private void UpdateSpritePositions(float speed)
-        {
-            for (int i = 0; i < spritelist.Count; i++)
-            {
-                spritestruct currentsprite = (spritestruct)spritelist[i];
-                UpdatePosition(ref currentsprite.position, currentsprite.rotation, speed * 55);
-                spritelist[i] = currentsprite;
-
-                int collisionkind = CheckCollision(currentsprite.position, 0.05f);
-
-                if (collisionkind > 0)
-                {
-                    spritelist.RemoveAt(i);
-                    i--;
-
-                    if (collisionkind == 3)
-                    {
-                        gamespeed *= 1.02f;
-                        AddTargets();
-                    }
-                }
-            }
-        }
-
-        private void DrawSprites()
-        {
-            if (spritelist.Count > 0)
-            {
-                ourspritevertexformat[] spritecoordsarray = new ourspritevertexformat[spritelist.Count];
-                foreach (spritestruct currentsprite in spritelist)
-                {
-                    spritecoordsarray[spritelist.IndexOf(currentsprite)] = new ourspritevertexformat(currentsprite.position, 50.0f);
-                }
-
-                effect.CurrentTechnique = effect.Techniques["PointSprites"];
-                Matrix worldMatrix = Matrix.Identity;
-                effect.Parameters["xWorld"].SetValue(worldMatrix);
-                effect.Parameters["xView"].SetValue(viewMatrix);
-                effect.Parameters["xProjection"].SetValue(projectionMatrix);
-                this.effect.Parameters["xTexture"].SetValue(bullettexture);
-
-                device.RenderState.AlphaBlendEnable = true;
-                device.RenderState.SourceBlend = Blend.One;
-                device.RenderState.DestinationBlend = Blend.One;
-
-                effect.Begin();
-                foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-                {
-                    pass.Begin();
-                    device.VertexDeclaration = new VertexDeclaration(device, ourspritevertexformat.Elements);
-                    device.DrawUserPrimitives(PrimitiveType.PointList, spritecoordsarray, 0, spritecoordsarray.Length);
-                    pass.End();
-                }
-                effect.End();
-
-                device.RenderState.AlphaBlendEnable = false;
-            }
-        }
-
         protected override void Draw(GameTime gameTime)
         {
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
-            if (gameTime.ElapsedGameTime.Milliseconds>0)
-              Console.WriteLine("FPS: " + 1000d /(double)gameTime.ElapsedGameTime.Milliseconds);
+            //if (gameTime.ElapsedGameTime.Milliseconds>0)
+            //  Console.WriteLine("FPS: " + 1000d /(double)gameTime.ElapsedGameTime.Milliseconds);
 
             Matrix worldMatrix = Matrix.Identity;
             effect.CurrentTechnique = effect.Techniques["Textured"];
@@ -406,60 +303,15 @@ namespace TD3d
 
             foreach (Tower t in this.theMap.towers)
             {
-                worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(2.0f, 2.0f, 2.0f) * Matrix.CreateTranslation(new Vector3(t.getPosition().getX() + 1, t.getPosition().getY() + 1, 0.0f));
-                foreach (ModelMesh modmesh in spacemodel.Meshes)
-                {
-                    foreach (Effect e in modmesh.Effects)
-                    {
-                        e.CurrentTechnique = e.Techniques[0];
-                        if (e is BasicEffect)
-                        {
-                            BasicEffect basicEffect = (BasicEffect)e;                            
-                            basicEffect.World = worldMatrix;
-                            basicEffect.View = viewMatrix;
-                            basicEffect.Projection = projectionMatrix;
-                        }
-                        else
-                        {
-                           /*foreach (EffectParameter ep in e.Parameters)
-                           {
-                               String n = ep.Name;
-                               Console.Out.WriteLine(n);
-                           }*/
-                            e.Parameters["g_mWorld"].SetValue(worldMatrix);
-                           e.Parameters["g_mView"].SetValue(viewMatrix);
-                           e.Parameters["g_mProj"].SetValue(projectionMatrix);
-                           //basicEffect.Projection = projectionMatrix;
-                        }
-
-                    }
-                    modmesh.Draw();
-                }
+                
+                t.draw(viewMatrix, projectionMatrix);
             }
 
             foreach (Creep creep in this.creeps)
             {
 
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
-                worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(0.1f, 0.1f, 0.1f) * Matrix.CreateTranslation(new Vector3(creep.getPosition().getX() + .25f, creep.getPosition().getY() + .25f, 0.40f));
-                foreach (ModelMesh modmesh in targetmodel.Meshes)
-                {
-                    foreach (BasicEffect basicEffect in modmesh.Effects)
-                    {
-                        
-                        basicEffect.World = worldMatrix;
-                        basicEffect.View = viewMatrix;
-                        basicEffect.Projection = projectionMatrix;
-
-                        basicEffect.SpecularPower = 5.0f;
-                        basicEffect.LightingEnabled = true;
-                        basicEffect.DirectionalLight0.Enabled = true;
-                        basicEffect.DirectionalLight0.DiffuseColor = Vector3.One;
-                        basicEffect.DirectionalLight0.Direction = Vector3.Normalize(new Vector3(-1.0f, -1.0f, -1.0f));
-                        basicEffect.DirectionalLight0.SpecularColor = Vector3.One;
-                    }
-                    modmesh.Draw();
-                }
+                creep.draw(viewMatrix,projectionMatrix);
             }
 
 
@@ -467,10 +319,11 @@ namespace TD3d
             int i = 0;
             foreach (ModelMesh modmesh in skybox.Meshes)
             {
+                worldMatrix = Matrix.CreateRotationX((float)Math.PI / 2) * Matrix.CreateScale(15, 15, 15) * Matrix.CreateTranslation(cameraposition);
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
                     currenteffect.CurrentTechnique = currenteffect.Techniques["Textured"];
-                    worldMatrix = Matrix.CreateRotationX((float)Math.PI / 2) * Matrix.CreateScale(15, 15, 15) * Matrix.CreateTranslation(cameraposition);
+                    
                     currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currenteffect.Parameters["xView"].SetValue(viewMatrix);
                     currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
@@ -478,9 +331,6 @@ namespace TD3d
                 }
                 modmesh.Draw();
             }
-
-
-            DrawSprites();
 
             base.Draw(gameTime);
         }

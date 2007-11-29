@@ -14,7 +14,7 @@
 #define SPRINKLE    1.0
 #define SCATTER     0.5
 
-#define VOLUME_NOISE_SCALE  10
+#define VOLUME_NOISE_SCALE  1
 
 int sas : SasGlobal
 <
@@ -34,7 +34,7 @@ texture3D NoiseMap
 < 
     string SasUiLabel = "Noise Map";
     string SasUiControl= "FilePicker";
-    string SasResourceAddress = "../Misc/smallNoise3D.dds";
+    string SasResourceAddress = "@/../../../../smallnoise3d.dds";
 >;
 
 // transformations
@@ -61,7 +61,7 @@ float3 L
 < 
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Direction";
-> = normalize(float3(-0.397f, -0.397f, 0.827f));
+> = normalize(float3(0.0f, -1.0f, -1.00f));
 
 // light intensity
 float4 I_a
@@ -74,7 +74,7 @@ float4 I_d
 <
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Color";
-> = { 0.0f, 0.0f, 0.0f, 1.0f };    // diffuse
+> = { 0.20f, 0.20f, 0.20f, 1.0f };    // diffuse
 
 float4 I_s
 <
@@ -93,13 +93,13 @@ float4 k_d
 <
     string SasUiLabel = "material diffuse(metal)";
     string SasUiControl = "ColorPicker";
-> = { 0.1f, 0.1f, 0.9f, 1.0f };    // diffuse  (metal)
+> = { 0.5f, 0.4f, 0.5f, 1.0f };    // diffuse  (metal)
 
 float4 k_s
 <
     string SasUiLabel = "material specular(metal)";
     string SasUiControl = "ColorPicker";
-> = { 0.6f, 0.5f, 0.1f, 1.0f };    // specular (metal)
+> = { 0.8f, 0.7f, 0.2f, 1.0f };    // specular (metal)
 
 float4 k_r
 <
@@ -257,7 +257,7 @@ technique TMetallicFlakes
         VertexShader = compile vs_1_1 VS();
         PixelShader  = compile ps_1_1 PS();
 
-        AlphaBlendEnable = FALSE;
+        AlphaBlendEnable = TRUE;
         CullMode         = NONE;
     }
 }
