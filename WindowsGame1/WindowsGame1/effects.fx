@@ -88,7 +88,7 @@ technique Colored
 	pass Pass0
     {   
     	VertexShader = compile vs_1_1 ColoredVS();
-        //PixelShader  = compile ps_1_1 ColoredPS();
+        PixelShader  = compile ps_1_1 ColoredPS();
     }
 }
 
