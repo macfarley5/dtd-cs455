@@ -74,21 +74,23 @@ namespace TD3d
                 if (this.currentPathPlaceholder<currentPath.Count )
                 {
                     Position target = (Position)currentPath[this.currentPathPlaceholder];
-                    if (target.getX() < pos.getX())
+                    float movex = target.getX() - pos.getX();
+                    float movey = target.getY() - pos.getY();
+
+                    if (Math.Abs(movex) > this.threshold / 2)
                     {
-                        this.pos.moveX(0 - timePassed * speed);
+                        if (movex < 0)
+                            this.pos.moveX(-timePassed * speed);
+                        else
+                            this.pos.moveX(timePassed * speed);
                     }
-                    else if (target.getX() > pos.getX())
+
+                    if (Math.Abs(movey) > this.threshold / 2)
                     {
-                        this.pos.moveX(timePassed * speed);
-                    }
-                    if (target.getY() < pos.getY())
-                    {
-                        this.pos.moveY(0 - timePassed * speed);
-                    }
-                    else if (target.getY() > pos.getY())
-                    {
-                        this.pos.moveY(timePassed * speed);
+                        if (movey < 0)
+                            this.pos.moveY(-timePassed * speed);
+                        else
+                            this.pos.moveY(timePassed * speed);
                     }
 
                     if (Math.Abs(this.pos.getX() - target.getX()) < this.threshold && Math.Abs(this.pos.getY() - target.getY()) < this.threshold)
