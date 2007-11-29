@@ -13,7 +13,7 @@ namespace TD3d
     class NormalCreep : Creep
     {
 
-        private string modelAsset = "sphere0";
+        private string modelAsset = "Content/sphere0";
         private float scale = .2f;
 
         public NormalCreep(Position pos, int level, GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
@@ -22,9 +22,9 @@ namespace TD3d
             this.pos = pos;
             this.level = level;
 
-            CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
+            CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
-            this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("smallnoise3d"));
+            this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
 
 
             this.model =  content.Load<Model>(modelAsset);
