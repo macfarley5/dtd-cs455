@@ -643,6 +643,24 @@
       <Output>bin\x86\Debug\Lobby\LobbyCube~0.xnb</Output>
       <Time>2007-07-02T15:50:08-06:00</Time>
     </Item>
+    <Item>
+      <Source>smallnoise3d.dds</Source>
+      <Name>smallnoise3d</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\smallnoise3d.xnb</Output>
+      <Time>2007-07-02T15:50:16-06:00</Time>
+    </Item>
+    <Item>
+      <Source>MetallicFlakes.fx</Source>
+      <Name>MetallicFlakes</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\MetallicFlakes.xnb</Output>
+      <Time>2007-11-29T10:20:13.4281472-07:00</Time>
+    </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>

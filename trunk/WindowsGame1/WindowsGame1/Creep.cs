@@ -2,6 +2,12 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
@@ -15,7 +21,17 @@ namespace TD3d
         private float threshold = .1f;
         private int currentPathPlaceholder = 0;
 
-        private ArrayList currentPath = new ArrayList();
+
+        protected string worldEffectString = "";
+        protected string viewEffectString = "";
+        protected string projectionEffectString = "";
+        protected Effect effect;
+        protected ArrayList currentPath = new ArrayList();
+        protected Model model;
+
+        protected GraphicsDeviceManager graphics;
+        protected ContentManager content;
+        protected GraphicsDevice device;
 
         public Position getPosition()
         {
@@ -86,6 +102,9 @@ namespace TD3d
                 }
             }
         }
+
+        public abstract void draw(Matrix viewMatrix, Matrix projectionMatrix);
+        
     
         
     }
