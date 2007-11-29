@@ -17,7 +17,7 @@ namespace TD3d
         public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
             target = null;
-            this.model = content.Load<Model>("dwarfWithEffectInstance_ndx");
+            this.model = content.Load<Model>("Content/dwarfWithEffectInstance_ndx");
         }
 
         public void setTarget(Creep creep)

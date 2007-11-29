@@ -10,7 +10,7 @@
     <AssemblyName>WindowsGame1</AssemblyName>
     <XnaFrameworkVersion>v1.0</XnaFrameworkVersion>
     <XnaPlatform>Windows</XnaPlatform>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <ApplicationIcon>Content\Game.ico</ApplicationIcon>
     <XNAGlobalContentPipelineAssemblies>Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll;Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</XNAGlobalContentPipelineAssemblies>
     <XNAProjectContentPipelineAssemblies>
     </XNAProjectContentPipelineAssemblies>
@@ -112,20 +112,23 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Game.ico" />
-    <Content Include="GameThumbnail.png">
+    <Content Include="Content\Game.ico">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Game</Name>
+    </Content>
+    <Content Include="Content\GameThumbnail.png">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>GameThumbnail</Name>
     </Content>
-    <Content Include="testtex.bmp">
+    <Content Include="Content\testtex.bmp">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>testtex</Name>
     </Content>
-    <Content Include="texturemap.jpg">
+    <Content Include="Content\texturemap.jpg">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
@@ -133,55 +136,55 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bullet.jpg">
+    <Content Include="Content\bullet.jpg">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>bullet</Name>
     </Content>
-    <Content Include="effects.fx">
+    <Content Include="Content\effects.fx">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Name>effects</Name>
     </Content>
-    <Content Include="skybox2.x">
+    <Content Include="Content\skybox2.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>skybox2</Name>
     </Content>
-    <Content Include="skybox_back.JPG">
+    <Content Include="Content\skybox_back.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>skybox_back</Name>
     </Content>
-    <Content Include="skybox_bottom.JPG">
+    <Content Include="Content\skybox_bottom.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>skybox_bottom</Name>
     </Content>
-    <Content Include="skybox_front.JPG">
+    <Content Include="Content\skybox_front.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>skybox_front</Name>
     </Content>
-    <Content Include="skybox_left.JPG">
+    <Content Include="Content\skybox_left.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>skybox_left</Name>
     </Content>
-    <Content Include="skybox_right.JPG">
+    <Content Include="Content\skybox_right.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>skybox_right</Name>
     </Content>
-    <Content Include="skybox_top.JPG">
+    <Content Include="Content\skybox_top.JPG">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
@@ -189,7 +192,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="target.x">
+    <Content Include="Content\target.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -197,7 +200,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="xwing.x">
+    <Content Include="Content\xwing.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -205,7 +208,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="tower.x">
+    <Content Include="Content\tower.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -213,7 +216,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="knot.x">
+    <Content Include="Content\knot.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -221,7 +224,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="heli.x">
+    <Content Include="Content\heli.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -229,13 +232,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="shapes1.x">
+    <Content Include="Content\shapes1.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>shapes1</Name>
     </Content>
-    <Content Include="skullocc.x">
+    <Content Include="Content\skullocc.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -243,7 +246,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="sphere0.x">
+    <Content Include="Content\sphere0.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -251,7 +254,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cube.x">
+    <Content Include="Content\Cube.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -259,7 +262,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="teapot.x">
+    <Content Include="Content\teapot.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -267,7 +270,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bigship1.x">
+    <Content Include="Content\bigship1.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -275,7 +278,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bigship1_ndx.x">
+    <Content Include="Content\bigship1_ndx.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -283,97 +286,97 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Armor.dds">
+    <Content Include="Content\Armor.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Armor</Name>
     </Content>
-    <Content Include="Armor_bumpmap.dds">
+    <Content Include="Content\Armor_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Armor_bumpmap</Name>
     </Content>
-    <Content Include="Body.dds">
+    <Content Include="Content\Body.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Body</Name>
     </Content>
-    <Content Include="Body_bumpmap.dds">
+    <Content Include="Content\Body_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Body_bumpmap</Name>
     </Content>
-    <Content Include="DwarfHead.dds">
+    <Content Include="Content\DwarfHead.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>DwarfHead</Name>
     </Content>
-    <Content Include="DwarfHead_bumpmap.dds">
+    <Content Include="Content\DwarfHead_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>DwarfHead_bumpmap</Name>
     </Content>
-    <Content Include="Headgear.dds">
+    <Content Include="Content\Headgear.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Headgear</Name>
     </Content>
-    <Content Include="Headgear_bumpmap.dds">
+    <Content Include="Content\Headgear_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Headgear_bumpmap</Name>
     </Content>
-    <Content Include="Helmet.dds">
+    <Content Include="Content\Helmet.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Helmet</Name>
     </Content>
-    <Content Include="Helmet_bumpmap.dds">
+    <Content Include="Content\Helmet_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Helmet_bumpmap</Name>
     </Content>
-    <Content Include="Pack.dds">
+    <Content Include="Content\Pack.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Pack</Name>
     </Content>
-    <Content Include="Pack_bumpmap.dds">
+    <Content Include="Content\Pack_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Pack_bumpmap</Name>
     </Content>
-    <Content Include="reflect.fx">
+    <Content Include="Content\reflect.fx">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Name>reflect</Name>
     </Content>
-    <Content Include="specular.fx">
+    <Content Include="Content\specular.fx">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
       <Name>specular</Name>
     </Content>
-    <Content Include="Weapons.dds">
+    <Content Include="Content\Weapons.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>Weapons</Name>
     </Content>
-    <Content Include="Weapons_bumpmap.dds">
+    <Content Include="Content\Weapons_bumpmap.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
@@ -381,7 +384,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DwarfWithEffectInstance_ndx.x">
+    <Content Include="Content\DwarfWithEffectInstance_ndx.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
@@ -389,7 +392,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LobbyCube.dds">
+    <Content Include="Content\LobbyCube.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
@@ -397,7 +400,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MetallicFlakes.fx">
+    <Content Include="Content\MetallicFlakes.fx">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>EffectImporter</Importer>
       <Processor>EffectProcessor</Processor>
@@ -405,7 +408,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="smallnoise3d.dds">
+    <Content Include="Content\smallnoise3d.dds">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
@@ -425,7 +428,7 @@
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{9F340DF3-2AED-4330-AC16-78AC2D9B4738}">
-        <Thumbnail Include="GameThumbnail.png" />
+        <Thumbnail Include="Content\GameThumbnail.png" />
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>

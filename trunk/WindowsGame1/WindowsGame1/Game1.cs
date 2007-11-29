@@ -113,12 +113,12 @@ namespace TD3d
 
         private void LoadEffect()
         {
-            CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../effects.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
+            CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/effects.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
 
-            CompiledEffect compiledEffect2 = Effect.CompileEffectFromFile("@/../../../../MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
+            CompiledEffect compiledEffect2 = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             effect2 = new Effect(graphics.GraphicsDevice, compiledEffect2.GetEffectCode(), CompilerOptions.None, null);
-            effect2.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("smallnoise3d"));
+            effect2.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
 
             viewMatrix = Matrix.CreateLookAt(new Vector3(20, 5, 13), new Vector3(8, 7, 0), new Vector3(0, 0, 1));
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, this.Window.ClientBounds.Width / this.Window.ClientBounds.Height, 0.2f, 500.0f);
@@ -164,9 +164,9 @@ namespace TD3d
                 LoadEffect();
 
 
-                scenerytexture = content.Load<Texture2D>("texturemap");
+                scenerytexture = content.Load<Texture2D>("Content/texturemap");
 
-                bullettexture = content.Load<Texture2D>("bullet");
+                bullettexture = content.Load<Texture2D>("Content/bullet");
 
                 LoadModels();
             }
@@ -174,7 +174,7 @@ namespace TD3d
 
         private void LoadModels()
         {
-            skybox = content.Load<Model>("skybox2");
+            skybox = content.Load<Model>("Content/skybox2");
 
             int i = 0;
             skyboxtextures = new Texture2D[skybox.Meshes.Count];
