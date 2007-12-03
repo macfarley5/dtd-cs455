@@ -216,6 +216,7 @@ namespace TD3d
                 Console.Out.WriteLine("It's down");
                 
             }
+            //Console.Out.WriteLine(ms.X + " " + ms.Y);
         }
 
         protected override void Update(GameTime gameTime)
@@ -259,14 +260,20 @@ namespace TD3d
             if (keys.IsKeyDown(Keys.Up))
             {
                 this.cameraRot.Z += .02f;
+                if (this.cameraRot.Z > 1.5f)
+                    this.cameraRot.Z = 1.5f;
             }
             if (keys.IsKeyDown(Keys.Down))
             {
                 this.cameraRot.Z -= .02f;
+                if (this.cameraRot.Z < .25f)
+                    this.cameraRot.Z = .25f;
             }
             if (keys.IsKeyDown(Keys.S))
             {
                 this.cameraDist += .5f;
+                if (this.cameraDist > this.WIDTH)
+                    this.cameraDist = this.WIDTH;
             }
             if (keys.IsKeyDown(Keys.W))
             {
