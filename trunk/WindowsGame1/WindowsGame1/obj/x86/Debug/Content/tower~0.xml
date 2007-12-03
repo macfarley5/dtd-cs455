@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>DXCC_ROOT</Name>
     <Identity>
-      <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
+      <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -557,7 +557,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -569,7 +569,7 @@
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -581,7 +581,7 @@
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\tower.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
