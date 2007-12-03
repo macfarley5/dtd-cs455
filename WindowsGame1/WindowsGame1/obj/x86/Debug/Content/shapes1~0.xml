@@ -3,7 +3,7 @@
   <Asset Type="Graphics:NodeContent">
     <Name>SCENE_ROOT</Name>
     <Identity>
-      <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\shapes1.x</SourceFilename>
+      <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\shapes1.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 -1 0 0 0 0 1</Transform>
@@ -61,7 +61,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\shapes1.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\shapes1.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
