@@ -386,12 +386,12 @@ namespace TD3d
                 if (this.theMap.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
                 {
                     //draw red square
-                    Console.Out.WriteLine("red");
+                    Console.Out.WriteLine("Occupied");
                 }
                 else
                 {
                     //draw green square
-                    Console.Out.WriteLine("green");
+                    Console.Out.WriteLine("Empty");
                 }
             }
 
