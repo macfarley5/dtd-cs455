@@ -34,6 +34,7 @@ namespace TD3d
         Matrix viewMatrix;
         Matrix projectionMatrix;
         Texture2D scenerytexture;
+        Position mousePos = null;
 
         int WIDTH = 50;
         int HEIGHT = 40;
@@ -69,6 +70,7 @@ namespace TD3d
             LoadFloorplan();
             SetUpVertices();
             this.IsMouseVisible = true;
+            this.cameraDist = this.WIDTH;
         }
 
         private void LoadFloorplan()
@@ -153,6 +155,13 @@ namespace TD3d
                     verticeslist.Add(new VertexPositionNormalTexture(new Vector3(x + 1, y + 1, 0), new Vector3(0, 0, 1), new Vector2(currentbuilding * 2 / imagesintexture, 0)));
                 }
             }
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 0)));
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 1)));
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 1)));
+
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 1)));
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 0)));
+            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 0)));
             verticesarray = (VertexPositionNormalTexture[])verticeslist.ToArray(typeof(VertexPositionNormalTexture));
         }
 
@@ -212,11 +221,75 @@ namespace TD3d
 
         protected void doMouseStuff(){
             MouseState ms = Mouse.GetState();
+            if (ms.X < 0 || ms.X > this.Window.ClientBounds.Width || ms.Y < 0 || ms.Y > this.Window.ClientBounds.Height)
+            {
+                return;
+            }
             if (ms.LeftButton==ButtonState.Pressed){
-                Console.Out.WriteLine("It's down");
-                
+//                Console.Out.WriteLine("It's down");
+//                Console.Out.WriteLine(viewMatrix.ToString());
+                Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);
+                Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * this.cameraDist + this.WIDTH / 2,
+                                               (float)Math.Sin(this.cameraRot.X) * this.cameraDist + this.HEIGHT / 2,
+                                               (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
+                Vector3 ViewUp = new Vector3(0, 0, 1);
+                Vector3 W = LookFrom - LookAt;
+                W.Normalize();
+                Vector3 U = Vector3.Cross(ViewUp, W);
+                U.Normalize();
+                Vector3 V = Vector3.Cross(W, U);
+                V.Normalize();
+//                Console.Out.WriteLine(W);
+//                Console.Out.WriteLine(U);
+//                Console.Out.WriteLine(V);
+
+                float vMax = (float)(((Vector3)(LookAt - LookFrom)).Length() * Math.Tan(MathHelper.PiOver4 / 2));
+                float vMin = -vMax;
+                float uMax = vMax * (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height;
+                float uMin = -uMax;
+                Vector3 sView = new Vector3(ms.X * ((uMax - uMin)/(float)this.Window.ClientBounds.Width) + uMin,
+                                            (this.Window.ClientBounds.Height - ms.Y) * ((vMax - vMin) / this.Window.ClientBounds.Height) + vMin, 0);
+                Vector3 sWorld = LookAt + sView.X * U + sView.Y * V + sView.Z * W;
+//                Console.Out.WriteLine(LookAt + " + " + sView.X + " * " + U + " + " + sView.Y + " * " + V + " + " + sView.Z + " * " + W + " = " + sWorld);
+//                Console.Out.WriteLine(sWorld);
+                Vector3 rayO = LookFrom;
+                Vector3 rayD = sWorld - LookFrom;
+                rayD.Normalize();
+                float t = intersectBoard(rayO, rayD);
+                //t = - rayO.Z / rayD.Z;
+                if (t < 1e7)
+                {
+                    Vector3 iPoint = rayO + t * rayD;
+                    int xPos = (int)(iPoint.X);
+                    int yPos = (int)(iPoint.Y);
+//                    Console.Out.WriteLine("X:" + ms.X + ", Y:" + (this.Window.ClientBounds.Height - ms.Y) + ", uMin:" + uMin + ", uMax:" + uMax + ", vMin:" + vMin + ", vMax:" + vMax + ", sView:" + sView + ", W:" +
+//                                          this.Window.ClientBounds.Width + ", H:" + this.Window.ClientBounds.Height + ", sWorld:" + sWorld + ", iPoint:" + iPoint + ", X:" + xPos + ", Y:" + yPos);
+                    if (xPos < WIDTH && xPos >= 0 && yPos < HEIGHT && yPos >= 0)
+                    {
+                        mousePos = new Position(xPos, yPos);
+                    }
+                    else
+                    {
+                        mousePos = null;
+                    }
+                }
+                else
+                {
+                    mousePos = null;
+                }
             }
             //Console.Out.WriteLine(ms.X + " " + ms.Y);
+        }
+
+        private float intersectBoard(Vector3 rayO, Vector3 rayD)
+        {
+            Vector3 pN = new Vector3(0, 0, 1);
+            float normalDotRay = Vector3.Dot(pN, rayD);
+            if (normalDotRay == 0) return 1e8f;
+            float d = -(pN.X + pN.Y);
+            float t = -(Vector3.Dot(pN, rayO) + d) / Vector3.Dot(pN, rayD);
+            if (t <= 0) return 1e8f;
+            return t;
         }
 
         protected override void Update(GameTime gameTime)
@@ -307,6 +380,20 @@ namespace TD3d
                 pass.End();
             }
             effect.End();
+
+            if (this.mousePos != null)
+            {
+                if (this.theMap.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
+                {
+                    //draw red square
+                    Console.Out.WriteLine("red");
+                }
+                else
+                {
+                    //draw green square
+                    Console.Out.WriteLine("green");
+                }
+            }
 
             foreach (Tower t in this.theMap.towers)
             {
