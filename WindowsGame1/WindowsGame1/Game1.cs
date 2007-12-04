@@ -393,6 +393,7 @@ namespace TD3d
                     //draw green square
                     Console.Out.WriteLine("Empty");
                 }
+                this.mousePos = null;
             }
 
             foreach (Tower t in this.theMap.towers)
