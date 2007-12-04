@@ -2,7 +2,7 @@
 <XnaContent xmlns:Graphics="Microsoft.Xna.Framework.Content.Pipeline.Graphics" xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework">
   <Asset Type="Graphics:NodeContent">
     <Identity>
-      <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+      <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
       <SourceTool>XImporter</SourceTool>
     </Identity>
     <Transform>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</Transform>
@@ -118,7 +118,7 @@
   <Resources>
     <Resource ID="#Resource1" Type="Graphics:EffectMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -141,7 +141,7 @@
     </Resource>
     <Resource ID="#Resource2" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -159,7 +159,7 @@
     </Resource>
     <Resource ID="#Resource3" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -177,7 +177,7 @@
     </Resource>
     <Resource ID="#Resource4" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -195,7 +195,7 @@
     </Resource>
     <Resource ID="#Resource5" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -213,7 +213,7 @@
     </Resource>
     <Resource ID="#Resource6" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -231,7 +231,7 @@
     </Resource>
     <Resource ID="#Resource7" Type="Graphics:EffectMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -250,7 +250,7 @@
     </Resource>
     <Resource ID="#Resource8" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
@@ -268,7 +268,7 @@
     </Resource>
     <Resource ID="#Resource9" Type="Graphics:BasicMaterialContent">
       <Identity>
-        <SourceFilename>C:\Documents and Settings\joegb\My Documents\towerDefense\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
+        <SourceFilename>C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\Content\DwarfWithEffectInstance_ndx.x</SourceFilename>
         <SourceTool>XImporter</SourceTool>
       </Identity>
       <OpaqueData>
