@@ -155,13 +155,6 @@ namespace TD3d
                     verticeslist.Add(new VertexPositionNormalTexture(new Vector3(x + 1, y + 1, 0), new Vector3(0, 0, 1), new Vector2(currentbuilding * 2 / imagesintexture, 0)));
                 }
             }
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 0)));
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 1)));
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 1)));
-
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 1)));
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2((1 * 2 + 1) / imagesintexture, 0)));
-            verticeslist.Add(new VertexPositionNormalTexture(new Vector3(WIDTH + 1, HEIGHT + 1, 0), new Vector3(0, 0, 1), new Vector2(1 * 2 / imagesintexture, 0)));
             verticesarray = (VertexPositionNormalTexture[])verticeslist.ToArray(typeof(VertexPositionNormalTexture));
         }
 
