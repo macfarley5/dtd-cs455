@@ -26,7 +26,7 @@ namespace TD3d
         protected string viewEffectString = "";
         protected string projectionEffectString = "";
         protected Effect effect;
-        protected ArrayList currentPath = new ArrayList();
+        protected ArrayList currentPath;
         protected Model model;
 
         protected GraphicsDeviceManager graphics;
@@ -40,6 +40,10 @@ namespace TD3d
         public void setPosition(Position pos)
         {
             this.pos = pos;
+        }
+        public void setPath(ArrayList inPath)
+        {
+            currentPath = inPath;
         }
 
         public long getHealth()
@@ -71,9 +75,11 @@ namespace TD3d
             {
                 Position pos = this.pos;
                 float oldX = pos.getX();
-                if (this.currentPathPlaceholder<currentPath.Count )
+                System.Console.WriteLine(this.currentPath.Count);
+                if (currentPathPlaceholder < this.currentPath.Count )
                 {
-                    Position target = (Position)currentPath[this.currentPathPlaceholder];
+                    Node targetNode = (Node)currentPath[this.currentPathPlaceholder];
+                    Position target = targetNode.getPosition();
                     float movex = target.getX() - pos.getX();
                     float movey = target.getY() - pos.getY();
 
@@ -100,7 +106,8 @@ namespace TD3d
                 }
                 else
                 {
-                    this.generateTestPath();
+                    System.Console.WriteLine("Ran out of Path draw  me no more");
+                    //this.generateTestPath();
                 }
             }
         }
