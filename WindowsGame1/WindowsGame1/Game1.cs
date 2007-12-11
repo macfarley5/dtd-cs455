@@ -36,8 +36,8 @@ namespace TD3d
         Texture2D scenerytexture;
         Position mousePos = null;
 
-        int WIDTH = 50;
-        int HEIGHT = 40;
+        int WIDTH = 20;
+        int HEIGHT = 20;
         int differentbuildings = 5;
         private int[] buildingheights = new int[] { 0, 10, 1, 3, 2, 5 };
         Vector3 cameraposition = new Vector3(5, -2, 20);
@@ -76,27 +76,44 @@ namespace TD3d
         private void LoadFloorplan()
         {
             this.theMap = new Map(WIDTH, HEIGHT);
-
+            ArrayList thePath = null;
              Random r = new Random(0);
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Tower t = new Tower(graphics, content, device);
                 t.setPosition(r.Next(WIDTH-1), r.Next(HEIGHT-1));
                 this.theMap.placeTower(t);
             }
+            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH, HEIGHT/2, this.theMap);
+            thePath = null;
+            //if (planner.isPath())
+            //{
+                thePath = planner.getPath();
+            //}
+            //else
+            //{
+            //    System.Console.WriteLine("I have no path!");
+            //}
 
+            
             for (int i = 0; i < 30; i++)
             {
-                int x = r.Next(WIDTH - 1);
-                int y = r.Next(HEIGHT - 1);
+                int x = 0;// r.Next(WIDTH - 1);
+                int y = HEIGHT / 2;// r.Next(HEIGHT - 1);
                 if (this.theMap.layout[x, y] == null)
                 {
                     int whichCreep = r.Next(2);
                     Creep c;
-                    if (whichCreep==0)
-                        c = new FastCreep(new Position(x, y), 0,graphics,content,device);
+                    if (whichCreep == 0)
+                    {
+                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
+                        c.setPath(thePath);
+                    }
                     else
-                        c = new NormalCreep(new Position(x, y), 0,graphics,content,device);
+                    {
+                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
+                        c.setPath(thePath);
+                    }
                     this.creeps.Add(c);
                 }
             }
@@ -198,9 +215,9 @@ namespace TD3d
         {
 
             Model mod = content.Load<Model>(asset);
-            /*foreach (ModelMesh modmesh in mod.Meshes)
+            foreach (ModelMesh modmesh in mod.Meshes)
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
-                    modmeshpart.Effect = effect.Clone(device);*/
+                    modmeshpart.Effect = effect.Clone(device);
             return mod;
         }
 
