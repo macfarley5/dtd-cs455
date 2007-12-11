@@ -233,7 +233,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Lobby\LobbyCube.xnb</Output>
-      <Time>2007-07-02T15:50:08-06:00</Time>
+      <Time>2007-12-04T13:40:02.284944-07:00</Time>
     </Item>
     <Item>
       <Source>Content\effects.fx</Source>
@@ -628,7 +628,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Lobby\LobbyCube~0.xnb</Output>
-      <Time>2007-07-02T15:50:08-06:00</Time>
+      <Time>2007-12-04T13:40:02.284944-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Pack.dds</Source>

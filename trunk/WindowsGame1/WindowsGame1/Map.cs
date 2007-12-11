@@ -41,6 +41,8 @@ namespace TD3d
         /// <param name="depth">the depth of the board in Z</param>
         private void init(int width, int depth)
         {
+            this.width = width;
+            this.height = depth;
             layout = new Tile[width, depth];
             for (int i = 0; i < width; i++)
             {
