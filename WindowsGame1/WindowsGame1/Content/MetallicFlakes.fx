@@ -68,19 +68,19 @@ float4 I_a
 <
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.AmbientLight[0].Color";
-> = { 0.6f, 0.5f, 0.4f, 1.0f };    // ambient
+> = { 0.06f, 0.05f, 0.04f, 1.0f };    // ambient
 
 float4 I_d 
 <
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Color";
-> = { 0.60f, 0.50f, 0.40f, 1.0f };    // diffuse
+> = { 0.160f, 0.150f, 0.140f, 1.0f };    // diffuse
 
 float4 I_s
 <
     string SasUiLabel = "light specular";
     string SasUiControl = "ColorPicker";
-> = { 0.7f, 0.7f, 0.7f, 1.0f };    // specular
+> = { 0.27f, 0.27f, 0.27f, 1.0f };    // specular
 
 // material reflectivity
 float4 k_a
@@ -244,7 +244,8 @@ float4 PS(VS_OUTPUT In) : COLOR
 
     // combine the contributions
     Color.rgb = Diffuse + Specular + Gloss + Sparkle;
-    Color.w   = 1;
+    //Color.w   = 1;
+    Color.a = .15;
 
     return Color;
 }  
@@ -258,6 +259,8 @@ technique TMetallicFlakes
         PixelShader  = compile ps_1_1 PS();
 
         AlphaBlendEnable = TRUE;
+        SrcBlend = SrcAlpha;
+        DestBlend = InvSrcAlpha;
         CullMode         = NONE;
     }
 }
