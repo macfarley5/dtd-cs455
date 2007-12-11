@@ -23,7 +23,7 @@ namespace TD3d
         /// ///////////////////////////// OUR VARIABLES //////////////////////////
         /// </summary>
 
-        Map theMap;
+        Map map;
         ArrayList creeps = new ArrayList();
 
         // OTHER VARS
@@ -75,16 +75,16 @@ namespace TD3d
 
         private void LoadFloorplan()
         {
-            this.theMap = new Map(WIDTH, HEIGHT);
+            this.map = new Map(WIDTH, HEIGHT);
             ArrayList thePath = null;
              Random r = new Random(0);
             for (int i = 0; i < 5; i++)
             {
                 Tower t = new Tower(graphics, content, device);
                 t.setPosition(r.Next(WIDTH-1), r.Next(HEIGHT-1));
-                this.theMap.placeTower(t);
+                this.map.placeTower(t);
             }
-            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH, HEIGHT/2, this.theMap);
+            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH, HEIGHT/2, this.map);
             thePath = null;
             //if (planner.isPath())
             //{
@@ -100,7 +100,7 @@ namespace TD3d
             {
                 int x = 0;// r.Next(WIDTH - 1);
                 int y = HEIGHT / 2;// r.Next(HEIGHT - 1);
-                if (this.theMap.layout[x, y] == null)
+                if (this.map.layout[x, y] == null)
                 {
                     int whichCreep = r.Next(2);
                     Creep c;
@@ -161,7 +161,7 @@ namespace TD3d
                 for (int y = 0; y < HEIGHT; y++)
                 {
                     int currentbuilding = 0;// int_Floorplan[x, y];
-                    if (this.theMap.layout[x,y] != null)
+                    if (this.map.layout[x,y] != null)
                         currentbuilding = 1;
                     verticeslist.Add(new VertexPositionNormalTexture(new Vector3(x + 1, y + 1, 0), new Vector3(0, 0, 1), new Vector2(currentbuilding * 2 / imagesintexture, 0)));
                     verticeslist.Add(new VertexPositionNormalTexture(new Vector3(x + 1, y, 0), new Vector3(0, 0, 1), new Vector2(currentbuilding * 2 / imagesintexture, 1)));
@@ -272,8 +272,14 @@ namespace TD3d
                     Vector3 iPoint = rayO + t * rayD;
                     int xPos = (int)(iPoint.X);
                     int yPos = (int)(iPoint.Y);
-//                    Console.Out.WriteLine("X:" + ms.X + ", Y:" + (this.Window.ClientBounds.Height - ms.Y) + ", uMin:" + uMin + ", uMax:" + uMax + ", vMin:" + vMin + ", vMax:" + vMax + ", sView:" + sView + ", W:" +
-//                                          this.Window.ClientBounds.Width + ", H:" + this.Window.ClientBounds.Height + ", sWorld:" + sWorld + ", iPoint:" + iPoint + ", X:" + xPos + ", Y:" + yPos);
+
+                    Tower tow = new Tower(graphics, content, device);
+                    tow.setPosition(xPos, yPos);
+
+
+                    this.map.placeTower(tow);
+                    Console.Out.WriteLine("X:" + ms.X + ", Y:" + (this.Window.ClientBounds.Height - ms.Y) + ", uMin:" + uMin + ", uMax:" + uMax + ", vMin:" + vMin + ", vMax:" + vMax + ", sView:" + sView + ", W:" +
+                                          this.Window.ClientBounds.Width + ", H:" + this.Window.ClientBounds.Height + ", sWorld:" + sWorld + ", iPoint:" + iPoint + ", X:" + xPos + ", Y:" + yPos);
                     if (xPos < WIDTH && xPos >= 0 && yPos < HEIGHT && yPos >= 0)
                     {
                         mousePos = new Position(xPos, yPos);
@@ -393,7 +399,7 @@ namespace TD3d
 
             if (this.mousePos != null)
             {
-                if (this.theMap.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
+                if (this.map.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
                 {
                     //draw red square
                     Console.Out.WriteLine("Occupied");
@@ -406,7 +412,7 @@ namespace TD3d
                 this.mousePos = null;
             }
 
-            foreach (Tower t in this.theMap.towers)
+            foreach (Tower t in this.map.towers)
             {
                 
                 t.draw(viewMatrix, projectionMatrix);
