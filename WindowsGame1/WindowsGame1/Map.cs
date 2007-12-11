@@ -9,14 +9,14 @@ namespace TD3d
     public class Map
     {
         public Tile[,] layout; // keeps track of all the towers on the board
-        public  const int width = 100;
-        public  const int height = 100;
-        public const int depth = 100;
+        public int width;
+        public int height;
+        public int depth;
         public ArrayList towers = new ArrayList();
 
         public Map()
         {
-            init(100, 100);
+            init(50, 40);
         }
 
         public Map(int width, int depth)
@@ -26,7 +26,12 @@ namespace TD3d
 
         public bool isOccupied(int x, int y)
         {
-            return this.layout[x, y] != null;
+            bool retVal = false;
+            if (this.layout[x, y] != null)
+            {
+                retVal = true;
+            }
+            return retVal;
         }
 
         /// <summary>
