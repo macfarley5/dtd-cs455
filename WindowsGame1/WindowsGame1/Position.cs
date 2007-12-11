@@ -19,5 +19,13 @@ namespace TD3d
         public float getY() { return y; }
         public void moveX(float x) { this.x += x; }
         public void moveY(float y) { this.y += y; }
+        public void setX(float x)
+        {
+            this.x = x;
+        }
+        public void setY(float y)
+        {
+            this.y = y;
+        }
     }
 }
