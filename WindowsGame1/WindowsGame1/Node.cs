@@ -9,6 +9,7 @@ namespace TD3d
     {
         public int x;
         public int z;
+        private Position myPos;
         private int costToGo;
         private int cost;
         private Node parent;
@@ -18,6 +19,7 @@ namespace TD3d
         {
             x = 0;
             z = 0;
+            myPos = new Position(x, z);
             cost = 0;
             costToGo = 0;
             totalCost = 0;
@@ -28,6 +30,7 @@ namespace TD3d
         {
             x = inX;
             z = inZ;
+            myPos = new Position(x, z);
             cost = 0;
             costToGo = 0;
             totalCost = 0;
@@ -68,6 +71,17 @@ namespace TD3d
         {
             get { return totalCost; }
             set { totalCost = value; }
+        }
+
+        public void setPath(int inX, int inY)
+        {
+            myPos.setX(inX);
+            myPos.setY(inY);
+        }
+
+        public Position getPosition()
+        {
+            return myPos;
         }
     }
 }
