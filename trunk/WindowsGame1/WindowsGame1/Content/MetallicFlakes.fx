@@ -12,9 +12,9 @@
 
 // sparkle parameters
 #define SPRINKLE    1.00
-#define SCATTER     .7500
+#define SCATTER     1.00
 
-#define VOLUME_NOISE_SCALE  .75
+#define VOLUME_NOISE_SCALE  50.75
 
 int sas : SasGlobal
 <
@@ -61,20 +61,20 @@ float3 L
 < 
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Direction";
-> = normalize(float3(0.0f, -1.0f, -1.00f));
+> = normalize(float3(0.90f, .9f, -0.300f));
 
 // light intensity
 float4 I_a
 <
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.AmbientLight[0].Color";
-> = { 0.06f, 0.05f, 0.04f, 1.0f };    // ambient
+> = { 0.06f, 0.05f, 0.1f, 1.0f };    // ambient
 
 float4 I_d 
 <
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Color";
-> = { 0.160f, 0.150f, 0.140f, 1.0f };    // diffuse
+> = { 0.260f, 0.250f, 0.340f, 1.0f };    // diffuse
 
 float4 I_s
 <
@@ -87,7 +87,7 @@ float4 k_a
 <
     string SasUiLabel = "material ambient(metal)";
     string SasUiControl = "ColorPicker";
-> = { 0.1f, 0.1f, 0.1f, 1.0f };    // ambient  (metal)
+> = { 0.1f, 0.1f, 0.7f, 1.0f };    // ambient  (metal)
 
 float4 k_d
 <
@@ -244,8 +244,8 @@ float4 PS(VS_OUTPUT In) : COLOR
 
     // combine the contributions
     Color.rgb = Diffuse + Specular + Gloss + Sparkle;
-    //Color.w   = 1;
-    Color.a = .15;
+    Color.w   = 1;
+    //Color.a = .85;
 
     return Color;
 }  

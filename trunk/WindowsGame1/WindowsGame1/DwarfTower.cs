@@ -10,24 +10,15 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
-    class Tower : Tile
+    class DwarfTower : Tile
     {
         Creep target;
-        private string modelAsset = "Content/bigship1_ndx";
-        private float scale = .13f;
 
-        public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
+
+        public DwarfTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
             target = null;
-            CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
-            this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
-            this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
-            
-
-            this.model = content.Load<Model>(modelAsset);
-            foreach (ModelMesh modmesh in model.Meshes)
-                foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
-                    modmeshpart.Effect = this.effect.Clone(device);
+            this.model = content.Load<Model>("Content/dwarfWithEffectInstance_ndx");
         }
 
         public void setTarget(Creep creep)
@@ -63,15 +54,32 @@ namespace TD3d
 
         public override void draw(Matrix vm,Matrix pm)
         {
-            Matrix wm = Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.0f));
+            Matrix wm = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(2.0f, 2.0f, 2.0f) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1, this.getPosition().getY() + 1, 0.0f));
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect e in modmesh.Effects)
                 {
-                    e.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
-                    e.Parameters["World"].SetValue(wm);
-                    e.Parameters["View"].SetValue(vm);
-                    e.Parameters["Projection"].SetValue(pm);
+                    //ae.CurrentTechnique = e.Techniques[0];
+                    if (e is BasicEffect)
+                    {
+                        BasicEffect basicEffect = (BasicEffect)e;
+                        basicEffect.World = wm;
+                        basicEffect.View = vm;
+                        basicEffect.Projection = pm;
+                    }
+                    else
+                    {
+                        /*foreach (EffectParameter ep in e.Parameters)
+                        {
+                            String n = ep.Name;
+                            Console.Out.WriteLine(n);
+                        }*/
+                        e.Parameters[this.worldEffectString].SetValue(wm);
+                        e.Parameters[this.viewEffectString].SetValue(vm);
+                        e.Parameters[this.projectionEffectString].SetValue(pm);
+                        //basicEffect.Projection = projectionMatrix;
+                    }
+
                 }
                 modmesh.Draw();
             }
