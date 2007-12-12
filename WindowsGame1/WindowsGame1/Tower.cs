@@ -68,12 +68,19 @@ namespace TD3d
             rot += .01f;
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
-                foreach (Effect e in modmesh.Effects)
+                foreach (Effect currenteffect in modmesh.Effects)
                 {
-                    e.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
-                    e.Parameters["World"].SetValue(wm);
-                    e.Parameters["View"].SetValue(vm);
-                    e.Parameters["Projection"].SetValue(pm);
+                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.15f, .05f, .15f, 1f));
+                    currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
+                    currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
+                    currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
+                    currenteffect.Parameters["noisescale"].SetValue(.70f);
+                    currenteffect.Parameters["World"].SetValue(wm);
+                    currenteffect.Parameters["View"].SetValue(vm);
+                    currenteffect.Parameters["Projection"].SetValue(pm);
                 }
                 modmesh.Draw();
             }
