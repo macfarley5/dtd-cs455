@@ -57,6 +57,7 @@ namespace TD3d
         VertexPositionNormalTexture[] verticesarray;
         ArrayList verticeslist = new ArrayList();
         Model spacemodel;
+        Random globalRand = new Random(0);
 
         public Game1()
         {
@@ -96,22 +97,22 @@ namespace TD3d
             //}
 
             
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 1; i++)
             {
                 int x = 0;// r.Next(WIDTH - 1);
                 int y = HEIGHT / 2;// r.Next(HEIGHT - 1);
                 if (this.map.layout[x, y] == null)
                 {
-                    int whichCreep = r.Next(2);
+                    int whichCreep = r.Next(1);
                     Creep c;
                     if (whichCreep == 0)
                     {
-                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
+                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
                         c.setPath(thePath);
                     }
                     else
                     {
-                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
+                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
                         c.setPath(thePath);
                     }
                     this.creeps.Add(c);
@@ -428,6 +429,8 @@ namespace TD3d
 
             foreach (Creep creep in this.creeps)
             {
+                if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
+                    creep.injure(1);
                 creep.updateState(gameTime.ElapsedGameTime.Milliseconds);
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
                 creep.draw(viewMatrix,projectionMatrix);

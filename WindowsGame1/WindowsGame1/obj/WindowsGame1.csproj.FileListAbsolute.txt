@@ -113,3 +113,4 @@ C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGam
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Default_color.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\goochy.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Cube_ndx.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\sphere0_ndx.xnb
