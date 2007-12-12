@@ -15,6 +15,7 @@ namespace TD3d
         Creep target;
         private string modelAsset = "Content/bigship1_ndx";
         private float scale = .13f;
+        private float rot = 0;
 
         public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
@@ -63,7 +64,8 @@ namespace TD3d
 
         public override void draw(Matrix vm,Matrix pm)
         {
-            Matrix wm = Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.0f));
+            Matrix wm = Matrix.CreateRotationZ(this.rot)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.0f));
+            rot += .01f;
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect e in modmesh.Effects)
