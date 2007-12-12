@@ -269,7 +269,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\MetallicFlakes.xnb</Output>
-      <Time>2007-12-11T22:29:07.5251952-07:00</Time>
+      <Time>2007-12-11T23:41:29.4285456-07:00</Time>
     </Item>
     <Item>
       <Source>Content\skybox2.x</Source>
@@ -716,6 +716,26 @@
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\Cube_ndx~0.xml</Output>
       <Time>2007-12-11T21:06:59.5390992-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\sphere0_ndx.x</Source>
+      <Name>Content\sphere0_ndx</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\sphere0_ndx.xnb</Output>
+      <Time>2007-12-11T23:42:18.4991056-07:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Content\sphere0_ndx~0.xml</Key>
+        <Value>2007-12-11T23:42:24.1772704-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Content\sphere0_ndx.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Content\sphere0_ndx~0.xml</Output>
+      <Time>2007-12-11T23:42:18.4991056-07:00</Time>
     </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

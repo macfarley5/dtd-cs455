@@ -13,7 +13,7 @@ namespace TD3d
     class NormalCreep : Creep
     {
 
-        private string modelAsset = "Content/sphere0";
+        private string modelAsset = "Content/sphere0_ndx";
         private float scale = .3f;
         private float currentXSizeAngle = 0;
         private float currentYSizeAngle = 0;
@@ -38,17 +38,40 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
-            currentXSizeAngle += elapsedTime / 75;
-            currentYSizeAngle += elapsedTime / 100;
-            currentZSizeAngle += elapsedTime / 125;
+            this.currentStateCountdown -= elapsedTime;
+            if (this.currentStateCountdown < 0)
+            {
+                this.currentStateCountdown = 0;
+                this.currentState = States.NOTHING;
+            }
+            if (this.currentState == States.DAMAGED)
+            {
+                currentXSizeAngle += elapsedTime / 20;
+                currentYSizeAngle += elapsedTime / 35;
+                currentZSizeAngle += elapsedTime / 50;
+            }
+            else
+            {
+
+                currentXSizeAngle += elapsedTime / 75;
+                currentYSizeAngle += elapsedTime / 100;
+                currentZSizeAngle += elapsedTime / 125;
+            }
         }
 
         public override void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             {
-                float xScale = this.scale + (1+(float)Math.Cos(currentXSizeAngle))/40;
-                float yScale = this.scale + (1+(float)Math.Cos(currentYSizeAngle))/40;
-                float zScale = this.scale + (1+(float)Math.Cos(currentZSizeAngle))/40;
+                float xScale, yScale, zScale;
+                float scaleReducer = 40;
+                if (this.currentState == States.DAMAGED)
+                {
+                    scaleReducer = 15 + (100/this.currentStateCountdown);
+                }
+                xScale = this.scale + (1 + (float)Math.Cos(currentXSizeAngle)) / scaleReducer;
+                yScale = this.scale + (1 + (float)Math.Cos(currentYSizeAngle)) / scaleReducer;
+                zScale = this.scale + (1 + (float)Math.Cos(currentZSizeAngle)) / scaleReducer;
+
 
                 Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) *
                                 Matrix.CreateScale(xScale,yScale,zScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
@@ -63,6 +86,13 @@ namespace TD3d
                         currenteffect.Parameters["k_d"].SetValue(new Vector4(.9f, .2f, .3f, 1f));
                         currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
                         currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
+
+                        if (this.currentState == States.DAMAGED)
+                        {
+                            currenteffect.Parameters["k_a"].SetValue(new Vector4(.8f, .3f, .5f, 1f));
+                            currenteffect.Parameters["k_d"].SetValue(new Vector4(.8f, .3f, .5f, 1f));
+                            currenteffect.Parameters["I_s"].SetValue(new Vector4(.9f, .8f, .9f, 1f));
+                        }
                         currenteffect.Parameters["noisescale"].SetValue(.70f);
                         currenteffect.Parameters["alph"].SetValue(1f);
                         currenteffect.Parameters["World"].SetValue(worldMatrix);

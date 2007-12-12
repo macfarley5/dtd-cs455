@@ -33,6 +33,10 @@ namespace TD3d
         protected ContentManager content;
         protected GraphicsDevice device;
 
+        protected enum States { NOTHING,DAMAGED };
+        protected float currentStateCountdown; //ms of the current state/effect remaining
+        protected States currentState = States.NOTHING;
+
         public Position getPosition()
         {
             return pos;
@@ -50,6 +54,17 @@ namespace TD3d
         {
             return this.health;
         }
+
+        public void injure(int amount)
+        {
+            this.health -= amount;
+            if (this.health < 0)
+                this.health = 0;
+            currentStateCountdown = 500f;
+            currentState = States.DAMAGED;
+            //Console.Out.WriteLine("**************DAMAGES*");
+        }
+
         public double getSpeed()
         {
             return this.speed;
