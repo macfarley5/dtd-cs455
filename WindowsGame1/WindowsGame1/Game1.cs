@@ -36,8 +36,8 @@ namespace TD3d
         Texture2D scenerytexture;
         Position mousePos = null;
 
-        int WIDTH = 20;
-        int HEIGHT = 20;
+        int WIDTH = 40;
+        int HEIGHT = 40;
         int differentbuildings = 5;
         private int[] buildingheights = new int[] { 0, 10, 1, 3, 2, 5 };
         Vector3 cameraposition = new Vector3(5, -2, 20);
@@ -48,7 +48,7 @@ namespace TD3d
         ArrayList spritelist = new ArrayList();
         Texture2D bullettexture;
 
-        Model skybox;
+        Model skybox, mapModel;
         Texture2D[] skyboxtextures;
 
         Vector3 cameraRot = new Vector3(0, 0, 1);
@@ -208,7 +208,13 @@ namespace TD3d
                     effect.Parameters["xEnableLighting"].SetValue(false);
                 }
 
-
+            this.mapModel = content.Load<Model>("Content/cube_ndx");
+            foreach (ModelMesh modmesh in mapModel.Meshes)
+                foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
+                {
+                    modmeshpart.Effect = effect2.Clone(device);
+                    //effect.Parameters["xEnableLighting"].SetValue(false);
+                }
         }
 
         private Model FillModelFromFile(string asset)
@@ -239,9 +245,12 @@ namespace TD3d
 //                Console.Out.WriteLine("It's down");
 //                Console.Out.WriteLine(viewMatrix.ToString());
                 Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);
-                Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * this.cameraDist + this.WIDTH / 2,
-                                               (float)Math.Sin(this.cameraRot.X) * this.cameraDist + this.HEIGHT / 2,
-                                               (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
+                Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.WIDTH / 2,
+                             (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.HEIGHT / 2,
+                             (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
+                //Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * this.cameraDist + this.WIDTH / 2,
+               //                                (float)Math.Sin(this.cameraRot.X) * this.cameraDist + this.HEIGHT / 2,
+               //                                (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
                 Vector3 ViewUp = new Vector3(0, 0, 1);
                 Vector3 W = LookFrom - LookAt;
                 W.Normalize();
@@ -325,8 +334,8 @@ namespace TD3d
 
         private void UpdateCamera()
         {
-            Vector3 campos = new Vector3((float)Math.Cos(this.cameraRot.X) * this.cameraDist + this.WIDTH / 2,
-                                         (float)Math.Sin(this.cameraRot.X) * this.cameraDist + this.HEIGHT / 2,
+            Vector3 campos = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.WIDTH / 2,
+                                         (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.HEIGHT / 2,
                                          (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
 
             Vector3 camup = new Vector3(0, 0, 1);
@@ -361,8 +370,8 @@ namespace TD3d
             if (keys.IsKeyDown(Keys.S))
             {
                 this.cameraDist += .5f;
-                if (this.cameraDist > this.WIDTH)
-                    this.cameraDist = this.WIDTH;
+                if (this.cameraDist > this.WIDTH*3)
+                    this.cameraDist = this.WIDTH*3;
             }
             if (keys.IsKeyDown(Keys.W))
             {
@@ -379,7 +388,8 @@ namespace TD3d
             //  Console.WriteLine("FPS: " + 1000d /(double)gameTime.ElapsedGameTime.Milliseconds);
 
             Matrix worldMatrix = Matrix.Identity;
-            effect.CurrentTechnique = effect.Techniques["Textured"];
+            /*effect.CurrentTechnique = effect.Techniques["Textured"];
+            effect.Parameters["xEnableLighting"].SetValue(1);
             effect.Parameters["xWorld"].SetValue(worldMatrix);
             effect.Parameters["xView"].SetValue(viewMatrix);
             effect.Parameters["xProjection"].SetValue(projectionMatrix);
@@ -396,7 +406,7 @@ namespace TD3d
                 pass.End();
             }
             effect.End();
-
+            */
             if (this.mousePos != null)
             {
                 if (this.map.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
@@ -425,6 +435,28 @@ namespace TD3d
                 creep.draw(viewMatrix,projectionMatrix);
             }
 
+            foreach (ModelMesh modmesh in mapModel.Meshes)
+            {
+                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH/2,this.HEIGHT/2,-.5f);
+                foreach (Effect currenteffect in modmesh.Effects)
+                {
+                    //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
+                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
+                    currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
+
+                    currenteffect.Parameters["World"].SetValue(worldMatrix);
+                    currenteffect.Parameters["View"].SetValue(viewMatrix);
+                    currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
+                    //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
+                }
+                modmesh.Draw();
+            }
 
 
             int i = 0;

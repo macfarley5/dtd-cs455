@@ -63,7 +63,7 @@ namespace TD3d
             int x = (int)tower.getPosition().getX();
             int y = (int)tower.getPosition().getY();
             //can't go out of bounds
-            if (x<0 || x>width-1 || y<0 || y>height-1)
+        if (x<0 || x>=width-1 || y<0 || y>=height-1)
                 return false;
             //can't be placed on top of other towers
             if (layout[x, y] != null || layout[x+1, y] != null || layout[x, y+1] != null || layout[x+1, y+1] != null )

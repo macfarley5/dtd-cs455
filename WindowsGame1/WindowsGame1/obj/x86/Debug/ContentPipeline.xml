@@ -242,7 +242,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\effects.xnb</Output>
-      <Time>2007-11-28T21:05:51.9754464-07:00</Time>
+      <Time>2007-12-11T18:17:34.3723072-07:00</Time>
     </Item>
     <Item>
       <Source>Content\reflect.fx</Source>
@@ -269,7 +269,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\MetallicFlakes.xnb</Output>
-      <Time>2007-12-11T14:19:27.441472-07:00</Time>
+      <Time>2007-12-11T21:38:35.0947744-07:00</Time>
     </Item>
     <Item>
       <Source>Content\skybox2.x</Source>
@@ -669,6 +669,53 @@
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\DwarfHead~0.xnb</Output>
       <Time>2007-11-28T21:30:24.9034128-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\Copy of effects.fx</Source>
+      <Name>Content\Copy of effects</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\Copy of effects.xnb</Output>
+      <Time>2007-12-11T18:24:07.3473776-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\Default_color.dds</Source>
+      <Name>Content\Default_color</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\Default_color.xnb</Output>
+      <Time>2007-12-11T18:28:33.2597408-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\goochy.fx</Source>
+      <Name>Content\goochy</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\goochy.xnb</Output>
+      <Time>2007-12-11T18:28:25.3984368-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\Cube_ndx.x</Source>
+      <Name>Content\Cube_ndx</Name>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\Cube_ndx.xnb</Output>
+      <Time>2007-12-11T21:06:59.5390992-07:00</Time>
+      <Dependency>
+        <Key>obj\x86\Debug\Content\Cube_ndx~0.xml</Key>
+        <Value>2007-12-11T21:07:54.9788176-07:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Content\Cube_ndx.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>obj\x86\Debug\Content\Cube_ndx~0.xml</Output>
+      <Time>2007-12-11T21:06:59.5390992-07:00</Time>
     </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

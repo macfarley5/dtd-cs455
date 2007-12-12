@@ -109,3 +109,7 @@ C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGam
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Headgear~0.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\DwarfHead~0.xnb
 C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Lobby\LobbyCube.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Copy of effects.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Default_color.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\goochy.xnb
+C:\Documents and Settings\Administrator\My Documents\school\cs455proj\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Cube_ndx.xnb
