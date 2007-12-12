@@ -116,6 +116,15 @@ float noisescale
     int SasUiSteps = .1f;
 > = {10.0f};
 
+float alph
+<
+    string SasUiLabel = "Alpha Value";
+    string SasUiControl = "Slider"; 
+    float SasUiMin = 0.0f; 
+    float SasUiMax = 1.0f; 
+    int SasUiSteps = .01f;
+> = {1.0f};
+
 // function used to fill the volume noise texture
 float4 GenerateSparkle(float3 Pos : POSITION) : COLOR
 {
@@ -253,8 +262,8 @@ float4 PS(VS_OUTPUT In) : COLOR
 
     // combine the contributions
     Color.rgb = Diffuse + Specular + Gloss + Sparkle;
-    Color.w   = 1;
-    //Color.a = .85;
+    //Color.w   = 1;
+    Color.a = alph;
 
     return Color;
 }  
@@ -264,12 +273,13 @@ technique TMetallicFlakes
 {
     pass P0
     {
-        VertexShader = compile vs_1_1 VS();
-        PixelShader  = compile ps_1_1 PS();
-
         AlphaBlendEnable = TRUE;
         SrcBlend = SrcAlpha;
         DestBlend = InvSrcAlpha;
+        VertexShader = compile vs_1_1 VS();
+        PixelShader  = compile ps_1_1 PS();
+
+
         CullMode         = NONE;
     }
 }

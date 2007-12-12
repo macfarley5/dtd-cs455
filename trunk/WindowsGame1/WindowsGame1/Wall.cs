@@ -22,6 +22,11 @@ namespace TD3d
             return TileType.Wall;
         }
 
+        public override void updateState(float elapsedTime)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
         public override void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             throw new Exception("The method or operation is not implemented.");

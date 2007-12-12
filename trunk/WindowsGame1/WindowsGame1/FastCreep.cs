@@ -12,12 +12,12 @@ namespace TD3d
 {
     class FastCreep : Creep
     {
-        private string modelAsset = "Content/bigship1_ndx";
+        private string modelAsset = "Content/sphere0";
         private float scale = .1f;
 
         public FastCreep(Position pos, int level, GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
-            //this.speed = 200;
+            this.speed = .003f;;
             this.pos = pos;
             this.level = level;
 
@@ -39,27 +39,20 @@ namespace TD3d
                 Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
-                    foreach (Effect eff in modmesh.Effects)
+                    foreach (Effect currenteffect in modmesh.Effects)
                     {
-                        // eff.CurrentTechnique = eff.Techniques[1];
-                        foreach (EffectParameter ep in eff.Parameters)
-                        {
-                            String n = ep.Name;
-                            //Console.Out.WriteLine(n);
-                        }
-                        eff.Parameters["World"].SetValue(worldMatrix);
-                        eff.Parameters["View"].SetValue(viewMatrix);
-                        eff.Parameters["Projection"].SetValue(projectionMatrix);
-                        /*basicEffect.World = worldMatrix;
-                        basicEffect.View = viewMatrix;
-                        basicEffect.Projection = projectionMatrix;
-
-                        basicEffect.SpecularPower = 5.0f;
-                        basicEffect.LightingEnabled = true;
-                        basicEffect.DirectionalLight0.Enabled = true;
-                        basicEffect.DirectionalLight0.DiffuseColor = Vector3.One;
-                        basicEffect.DirectionalLight0.Direction = Vector3.Normalize(new Vector3(-1.0f, -1.0f, -1.0f));
-                        basicEffect.DirectionalLight0.SpecularColor = Vector3.One;*/
+                        currenteffect.Parameters["I_a"].SetValue(new Vector4(.15f, .05f, .15f, 1f));
+                        currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                        currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
+                        currenteffect.Parameters["k_a"].SetValue(new Vector4(.9f, .2f, .3f, 1f));
+                        currenteffect.Parameters["k_d"].SetValue(new Vector4(.9f, .2f, .3f, 1f));
+                        currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
+                        currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
+                        currenteffect.Parameters["noisescale"].SetValue(.70f);
+                        currenteffect.Parameters["alph"].SetValue(1f);
+                        currenteffect.Parameters["World"].SetValue(worldMatrix);
+                        currenteffect.Parameters["View"].SetValue(viewMatrix);
+                        currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
                     }
                     modmesh.Draw();
                 }
