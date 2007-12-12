@@ -326,8 +326,6 @@ namespace TD3d
             ProcessKeyboard(gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
             
             UpdateCamera();
-           
-
 
             base.Update(gameTime);
         }
@@ -424,13 +422,13 @@ namespace TD3d
 
             foreach (Tower t in this.map.towers)
             {
-                
+                t.updateState(gameTime.ElapsedGameTime.Milliseconds);
                 t.draw(viewMatrix, projectionMatrix);
             }
 
             foreach (Creep creep in this.creeps)
             {
-
+                creep.updateState(gameTime.ElapsedGameTime.Milliseconds);
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
                 creep.draw(viewMatrix,projectionMatrix);
             }

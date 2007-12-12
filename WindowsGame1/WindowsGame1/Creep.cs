@@ -112,6 +112,11 @@ namespace TD3d
             }
         }
 
+        public virtual void updateState(float elapsedTime)
+        {
+
+        }
+
         public abstract void draw(Matrix viewMatrix, Matrix projectionMatrix);
         
     

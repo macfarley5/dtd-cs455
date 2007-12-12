@@ -62,10 +62,15 @@ namespace TD3d
             return TileType.Tower;
         }
 
+        public override void updateState(float elapsedTime)
+        {
+            rot += elapsedTime / 700;
+        }
+
         public override void draw(Matrix vm,Matrix pm)
         {
             Matrix wm = Matrix.CreateRotationZ(this.rot)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.0f));
-            rot += .01f;
+           // rot += .01f;
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
