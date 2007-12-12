@@ -107,6 +107,15 @@ float4 k_r
     string SasUiControl = "ColorPicker";
 > = { 0.7f, 0.7f, 0.7f, 1.0f };    // specular (wax)
 
+float noisescale
+<
+    string SasUiLabel = "Noise Scale";
+    string SasUiControl = "Slider"; 
+    float SasUiMin = 0.0f; 
+    float SasUiMax = 100.0f; 
+    int SasUiSteps = .1f;
+> = {10.0f};
+
 // function used to fill the volume noise texture
 float4 GenerateSparkle(float3 Pos : POSITION) : COLOR
 {
@@ -192,7 +201,7 @@ VS_OUTPUT VS(
     Out.Reflection = float3(-G.x, G.y, -G.z);                   
 
     // volume noise coordinates
-    Out.NoiseCoord = Position * VOLUME_NOISE_SCALE;             
+    Out.NoiseCoord = Position * noisescale;//VOLUME_NOISE_SCALE;             
 
     return Out;
 }

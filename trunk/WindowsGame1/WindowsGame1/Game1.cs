@@ -448,7 +448,8 @@ namespace TD3d
                     currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
+                    currenteffect.Parameters["noisescale"].SetValue(20f);
+                    //currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
 
                     currenteffect.Parameters["World"].SetValue(worldMatrix);
                     currenteffect.Parameters["View"].SetValue(viewMatrix);
