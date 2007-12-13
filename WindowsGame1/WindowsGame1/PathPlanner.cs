@@ -64,8 +64,8 @@ namespace TD3d
             startZ = inStartZ;
             endX = inEndX;
             endZ = inEndZ;
-            width = inWidth - 1;
-            depth = inDepth - 1;
+            width = inWidth;
+            depth = inDepth;
             myMap = inMap;
         }
 
@@ -143,15 +143,15 @@ namespace TD3d
         {
             IComparer myComparison = new nodeComparer();
             ArrayList fringe = new ArrayList();
-            Node currentNode = new Node(startX + 1, startZ, null);
-            Node goalNode = new Node(endX - 1, endZ - 1, null);
-            endX--;
-            endX--;
+            Node currentNode = new Node(startX, startZ, null);
+            visited.Enqueue(currentNode);
+            Node goalNode = new Node(endX, endZ, null);
+            
             //System.Console.WriteLine("goal node = " + endX + ", " + endZ);
             //start at the beginning and go to the end
             bool blocked = false;
 
-            while (currentNode != goalNode)
+            while (!(currentNode.X == goalNode.X && currentNode.Z == goalNode.Z))
             {
                 int newX = currentNode.X;
                 int newZ = currentNode.Z;
@@ -160,11 +160,12 @@ namespace TD3d
                     Node temp = new Node(newX, newZ + 1, currentNode);
                     if (!beenVisited(temp))
                     {
-                        temp.Cost = Math.Abs(endZ - newZ);
-                        temp.CostToGo = endX - newX;
+                        temp.Cost = Math.Abs(endZ - (newZ + 1));
+                        temp.CostToGo = Math.Abs(endX - newX);
+                        temp.TotalCost = temp.Cost + temp.CostToGo;
                         //visited.Enqueue(temp);
                         fringe.Add(temp);
-                        //System.Console.WriteLine(newX + ", " + (newZ + 1) + " added to fringe up");
+                        //System.Console.WriteLine(newX + ", " + (newZ + 1) + " added to fringe up with cost of " + temp.TotalCost);
                     }
                 }
                 if (canMove(currentNode, "down"))
@@ -172,11 +173,12 @@ namespace TD3d
                     Node temp = new Node(newX, newZ - 1, currentNode);
                     if (!beenVisited(temp))
                     {
-                        temp.Cost = Math.Abs(endZ - newZ - 1);
-                        temp.CostToGo = endX - newX;
+                        temp.Cost = Math.Abs(endZ - (newZ - 1));
+                        temp.CostToGo = Math.Abs(endX - newX);
+                        temp.TotalCost = temp.Cost + temp.CostToGo;
                         //visited.Enqueue(temp);
                         fringe.Add(temp);
-                        //System.Console.WriteLine(newX + ", " + (newZ - 1) + " added to fringe down");
+                        //System.Console.WriteLine(newX + ", " + (newZ - 1) + " added to fringe down with cost of " + temp.TotalCost);
                     }
                 }
                 if (canMove(currentNode, "left"))
@@ -186,10 +188,11 @@ namespace TD3d
                     if (!beenVisited(temp))
                     {
                         temp.Cost = Math.Abs(endZ - newZ);
-                        temp.CostToGo = endX - newX - 1;
+                        temp.CostToGo = Math.Abs(endX - (newX - 1));
+                        temp.TotalCost = temp.Cost + temp.CostToGo;
                         //visited.Enqueue(temp);
                         fringe.Add(temp);
-                        //System.Console.WriteLine((newX - 1) + ", " + newZ + " added to fringe left");
+                        //System.Console.WriteLine((newX - 1) + ", " + newZ + " added to fringe left with cost of " + temp.TotalCost);
                     }
                 }
                 if (canMove(currentNode, "right"))
@@ -199,10 +202,11 @@ namespace TD3d
                     if (!beenVisited(temp))
                     {
                         temp.Cost = Math.Abs(endZ - newZ);
-                        temp.CostToGo = endX - newX + 1;
+                        temp.CostToGo = Math.Abs(endX - (newX + 1));
+                        temp.TotalCost = temp.Cost + temp.CostToGo;
                         //visited.Enqueue(temp);
                         fringe.Add(temp);
-                        //System.Console.WriteLine((newX + 1) + ", " + newZ + " added to fringe right");
+                        //System.Console.WriteLine((newX + 1) + ", " + newZ + " added to fringe right with cost of " + temp.TotalCost);
                     }
                 }
                 int size = fringe.Count;
@@ -214,22 +218,25 @@ namespace TD3d
                 }
                 fringe.Sort(myComparison);
                 currentNode = (Node)fringe[0];
+                //System.Console.WriteLine("Current Node set to " + currentNode.X + ", " + currentNode.Z);
                 visited.Enqueue(currentNode);
                 fringe.RemoveAt(0);
             }
+            //System.Console.WriteLine("current node is " + currentNode.X + ", " + currentNode.Z);
             if (blocked)
             {
+                //System.Console.WriteLine("NO PATH");
                 path = null;
             }
             else
             {
-                System.Console.WriteLine("The path that exists is " + path.Count + " nodes long");
                 while (currentNode != null)
                 {
                     path.Add(currentNode);
                     currentNode = currentNode.Parent;
                 }
                 path.Reverse();
+                //System.Console.WriteLine("The path that exists is " + path.Count + " nodes long");
             }
             return path;
         }
@@ -249,9 +256,9 @@ namespace TD3d
             if (!isPath())
             {
                 path = new ArrayList();
-                Node temp = new Node(startX, startZ, null);
+                Node temp = new Node(startX, startZ + 2, null);
                 path.Add(temp);
-                Node temp1 = new Node(endX, endZ, null);
+                Node temp1 = new Node(endX, endZ + 2, null);
                 temp1.Parent = temp;
                 path.Add(temp1);
             }

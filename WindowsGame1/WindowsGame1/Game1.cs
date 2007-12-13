@@ -79,22 +79,22 @@ namespace TD3d
             this.map = new Map(WIDTH, HEIGHT);
             ArrayList thePath = null;
              Random r = new Random(0);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 30; i++)
             {
                 Tower t = new Tower(graphics, content, device);
-                t.setPosition(r.Next(WIDTH-1), r.Next(HEIGHT-1));
+                t.setPosition(r.Next(WIDTH-15), r.Next(HEIGHT-15));
                 this.map.placeTower(t);
             }
-            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH, HEIGHT/2, this.map);
+            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH - 1, HEIGHT/2, this.map);
             thePath = null;
             //if (planner.isPath())
             //{
                 thePath = planner.getPath();
-            //}
-            //else
-            //{
-            //    System.Console.WriteLine("I have no path!");
-            //}
+            /*}
+            else
+            {
+                System.Console.WriteLine("I have no path!");
+            }*/
 
             
             for (int i = 0; i < 1; i++)
