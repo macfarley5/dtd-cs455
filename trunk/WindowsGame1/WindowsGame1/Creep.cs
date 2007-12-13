@@ -90,7 +90,7 @@ namespace TD3d
             {
                 Position pos = this.pos;
                 float oldX = pos.getX();
-                System.Console.WriteLine(this.currentPath.Count);
+                //System.Console.WriteLine(this.currentPath.Count);
                 if (currentPathPlaceholder < this.currentPath.Count )
                 {
                     Node targetNode = (Node)currentPath[this.currentPathPlaceholder];
@@ -121,7 +121,7 @@ namespace TD3d
                 }
                 else
                 {
-                    System.Console.WriteLine("Ran out of Path draw  me no more");
+                    //System.Console.WriteLine("Ran out of Path draw  me no more");
                     //this.generateTestPath();
                 }
             }
