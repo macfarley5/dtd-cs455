@@ -242,61 +242,46 @@ namespace TD3d
             {
                 return;
             }
-            if (ms.LeftButton==ButtonState.Pressed){
-//                Console.Out.WriteLine("It's down");
-//                Console.Out.WriteLine(viewMatrix.ToString());
-                Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);
-                Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.WIDTH / 2,
-                             (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.HEIGHT / 2,
-                             (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
-                //Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * this.cameraDist + this.WIDTH / 2,
-               //                                (float)Math.Sin(this.cameraRot.X) * this.cameraDist + this.HEIGHT / 2,
-               //                                (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
-                Vector3 ViewUp = new Vector3(0, 0, 1);
-                Vector3 W = LookFrom - LookAt;
-                W.Normalize();
-                Vector3 U = Vector3.Cross(ViewUp, W);
-                U.Normalize();
-                Vector3 V = Vector3.Cross(W, U);
-                V.Normalize();
-//                Console.Out.WriteLine(W);
-//                Console.Out.WriteLine(U);
-//                Console.Out.WriteLine(V);
+            //if (ms.LeftButton==ButtonState.Pressed){
+            Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);
+            Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.WIDTH / 2,
+                         (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.HEIGHT / 2,
+                         (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
+            Vector3 ViewUp = new Vector3(0, 0, 1);
+            Vector3 W = LookFrom - LookAt;
+            W.Normalize();
+            Vector3 U = Vector3.Cross(ViewUp, W);
+            U.Normalize();
+            Vector3 V = Vector3.Cross(W, U);
+            V.Normalize();
 
-                float vMax = (float)(((Vector3)(LookAt - LookFrom)).Length() * Math.Tan(MathHelper.PiOver4 / 2));
-                float vMin = -vMax;
-                float uMax = vMax * (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height;
-                float uMin = -uMax;
-                Vector3 sView = new Vector3(ms.X * ((uMax - uMin)/(float)this.Window.ClientBounds.Width) + uMin,
-                                            (this.Window.ClientBounds.Height - ms.Y) * ((vMax - vMin) / this.Window.ClientBounds.Height) + vMin, 0);
-                Vector3 sWorld = LookAt + sView.X * U + sView.Y * V + sView.Z * W;
-//                Console.Out.WriteLine(LookAt + " + " + sView.X + " * " + U + " + " + sView.Y + " * " + V + " + " + sView.Z + " * " + W + " = " + sWorld);
-//                Console.Out.WriteLine(sWorld);
-                Vector3 rayO = LookFrom;
-                Vector3 rayD = sWorld - LookFrom;
-                rayD.Normalize();
-                float t = intersectBoard(rayO, rayD);
-                //t = - rayO.Z / rayD.Z;
-                if (t < 1e7)
+            float vMax = (float)(((Vector3)(LookAt - LookFrom)).Length() * Math.Tan(MathHelper.PiOver4 / 2));
+            float vMin = -vMax;
+            float uMax = vMax * (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height;
+            float uMin = -uMax;
+            Vector3 sView = new Vector3(ms.X * ((uMax - uMin)/(float)this.Window.ClientBounds.Width) + uMin,
+                                        (this.Window.ClientBounds.Height - ms.Y) * ((vMax - vMin) / this.Window.ClientBounds.Height) + vMin, 0);
+            Vector3 sWorld = LookAt + sView.X * U + sView.Y * V + sView.Z * W;
+            Vector3 rayO = LookFrom;
+            Vector3 rayD = sWorld - LookFrom;
+            rayD.Normalize();
+            float t = intersectBoard(rayO, rayD);
+            if (t < 1e7)
+            {
+                Vector3 iPoint = rayO + t * rayD;
+                int xPos = (int)(iPoint.X - .5f);
+                int yPos = (int)(iPoint.Y - .5f);
+                if (xPos < WIDTH && xPos >= 0 && yPos < HEIGHT && yPos >= 0)
                 {
-                    Vector3 iPoint = rayO + t * rayD;
-                    int xPos = (int)(iPoint.X);
-                    int yPos = (int)(iPoint.Y);
+                    mousePos = new Position(xPos, yPos);
 
-                    Tower tow = new Tower(graphics, content, device);
-                    tow.setPosition(xPos, yPos);
-
-
-                    this.map.placeTower(tow);
-                    Console.Out.WriteLine("X:" + ms.X + ", Y:" + (this.Window.ClientBounds.Height - ms.Y) + ", uMin:" + uMin + ", uMax:" + uMax + ", vMin:" + vMin + ", vMax:" + vMax + ", sView:" + sView + ", W:" +
-                                          this.Window.ClientBounds.Width + ", H:" + this.Window.ClientBounds.Height + ", sWorld:" + sWorld + ", iPoint:" + iPoint + ", X:" + xPos + ", Y:" + yPos);
-                    if (xPos < WIDTH && xPos >= 0 && yPos < HEIGHT && yPos >= 0)
+                    if (ms.LeftButton == ButtonState.Pressed)
                     {
-                        mousePos = new Position(xPos, yPos);
-                    }
-                    else
-                    {
-                        mousePos = null;
+                        Tower tow = new Tower(graphics, content, device);
+                        tow.setPosition(xPos, yPos);
+
+
+                        this.map.placeTower(tow);
                     }
                 }
                 else
@@ -304,7 +289,11 @@ namespace TD3d
                     mousePos = null;
                 }
             }
-            //Console.Out.WriteLine(ms.X + " " + ms.Y);
+            else
+            {
+                mousePos = null;
+            }
+            //}
         }
 
         private float intersectBoard(Vector3 rayO, Vector3 rayD)
@@ -363,8 +352,8 @@ namespace TD3d
             if (keys.IsKeyDown(Keys.Down))
             {
                 this.cameraRot.Z -= .02f;
-                if (this.cameraRot.Z < .25f)
-                    this.cameraRot.Z = .25f;
+                if (this.cameraRot.Z < -.5f)
+                    this.cameraRot.Z = -.5f;
             }
             if (keys.IsKeyDown(Keys.S))
             {
@@ -387,7 +376,7 @@ namespace TD3d
             //  Console.WriteLine("FPS: " + 1000d /(double)gameTime.ElapsedGameTime.Milliseconds);
 
             Matrix worldMatrix = Matrix.Identity;
-            /*effect.CurrentTechnique = effect.Techniques["Textured"];
+            /**/effect.CurrentTechnique = effect.Techniques["Textured"];
             effect.Parameters["xEnableLighting"].SetValue(1);
             effect.Parameters["xWorld"].SetValue(worldMatrix);
             effect.Parameters["xView"].SetValue(viewMatrix);
@@ -405,18 +394,19 @@ namespace TD3d
                 pass.End();
             }
             effect.End();
-            */
+            /**/
+
             if (this.mousePos != null)
             {
-                if (this.map.isOccupied((int)(mousePos.getX()), (int)(mousePos.getY())))
+                int xPos = (int)(mousePos.getX());
+                int yPos = (int)(mousePos.getY());
+
+                Tower tow = new Tower(graphics, content, device);
+                tow.setPosition(xPos, yPos);
+
+                if (this.map.canPlaceTower(tow))
                 {
-                    //draw red square
-                    Console.Out.WriteLine("Occupied");
-                }
-                else
-                {
-                    //draw green square
-                    Console.Out.WriteLine("Empty");
+                    tow.draw(viewMatrix, projectionMatrix);
                 }
                 this.mousePos = null;
             }
@@ -435,10 +425,10 @@ namespace TD3d
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
                 creep.draw(viewMatrix,projectionMatrix);
             }
-
+            /**
             foreach (ModelMesh modmesh in mapModel.Meshes)
             {
-                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH/2,this.HEIGHT/2,-.5f);
+                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH/2,this.HEIGHT/2,0f);
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
                     //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
@@ -458,8 +448,7 @@ namespace TD3d
                     //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
                 }
                 modmesh.Draw();
-            }
-
+            }/**/
 
             int i = 0;
             foreach (ModelMesh modmesh in skybox.Meshes)

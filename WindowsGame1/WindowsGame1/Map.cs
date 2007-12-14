@@ -53,6 +53,15 @@ namespace TD3d
             }
         }
 
+        public bool canPlaceTower(Tile tower)
+        {
+            int x = (int)tower.getPosition().getX();
+            int y = (int)tower.getPosition().getY();
+            if (x < 0 || x >= width - 1 || y < 0 || y >= height - 1)
+                return false;
+            return layout[x, y] == null && layout[x + 1, y] == null && layout[x, y + 1] == null && layout[x + 1, y + 1] == null;
+        }
+
         /// <summary>
         /// Places a tower on the map
         /// </summary>
