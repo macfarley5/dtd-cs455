@@ -20,7 +20,7 @@ namespace TD3d
         protected int cash = 3;
         private float threshold = .1f;
         private int currentPathPlaceholder = 0;
-
+        protected PathPlanner myPlanner;
 
         protected string worldEffectString = "";
         protected string viewEffectString = "";
@@ -36,6 +36,24 @@ namespace TD3d
         protected enum States { NOTHING,DAMAGED };
         protected float currentStateCountdown; //ms of the current state/effect remaining
         protected States currentState = States.NOTHING;
+
+        public void setPlanner(PathPlanner planner)
+        {
+            myPlanner = planner;
+        }
+
+        public bool hasPath()
+        {
+            myPlanner.StartX = (int)pos.getX();
+            myPlanner.StartZ = (int)pos.getY();
+            return myPlanner.isPath();
+        }
+
+        public void setNewPath()
+        {
+            currentPath = myPlanner.getPath();
+            this.currentPathPlaceholder = 0;
+        }
 
         public Position getPosition()
         {
@@ -121,7 +139,7 @@ namespace TD3d
                 }
                 else
                 {
-                    //System.Console.WriteLine("Ran out of Path draw  me no more");
+                    System.Console.WriteLine("Ran out of Path draw  me no more");
                     //this.generateTestPath();
                 }
             }

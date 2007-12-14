@@ -69,7 +69,7 @@ namespace TD3d
 
         public override void draw(Matrix vm,Matrix pm)
         {
-            Matrix wm = Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.31f));
+            Matrix wm = Matrix.CreateRotationX((float)Math.PI)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
            // rot += .01f;
             int count = 0;
             foreach (ModelMesh modmesh in this.model.Meshes)
@@ -84,7 +84,7 @@ namespace TD3d
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
                     currenteffect.Parameters["noisescale"].SetValue(.70f);
-                    if (count == 1)
+                    if (count == 2)
                     {
                         currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(this.rot) * wm);
                     }
