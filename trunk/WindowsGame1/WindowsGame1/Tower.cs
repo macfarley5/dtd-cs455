@@ -13,7 +13,7 @@ namespace TD3d
     class Tower : Tile
     {
         Creep target;
-        private string modelAsset = "Content/bigship1_ndx";
+        private string modelAsset = "Content/tower";
         private float scale = .13f;
         private float rot = 0;
 
@@ -69,8 +69,9 @@ namespace TD3d
 
         public override void draw(Matrix vm,Matrix pm)
         {
-            Matrix wm = Matrix.CreateRotationZ(this.rot)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.0f));
+            Matrix wm = Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 1.31f));
            // rot += .01f;
+            int count = 0;
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
@@ -83,9 +84,17 @@ namespace TD3d
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
                     currenteffect.Parameters["noisescale"].SetValue(.70f);
-                    currenteffect.Parameters["World"].SetValue(wm);
+                    if (count == 1)
+                    {
+                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(this.rot) * wm);
+                    }
+                    else
+                    {
+                        currenteffect.Parameters["World"].SetValue(wm);
+                    }
                     currenteffect.Parameters["View"].SetValue(vm);
                     currenteffect.Parameters["Projection"].SetValue(pm);
+                    count++;
                 }
                 modmesh.Draw();
             }
