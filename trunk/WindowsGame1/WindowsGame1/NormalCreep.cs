@@ -14,7 +14,7 @@ namespace TD3d
     {
 
         private string modelAsset = "Content/sphere0_ndx";
-        private float scale = .3f;
+        private float scale = .1f;
         private float currentXSizeAngle = 0;
         private float currentYSizeAngle = 0;
         private float currentZSizeAngle = 0;
@@ -74,7 +74,7 @@ namespace TD3d
 
 
                 Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) *
-                                Matrix.CreateScale(xScale,yScale,zScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
+                                Matrix.CreateScale(xScale,yScale,zScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, .20f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)

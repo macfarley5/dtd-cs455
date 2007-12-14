@@ -141,6 +141,8 @@ namespace TD3d
 
         private ArrayList findPath()
         {
+            path = new ArrayList();
+            visited = new Queue();
             IComparer myComparison = new nodeComparer();
             ArrayList fringe = new ArrayList();
             Node currentNode = new Node(startX, startZ, null);
@@ -163,7 +165,7 @@ namespace TD3d
                         temp.Cost = Math.Abs(endZ - (newZ + 1));
                         temp.CostToGo = Math.Abs(endX - newX);
                         temp.TotalCost = temp.Cost + temp.CostToGo;
-                        //visited.Enqueue(temp);
+                        visited.Enqueue(temp);
                         fringe.Add(temp);
                         //System.Console.WriteLine(newX + ", " + (newZ + 1) + " added to fringe up with cost of " + temp.TotalCost);
                     }
@@ -176,7 +178,7 @@ namespace TD3d
                         temp.Cost = Math.Abs(endZ - (newZ - 1));
                         temp.CostToGo = Math.Abs(endX - newX);
                         temp.TotalCost = temp.Cost + temp.CostToGo;
-                        //visited.Enqueue(temp);
+                        visited.Enqueue(temp);
                         fringe.Add(temp);
                         //System.Console.WriteLine(newX + ", " + (newZ - 1) + " added to fringe down with cost of " + temp.TotalCost);
                     }
@@ -190,7 +192,7 @@ namespace TD3d
                         temp.Cost = Math.Abs(endZ - newZ);
                         temp.CostToGo = Math.Abs(endX - (newX - 1));
                         temp.TotalCost = temp.Cost + temp.CostToGo;
-                        //visited.Enqueue(temp);
+                        visited.Enqueue(temp);
                         fringe.Add(temp);
                         //System.Console.WriteLine((newX - 1) + ", " + newZ + " added to fringe left with cost of " + temp.TotalCost);
                     }
@@ -204,7 +206,7 @@ namespace TD3d
                         temp.Cost = Math.Abs(endZ - newZ);
                         temp.CostToGo = Math.Abs(endX - (newX + 1));
                         temp.TotalCost = temp.Cost + temp.CostToGo;
-                        //visited.Enqueue(temp);
+                        visited.Enqueue(temp);
                         fringe.Add(temp);
                         //System.Console.WriteLine((newX + 1) + ", " + newZ + " added to fringe right with cost of " + temp.TotalCost);
                     }
@@ -219,7 +221,7 @@ namespace TD3d
                 fringe.Sort(myComparison);
                 currentNode = (Node)fringe[0];
                 //System.Console.WriteLine("Current Node set to " + currentNode.X + ", " + currentNode.Z);
-                visited.Enqueue(currentNode);
+                //visited.Enqueue(currentNode);
                 fringe.RemoveAt(0);
             }
             //System.Console.WriteLine("current node is " + currentNode.X + ", " + currentNode.Z);
@@ -263,6 +265,18 @@ namespace TD3d
                 path.Add(temp1);
             }
             return path;
+        }
+
+        public int StartX
+        {
+            get { return startX; }
+            set { startX = value; }
+        }
+
+        public int StartZ
+        {
+            get { return startZ; }
+            set { startZ = value; }
         }
     }
 }
