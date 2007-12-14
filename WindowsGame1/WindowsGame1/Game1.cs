@@ -18,13 +18,13 @@ namespace TD3d
             public Vector3 position;
             public float radius;
         }
-
-        /// <summary>
-        /// ///////////////////////////// OUR VARIABLES //////////////////////////
-        /// </summary>
-
+                
+        // OUR VARIABLES
+        
         Map map;
         ArrayList creeps = new ArrayList();
+        MouseX mouse;
+        KeyboardX keyboard;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -33,8 +33,7 @@ namespace TD3d
         Effect effect, effect2;
         Matrix viewMatrix;
         Matrix projectionMatrix;
-        Texture2D scenerytexture;
-        Position mousePos = null;
+        Texture2D scenerytexture;        
 
         int WIDTH = 40;
         int HEIGHT = 40;
@@ -62,7 +61,7 @@ namespace TD3d
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            content = new ContentManager(Services);
+            content = new ContentManager(Services);            
         }
 
         protected override void Initialize()
@@ -72,35 +71,33 @@ namespace TD3d
             SetUpVertices();
             this.IsMouseVisible = true;
             this.cameraDist = this.WIDTH;
+            mouse = new MouseX(this.Window, WIDTH, HEIGHT, graphics, content, device, map);
+            keyboard = new KeyboardX(WIDTH);
         }
 
         private void LoadFloorplan()
         {
             this.map = new Map(WIDTH, HEIGHT);
+            
             ArrayList thePath = null;
-             Random r = new Random(0);
+            Random r = new Random(0);
+
             for (int i = 0; i < 30; i++)
             {
                 Tower t = new Tower(graphics, content, device);
-                t.setPosition(r.Next(WIDTH-15), r.Next(HEIGHT-15));
+                t.setPosition(r.Next(WIDTH - 15), r.Next(HEIGHT - 15));
                 this.map.placeTower(t);
             }
-            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT/2, WIDTH - 1, HEIGHT/2, this.map);
-            thePath = null;
-            //if (planner.isPath())
-            //{
-                thePath = planner.getPath();
-            /*}
-            else
-            {
-                System.Console.WriteLine("I have no path!");
-            }*/
 
-            
+            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map);
+            thePath = null;
+            thePath = planner.getPath();
+
             for (int i = 0; i < 1; i++)
             {
                 int x = 0;// r.Next(WIDTH - 1);
                 int y = HEIGHT / 2;// r.Next(HEIGHT - 1);
+
                 if (this.map.layout[x, y] == null)
                 {
                     int whichCreep = r.Next(1);
@@ -115,6 +112,7 @@ namespace TD3d
                         c = new FastCreep(new Position(x, y), 0, graphics, content, device);
                         c.setPath(thePath);
                     }
+
                     this.creeps.Add(c);
                 }
             }
@@ -128,7 +126,7 @@ namespace TD3d
             graphics.PreferredBackBufferHeight = 768;
             graphics.IsFullScreen = false;
             graphics.ApplyChanges();
-            Window.Title = "Tower Defense";
+            Window.Title = "Tower Defense";            
         }
 
         private void LoadEffect()
@@ -150,7 +148,6 @@ namespace TD3d
             effect.Parameters["xEnableLighting"].SetValue(true);
             effect.Parameters["xLightDirection"].SetValue(new Vector3(0.5f, -1, -1));
             effect.Parameters["xAmbient"].SetValue(0.4f);
-
         }
 
         private void SetUpVertices()
@@ -173,6 +170,7 @@ namespace TD3d
                     verticeslist.Add(new VertexPositionNormalTexture(new Vector3(x + 1, y + 1, 0), new Vector3(0, 0, 1), new Vector2(currentbuilding * 2 / imagesintexture, 0)));
                 }
             }
+
             verticesarray = (VertexPositionNormalTexture[])verticeslist.ToArray(typeof(VertexPositionNormalTexture));
         }
 
@@ -183,9 +181,7 @@ namespace TD3d
                 SetUpXNADevice();
                 LoadEffect();
 
-
                 scenerytexture = content.Load<Texture2D>("Content/texturemap");
-
                 bullettexture = content.Load<Texture2D>("Content/bullet");
 
                 LoadModels();
@@ -195,9 +191,9 @@ namespace TD3d
         private void LoadModels()
         {
             skybox = content.Load<Model>("Content/skybox2");
-
-            int i = 0;
             skyboxtextures = new Texture2D[skybox.Meshes.Count];
+            int i = 0;            
+            
             foreach (ModelMesh mesh in skybox.Meshes)
                 foreach (BasicEffect currenteffect in mesh.Effects)
                     skyboxtextures[i++] = currenteffect.Texture;
@@ -210,113 +206,41 @@ namespace TD3d
                 }
 
             this.mapModel = content.Load<Model>("Content/cube_ndx");
+
             foreach (ModelMesh modmesh in mapModel.Meshes)
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
-                {
                     modmeshpart.Effect = effect2.Clone(device);
-                    //effect.Parameters["xEnableLighting"].SetValue(false);
-                }
-        }
+            }
 
         private Model FillModelFromFile(string asset)
         {
-
             Model mod = content.Load<Model>(asset);
+
             foreach (ModelMesh modmesh in mod.Meshes)
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
                     modmeshpart.Effect = effect.Clone(device);
+
             return mod;
         }
 
         protected override void UnloadGraphicsContent(bool unloadAllContent)
         {
             if (unloadAllContent == true)
-            {
                 content.Unload();
-            }
         }
-
-        protected void doMouseStuff(){
-            MouseState ms = Mouse.GetState();
-            if (ms.X < 0 || ms.X > this.Window.ClientBounds.Width || ms.Y < 0 || ms.Y > this.Window.ClientBounds.Height)
-            {
-                return;
-            }
-            //if (ms.LeftButton==ButtonState.Pressed){
-            Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);
-            Vector3 LookFrom = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.WIDTH / 2,
-                         (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z) * this.cameraDist + this.HEIGHT / 2,
-                         (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
-            Vector3 ViewUp = new Vector3(0, 0, 1);
-            Vector3 W = LookFrom - LookAt;
-            W.Normalize();
-            Vector3 U = Vector3.Cross(ViewUp, W);
-            U.Normalize();
-            Vector3 V = Vector3.Cross(W, U);
-            V.Normalize();
-
-            float vMax = (float)(((Vector3)(LookAt - LookFrom)).Length() * Math.Tan(MathHelper.PiOver4 / 2));
-            float vMin = -vMax;
-            float uMax = vMax * (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height;
-            float uMin = -uMax;
-            Vector3 sView = new Vector3(ms.X * ((uMax - uMin)/(float)this.Window.ClientBounds.Width) + uMin,
-                                        (this.Window.ClientBounds.Height - ms.Y) * ((vMax - vMin) / this.Window.ClientBounds.Height) + vMin, 0);
-            Vector3 sWorld = LookAt + sView.X * U + sView.Y * V + sView.Z * W;
-            Vector3 rayO = LookFrom;
-            Vector3 rayD = sWorld - LookFrom;
-            rayD.Normalize();
-            float t = intersectBoard(rayO, rayD);
-            if (t < 1e7)
-            {
-                Vector3 iPoint = rayO + t * rayD;
-                int xPos = (int)(iPoint.X - .5f);
-                int yPos = (int)(iPoint.Y - .5f);
-                if (xPos < WIDTH && xPos >= 0 && yPos < HEIGHT && yPos >= 0)
-                {
-                    mousePos = new Position(xPos, yPos);
-
-                    if (ms.LeftButton == ButtonState.Pressed)
-                    {
-                        Tower tow = new Tower(graphics, content, device);
-                        tow.setPosition(xPos, yPos);
-
-
-                        this.map.placeTower(tow);
-                    }
-                }
-                else
-                {
-                    mousePos = null;
-                }
-            }
-            else
-            {
-                mousePos = null;
-            }
-            //}
-        }
-
-        private float intersectBoard(Vector3 rayO, Vector3 rayD)
-        {
-            Vector3 pN = new Vector3(0, 0, 1);
-            float normalDotRay = Vector3.Dot(pN, rayD);
-            if (normalDotRay == 0) return 1e8f;
-            float d = -(pN.X + pN.Y);
-            float t = -(Vector3.Dot(pN, rayO) + d) / Vector3.Dot(pN, rayD);
-            if (t <= 0) return 1e8f;
-            return t;
-        }
-
+        
         protected override void Update(GameTime gameTime)
         {
-            doMouseStuff();
+            mouse.update(cameraRot, cameraDist);
+            
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            ProcessKeyboard(gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
-            
-            UpdateCamera();
+            keyboard.update(cameraRot, cameraDist, gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
+            this.cameraRot = keyboard.getCameraRot();
+            this.cameraDist = keyboard.getCameraDist();
 
+            UpdateCamera();
             base.Update(gameTime);
         }
 
@@ -325,55 +249,15 @@ namespace TD3d
             Vector3 campos = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.WIDTH / 2,
                                          (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.HEIGHT / 2,
                                          (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
-
             Vector3 camup = new Vector3(0, 0, 1);
 
             viewMatrix = Matrix.CreateLookAt(campos, new Vector3(this.WIDTH/2,this.HEIGHT/2,0), camup);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
         }
-
-        private void ProcessKeyboard(float speed)
-        {
-            KeyboardState keys = Keyboard.GetState();
-            if (keys.IsKeyDown(Keys.Right))
-            {
-                this.cameraRot.X += .05f;
-            }
-            if (keys.IsKeyDown(Keys.Left))
-            {
-                this.cameraRot.X -= .05f;
-            }
-            if (keys.IsKeyDown(Keys.Up))
-            {
-                this.cameraRot.Z += .02f;
-                if (this.cameraRot.Z > 1.5f)
-                    this.cameraRot.Z = 1.5f;
-            }
-            if (keys.IsKeyDown(Keys.Down))
-            {
-                this.cameraRot.Z -= .02f;
-                if (this.cameraRot.Z < -.5f)
-                    this.cameraRot.Z = -.5f;
-            }
-            if (keys.IsKeyDown(Keys.S))
-            {
-                this.cameraDist += .5f;
-                if (this.cameraDist > this.WIDTH*3)
-                    this.cameraDist = this.WIDTH*3;
-            }
-            if (keys.IsKeyDown(Keys.W))
-            {
-                this.cameraDist -= .5f;
-                if (this.cameraDist < .25f)
-                    this.cameraDist = .25f;
-            }
-        }
-
+        
         protected override void Draw(GameTime gameTime)
         {
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
-            //if (gameTime.ElapsedGameTime.Milliseconds>0)
-            //  Console.WriteLine("FPS: " + 1000d /(double)gameTime.ElapsedGameTime.Milliseconds);
 
             Matrix worldMatrix = Matrix.Identity;
             /**/effect.CurrentTechnique = effect.Techniques["Textured"];
@@ -393,10 +277,12 @@ namespace TD3d
 
                 pass.End();
             }
-            effect.End();
-            /**/
 
-            if (this.mousePos != null)
+            effect.End();
+
+            Position mousePos = mouse.getPos();
+
+            if(mousePos != null)
             {
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
@@ -408,7 +294,6 @@ namespace TD3d
                 {
                     tow.draw(viewMatrix, projectionMatrix);
                 }
-                this.mousePos = null;
             }
 
             foreach (Tower t in this.map.towers)
@@ -425,35 +310,13 @@ namespace TD3d
                 creep.move(gameTime.ElapsedGameTime.Milliseconds);
                 creep.draw(viewMatrix,projectionMatrix);
             }
-            /**
-            foreach (ModelMesh modmesh in mapModel.Meshes)
-            {
-                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH/2,this.HEIGHT/2,0f);
-                foreach (Effect currenteffect in modmesh.Effects)
-                {
-                    //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
-                    currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["noisescale"].SetValue(20f);
-                    //currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
-
-                    currenteffect.Parameters["World"].SetValue(worldMatrix);
-                    currenteffect.Parameters["View"].SetValue(viewMatrix);
-                    currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
-                    //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
-                }
-                modmesh.Draw();
-            }/**/
 
             int i = 0;
+
             foreach (ModelMesh modmesh in skybox.Meshes)
             {
                 worldMatrix = Matrix.CreateRotationX((float)Math.PI / 2) * Matrix.CreateScale(15, 15, 15) * Matrix.CreateTranslation(cameraposition);
+
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
                     currenteffect.CurrentTechnique = currenteffect.Techniques["Textured"];
@@ -463,6 +326,7 @@ namespace TD3d
                     currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
                     currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
                 }
+
                 modmesh.Draw();
             }
 

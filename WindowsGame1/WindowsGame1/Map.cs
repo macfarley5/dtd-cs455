@@ -50,7 +50,7 @@ namespace TD3d
                 {
                     layout[i, j] = null;
                 }
-            }
+            }                         
         }
 
         public bool canPlaceTower(Tile tower)
