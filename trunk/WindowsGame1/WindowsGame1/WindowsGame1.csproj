@@ -51,6 +51,8 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DwarfTower.cs">
@@ -73,9 +75,17 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FastCreep</Name>
     </Compile>
+    <Compile Include="KeyboardX.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>KeyboardX</Name>
+    </Compile>
     <Compile Include="Map.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Map</Name>
+    </Compile>
+    <Compile Include="MouseX.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>MouseX</Name>
     </Compile>
     <Compile Include="Node.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
