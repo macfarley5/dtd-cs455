@@ -16,7 +16,7 @@ namespace TD3d
         Creep target;
         private string modelAsset = "Content/tower";
         private float scale = .13f;
-        protected float fireSpeed = 100f;
+        protected float fireSpeed = 1000f;
         protected float fireCounter = 1f;
         private float rot = 0;
         protected ArrayList projectiles = new ArrayList();
@@ -82,24 +82,37 @@ namespace TD3d
                 //Fire!
                 if (this.creeps.Count > 0)
                 {
-                    Position bestPos = ((Creep)creeps[0]).getPosition(); ;
+                    Position bestPos = ((Creep)creeps[0]).getVisualPosition();
+                    Position myVisPos = this.getPosition();
+                    myVisPos.setX(myVisPos.getX() + .5f);
+                    myVisPos.setY(myVisPos.getY() + .5f);
                     float bestDist = 1000000f;
 
-                    foreach(Creep c in this.creeps){
-                        float nowdist = Position.dist(this.pos, c.getPosition());
+                    foreach (Creep c in this.creeps)
+                    {
+                        float nowdist = Position.dist(myVisPos, c.getVisualPosition());
                         if (nowdist < bestDist)
                         {
                             bestDist = nowdist;
-                            bestPos = c.getPosition();
+                            bestPos = c.getVisualPosition();
                         }
                     }
-                    Vector2 velocity = new Vector2(bestPos.getX()-this.pos.getX() , bestPos.getY()-this.pos.getY() );
+                    Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
                     velocity.Normalize();
+                    float yOverX = (velocity.Y ) /
+                                (velocity.X );
+                    rot = (float)Math.Atan(yOverX);
+
                     this.fireCounter = this.fireSpeed;
-                    this.projectiles.Add(new Projectile(this.getPosition(), new Position(velocity.X,velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                    this.projectiles.Add(new Projectile(myVisPos.Clone(),
+                        new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device));
                 }
             }
-            rot += elapsedTime / 700;
+            else
+            {
+                //rot += elapsedTime / 700;
+            }
+
             foreach (Projectile p in this.projectiles)
             {
                 p.updateState(elapsedTime);
@@ -129,7 +142,7 @@ namespace TD3d
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
                     if (count == 2)
                     {
-                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(this.rot) * wm);
+                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot+((float)Math.PI)/2) * wm);
                     }
                     else
                     {

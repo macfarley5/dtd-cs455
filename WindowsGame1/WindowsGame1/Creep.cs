@@ -55,6 +55,15 @@ namespace TD3d
             this.currentPathPlaceholder = 1;
         }
 
+        public Position getVisualPosition()
+        {
+            //shifted by -.5 to show where it really appears
+            Position visualPos = this.getPosition();
+            visualPos.setX(visualPos.getX() - .5f);
+            visualPos.setY(visualPos.getY() - .5f);
+            return visualPos;
+        }
+
         public Position getPosition()
         {
             return pos.Clone();
