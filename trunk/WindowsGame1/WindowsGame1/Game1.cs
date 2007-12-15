@@ -25,6 +25,7 @@ namespace TD3d
         ArrayList creeps = new ArrayList();
         MouseX mouse;
         KeyboardX keyboard;
+        HUD hud;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -71,8 +72,10 @@ namespace TD3d
             SetUpVertices();
             this.IsMouseVisible = true;
             this.cameraDist = this.WIDTH;
+            
             mouse = new MouseX(this.Window, WIDTH, HEIGHT, graphics, content, device, map);
             keyboard = new KeyboardX(WIDTH);
+            hud = new HUD(this.Window, graphics, content);
         }
 
         private void LoadFloorplan()
@@ -331,6 +334,7 @@ namespace TD3d
             }
 
             base.Draw(gameTime);
+            hud.Draw();
         }
     }
 }
