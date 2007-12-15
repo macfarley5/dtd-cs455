@@ -313,17 +313,25 @@ namespace TD3d
                 t.draw(viewMatrix, projectionMatrix);
             }
 
-            foreach (Creep creep in this.creeps)
+            for (int i = 0; i < this.creeps.Count; i++)
             {
-                if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
-                    creep.injure(1);
-                creep.updateState(gameTime.ElapsedGameTime.Milliseconds);
-                creep.move(gameTime.ElapsedGameTime.Milliseconds);
-                creep.draw(viewMatrix, projectionMatrix);
+                if (((Creep)creeps[i]).getPosition().getX() > (WIDTH - 1) - .1f && ((Creep)creeps[i]).getPosition().getY() > (HEIGHT / 2) - .1f)
+                {
+                    creeps.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    //if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
+                    //    ((Creep)creeps[i]).injure(1);
+                    ((Creep)creeps[i]).updateState(gameTime.ElapsedGameTime.Milliseconds);
+                    ((Creep)creeps[i]).move(gameTime.ElapsedGameTime.Milliseconds);
+                    ((Creep)creeps[i]).draw(viewMatrix, projectionMatrix);
+                }
             }
 
 
-            int i = 0;
+            int j = 0;
             foreach (ModelMesh modmesh in skybox.Meshes)
             {
                 worldMatrix = Matrix.CreateRotationX((float)Math.PI / 2) * Matrix.CreateScale(15, 15, 15) * Matrix.CreateTranslation(cameraposition);
@@ -335,7 +343,7 @@ namespace TD3d
                     currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currenteffect.Parameters["xView"].SetValue(viewMatrix);
                     currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
-                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
+                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[j++]);
                 }
 
                 modmesh.Draw();
