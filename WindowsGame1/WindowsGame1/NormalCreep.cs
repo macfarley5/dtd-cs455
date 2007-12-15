@@ -82,10 +82,10 @@ namespace TD3d
                         currenteffect.Parameters["I_a"].SetValue(new Vector4(.15f, .05f, .15f, 1f));
                         currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                         currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
-                        currenteffect.Parameters["k_a"].SetValue(new Vector4(.9f, .2f, .3f, 1f));
-                        currenteffect.Parameters["k_d"].SetValue(new Vector4(.9f, .2f, .3f, 1f));
-                        currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .1f, .7f, 1f));
-                        currenteffect.Parameters["k_r"].SetValue(new Vector4(.7f, .2f, .1f, 1f));
+                        currenteffect.Parameters["k_a"].SetValue(new Vector4(.2f, .9f, .3f, 1f));
+                        currenteffect.Parameters["k_d"].SetValue(new Vector4(.2f, .9f, .3f, 1f));
+                        currenteffect.Parameters["k_s"].SetValue(new Vector4(.7f, .7f, .1f, 1f));
+                        currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .7f, .1f, 1f));
 
                         if (this.currentState == States.DAMAGED)
                         {
