@@ -61,7 +61,7 @@ float3 L
 < 
     bool SasUiVisible = false;
     string SasBindAddress= "Sas.DirectionalLight[0].Direction";
-> = normalize(float3(0.90f, .9f, -0.300f));
+> = normalize(float3(0.1f,0.0f,-0.9f)); //= normalize(float3(0.90f, .9f, -0.300f));
 
 // light intensity
 float4 I_a
