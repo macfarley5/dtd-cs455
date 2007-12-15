@@ -299,21 +299,23 @@ namespace TD3d
                 t.draw(viewMatrix, projectionMatrix);
             }
 
-            for (int i = 0; i < this.creeps.Count; i++)
+            for(int i=0;i<creeps.Count;i++)
             {
-                if (((Creep)creeps[i]).getPosition().getX() > (WIDTH - 1) - .1f && ((Creep)creeps[i]).getPosition().getY() > (HEIGHT / 2) - .1f)
+                Creep c = (Creep)creeps[i];
+                if (c.getPosition().getX() > (WIDTH - 1) - .1f && c.getPosition().getY() > (HEIGHT / 2) - .1f)
                 {
-                    creeps.RemoveAt(i);
-                    i--;
+                    creeps.RemoveAt(i--);
                     score--;
+                }
+                else if (c.getHealth() <= 0)
+                {
+                    creeps.RemoveAt(i--);
                 }
                 else
                 {
-                    //if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
-                    //    ((Creep)creeps[i]).injure(1);
-                    ((Creep)creeps[i]).updateState(gameTime.ElapsedGameTime.Milliseconds);
-                    ((Creep)creeps[i]).move(gameTime.ElapsedGameTime.Milliseconds);
-                    ((Creep)creeps[i]).draw(viewMatrix, projectionMatrix);
+                    c.updateState(gameTime.ElapsedGameTime.Milliseconds);
+                    c.move(gameTime.ElapsedGameTime.Milliseconds);
+                    c.draw(viewMatrix, projectionMatrix);
                 }
             }
 

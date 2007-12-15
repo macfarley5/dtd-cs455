@@ -16,7 +16,7 @@ namespace TD3d
         Creep target;
         private string modelAsset = "Content/tower";
         private float scale = .13f;
-        protected float fireSpeed = 1000f;
+        protected float fireSpeed = 100f;
         protected float fireCounter = 1f;
         private float rot = 0;
         protected ArrayList projectiles = new ArrayList();
