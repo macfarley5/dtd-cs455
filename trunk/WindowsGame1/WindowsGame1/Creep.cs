@@ -52,7 +52,7 @@ namespace TD3d
         public void setNewPath()
         {
             currentPath = myPlanner.getPath();
-            this.currentPathPlaceholder = 0;
+            this.currentPathPlaceholder = 1;
         }
 
         public Position getPosition()
