@@ -442,6 +442,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\HUD\dollar.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>dollar</Name>
+    </Content>
     <Content Include="Content\HUD\eight.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>

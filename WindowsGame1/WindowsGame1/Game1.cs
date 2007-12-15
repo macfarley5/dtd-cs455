@@ -27,6 +27,7 @@ namespace TD3d
         KeyboardX keyboard;
         HUD hud;
         int score;
+        long cash;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -84,7 +85,9 @@ namespace TD3d
             mouse = new MouseX(this.Window, WIDTH, HEIGHT, graphics, content, device, map);
             keyboard = new KeyboardX(WIDTH);
             hud = new HUD(this.Window, graphics, content);
+
             score = 20;
+            cash = 4000;
         }
 
         private void LoadFloorplan()
@@ -374,7 +377,7 @@ namespace TD3d
             }
 
             base.Draw(gameTime);
-            hud.Draw(score);
+            hud.Draw(score, cash);
         }
     }
 }
