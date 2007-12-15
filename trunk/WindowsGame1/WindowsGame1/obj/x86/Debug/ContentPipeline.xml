@@ -854,6 +854,24 @@
       <Output>bin\x86\Debug\Content\HUD\zero.xnb</Output>
       <Time>2007-12-14T17:14:47.4375-07:00</Time>
     </Item>
+    <Item>
+      <Source>Content\HUD\empty.png</Source>
+      <Name>Content\HUD\empty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\empty.xnb</Output>
+      <Time>2007-12-14T17:51:00.3125-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\righthud.png</Source>
+      <Name>Content\HUD\righthud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\righthud.xnb</Output>
+      <Time>2007-12-14T18:39:01.140625-07:00</Time>
+    </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
       <BuildConfiguration>Debug</BuildConfiguration>

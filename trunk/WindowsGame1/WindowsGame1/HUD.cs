@@ -15,14 +15,15 @@ namespace TD3d
     {
         GameWindow Window;
         SpriteBatch spriteBatch;
-        Texture2D hud, zero, one, two, three, four, 
-                  five, six, seven, eight, nine, slash;
+        Texture2D tophud, righthud, zero, one, two, three, four, five, 
+                  six, seven, eight, nine, slash, empty;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
         {
             this.Window = Window;
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
-            hud = content.Load<Texture2D>("Content/HUD/tophud");
+            tophud = content.Load<Texture2D>("Content/HUD/tophud");
+            righthud = content.Load<Texture2D>("Content/HUD/righthud");
             zero = content.Load<Texture2D>("Content/HUD/zero");
             one = content.Load<Texture2D>("Content/HUD/one");
             two = content.Load<Texture2D>("Content/HUD/two");
@@ -34,18 +35,58 @@ namespace TD3d
             eight = content.Load<Texture2D>("Content/HUD/eight");
             nine = content.Load<Texture2D>("Content/HUD/nine");
             slash = content.Load<Texture2D>("Content/HUD/slash");
+            empty = content.Load<Texture2D>("Content/HUD/empty");
 
         }
 
-        public void Draw()
-        {
+        public void Draw(int score)
+        {            
+            Texture2D tensImage = empty;
+            Texture2D onesImage = empty;
+            int ones = 0;
+            int xModifier;
+
+            while (score % 10 != 0)
+            {
+                score--;
+                ones++;
+            }
+
+            switch (score)
+            {
+                case 0: tensImage = empty; break;
+                case 10: tensImage = one; break;
+                case 20: tensImage = two; break;
+            }
+
+            switch (ones)
+            {
+                case 0: onesImage = zero; break;
+                case 1: onesImage = one; break;
+                case 2: onesImage = two; break;
+                case 3: onesImage = three; break;
+                case 4: onesImage = four; break;
+                case 5: onesImage = five; break;
+                case 6: onesImage = six; break;
+                case 7: onesImage = seven; break;
+                case 8: onesImage = eight; break;
+                case 9: onesImage = nine; break;
+            }
+
+            if (score < 10)
+            {
+                xModifier = -15;
+            }
+            else xModifier = 0;
+
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
-            spriteBatch.Draw(hud, new Rectangle((Window.ClientBounds.Width - hud.Width) / 2, 0, hud.Width, hud.Height), Color.White);
-            spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width - (5 * two.Width)) / 2, 25, two.Width, two.Height), Color.White);
-            spriteBatch.Draw(zero, new Rectangle((Window.ClientBounds.Width - (3 * zero.Width - 10)) / 2, 25, zero.Width, zero.Height), Color.White);
-            spriteBatch.Draw(slash, new Rectangle((Window.ClientBounds.Width - (slash.Width)) / 2, 25, slash.Width, slash.Height), Color.White);
-            spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width + (1 * two.Width)) / 2, 25, two.Width, two.Height), Color.White);
-            spriteBatch.Draw(zero, new Rectangle((Window.ClientBounds.Width + (3 * zero.Width)) / 2, 25, zero.Width, zero.Height), Color.White);
+            spriteBatch.Draw(tophud, new Rectangle((Window.ClientBounds.Width - tophud.Width) / 2, 0, tophud.Width, tophud.Height), Color.White);
+            spriteBatch.Draw(righthud, new Rectangle((Window.ClientBounds.Width - righthud.Width), 40, righthud.Width, righthud.Height), Color.White);
+            spriteBatch.Draw(tensImage, new Rectangle((Window.ClientBounds.Width - (5 * tensImage.Width)) / 2, 25, tensImage.Width, tensImage.Height), Color.White);
+            spriteBatch.Draw(onesImage, new Rectangle((Window.ClientBounds.Width - (3 * onesImage.Width - 10)) / 2 + xModifier, 25, onesImage.Width, onesImage.Height), Color.White);
+            spriteBatch.Draw(slash, new Rectangle((Window.ClientBounds.Width - (slash.Width)) / 2 + xModifier, 25, slash.Width, slash.Height), Color.White);
+            spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width + (1 * two.Width)) / 2 + xModifier, 25, two.Width, two.Height), Color.White);
+            spriteBatch.Draw(zero, new Rectangle((Window.ClientBounds.Width + (3 * zero.Width)) / 2 + xModifier, 25, zero.Width, zero.Height), Color.White);
             spriteBatch.End();
         }
     }
