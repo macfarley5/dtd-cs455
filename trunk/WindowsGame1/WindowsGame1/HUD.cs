@@ -16,7 +16,7 @@ namespace TD3d
         GameWindow Window;
         SpriteBatch spriteBatch;
         Texture2D tophud, righthud, zero, one, two, three, four, five, 
-                  six, seven, eight, nine, slash, empty;
+                  six, seven, eight, nine, slash, empty, gameover;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
         {
@@ -36,7 +36,7 @@ namespace TD3d
             nine = content.Load<Texture2D>("Content/HUD/nine");
             slash = content.Load<Texture2D>("Content/HUD/slash");
             empty = content.Load<Texture2D>("Content/HUD/empty");
-
+            gameover = content.Load<Texture2D>("Content/HUD/gameover");
         }
 
         public void Draw(int score)
@@ -45,6 +45,11 @@ namespace TD3d
             Texture2D onesImage = empty;
             int ones = 0;
             int xModifier;
+
+            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+
+            if(score == 0)
+                spriteBatch.Draw(gameover, new Rectangle((Window.ClientBounds.Width - gameover.Width) / 2, (Window.ClientBounds.Height - gameover.Height) / 2, gameover.Width, gameover.Height), Color.White);
 
             while (score % 10 != 0)
             {
@@ -78,8 +83,7 @@ namespace TD3d
                 xModifier = -15;
             }
             else xModifier = 0;
-
-            spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
+                        
             spriteBatch.Draw(tophud, new Rectangle((Window.ClientBounds.Width - tophud.Width) / 2, 0, tophud.Width, tophud.Height), Color.White);
             spriteBatch.Draw(righthud, new Rectangle((Window.ClientBounds.Width - righthud.Width), 40, righthud.Width, righthud.Height), Color.White);
             spriteBatch.Draw(tensImage, new Rectangle((Window.ClientBounds.Width - (5 * tensImage.Width)) / 2, 25, tensImage.Width, tensImage.Height), Color.White);
