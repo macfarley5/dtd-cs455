@@ -172,42 +172,6 @@
       <Processor>ModelProcessor</Processor>
       <Name>skybox2</Name>
     </Content>
-    <Content Include="Content\skybox_back.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_back</Name>
-    </Content>
-    <Content Include="Content\skybox_bottom.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_bottom</Name>
-    </Content>
-    <Content Include="Content\skybox_front.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_front</Name>
-    </Content>
-    <Content Include="Content\skybox_left.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_left</Name>
-    </Content>
-    <Content Include="Content\skybox_right.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_right</Name>
-    </Content>
-    <Content Include="Content\skybox_top.JPG">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>skybox_top</Name>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\target.x">
@@ -563,6 +527,42 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>zero</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Back.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Back</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Bottom.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Bottom</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Front.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Front</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Left.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Left</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Right.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Right</Name>
+    </Content>
+    <Content Include="Content\SkyBox_Top.JPG">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>SkyBox_Top</Name>
     </Content>
     <Content Include="Content\sphere0_ndx.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
