@@ -33,7 +33,7 @@ namespace TD3d
             this.map = map;
         }
 
-        public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath)
+        public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath, ArrayList creeps)
         {
             MouseState ms = Mouse.GetState();
             
@@ -96,6 +96,26 @@ namespace TD3d
                         if (planner.isPath())
                         {
                             thePath = planner.getPath();
+                            bool anyBlocked = false;
+                            foreach (Creep creep in creeps)
+                            {
+                                if (!creep.hasPath())
+                                {
+                                    anyBlocked = true;
+                                }
+                                //creep.setPath(thePath);
+                            }
+                            if (anyBlocked)
+                            {
+                                this.map.removeTower(tow);
+                            }
+                            else
+                            {
+                                foreach (Creep creep in creeps)
+                                {
+                                    creep.setNewPath();
+                                }
+                            }
                         }
                         else
                         {

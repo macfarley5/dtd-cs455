@@ -255,15 +255,15 @@ namespace TD3d
 
         public ArrayList getPath()
         {
-            if (!isPath())
-            {
-                path = new ArrayList();
-                Node temp = new Node(startX, startZ + 2, null);
-                path.Add(temp);
-                Node temp1 = new Node(endX, endZ + 2, null);
-                temp1.Parent = temp;
-                path.Add(temp1);
-            }
+            //if (!isPath())
+            //{
+            //    path = new ArrayList();
+            //    Node temp = new Node(startX, startZ + 2, null);
+            //    path.Add(temp);
+            //    Node temp1 = new Node(endX, endZ + 2, null);
+            //    temp1.Parent = temp;
+            //    path.Add(temp1);
+            //}
             return path;
         }
 

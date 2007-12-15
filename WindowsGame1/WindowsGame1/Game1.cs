@@ -90,6 +90,7 @@ namespace TD3d
             this.map = new Map(WIDTH, HEIGHT);
             
             planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map);
+            planner.isPath();
             thePath = planner.getPath();
         }
 
@@ -238,11 +239,11 @@ namespace TD3d
                 this.numCreeps = 0;
             }
 
-            thePath = mouse.update(cameraRot, cameraDist, planner, thePath);
-            foreach (Creep creep in creeps)
+            thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps);
+            /*foreach (Creep creep in creeps)
             {
                 creep.setPath(thePath);
-            }
+            }*/
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
