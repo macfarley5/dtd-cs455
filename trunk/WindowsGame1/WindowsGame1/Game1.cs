@@ -265,7 +265,7 @@ namespace TD3d
             viewMatrix = Matrix.CreateLookAt(campos, new Vector3(this.WIDTH/2,this.HEIGHT/2,0), camup);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
         }
-        
+
         protected override void Draw(GameTime gameTime)
         {
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
@@ -287,14 +287,13 @@ namespace TD3d
                 device.DrawUserPrimitives(PrimitiveType.TriangleList, verticesarray, 0, verticesarray.Length / 3);
 
                 pass.End();
-            }
+            }*/
 
-            effect.End();
-            /**/
+            //weffect.End();
 
             Position mousePos = mouse.getPos();
 
-            if(mousePos != null)
+            if (mousePos != null)
             {
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
@@ -314,47 +313,17 @@ namespace TD3d
                 t.draw(viewMatrix, projectionMatrix);
             }
 
-            for (int i = 0; i < this.creeps.Count; i++ )
+            foreach (Creep creep in this.creeps)
             {
-                if (((Creep)creeps[i]).getPosition().getX() > (WIDTH - 1) - .1f && ((Creep)creeps[i]).getPosition().getY() > (HEIGHT / 2) - .1f)
-                {
-                    creeps.RemoveAt(i);
-                    i--;
-                }
-                else
-                {
-                    ((Creep)creeps[i]).updateState(gameTime.ElapsedGameTime.Milliseconds);
-                    ((Creep)creeps[i]).move(gameTime.ElapsedGameTime.Milliseconds);
-                    ((Creep)creeps[i]).draw(viewMatrix, projectionMatrix);
-                }
+                if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
+                    creep.injure(1);
+                creep.updateState(gameTime.ElapsedGameTime.Milliseconds);
+                creep.move(gameTime.ElapsedGameTime.Milliseconds);
+                creep.draw(viewMatrix, projectionMatrix);
             }
 
-            foreach (ModelMesh modmesh in mapModel.Meshes)
-            {
-                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH / 2, this.HEIGHT / 2, -.15f);
-                foreach (Effect currenteffect in modmesh.Effects)
-                {
-                    //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
-                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
-                    currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
-                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
-                    currenteffect.Parameters["noisescale"].SetValue(20f);
-                    //currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
 
-                    currenteffect.Parameters["World"].SetValue(worldMatrix);
-                    currenteffect.Parameters["View"].SetValue(viewMatrix);
-                    currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
-                    //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
-                }
-                modmesh.Draw();
-            }/**/
-
-            int j = 0;
-
+            int i = 0;
             foreach (ModelMesh modmesh in skybox.Meshes)
             {
                 worldMatrix = Matrix.CreateRotationX((float)Math.PI / 2) * Matrix.CreateScale(15, 15, 15) * Matrix.CreateTranslation(cameraposition);
@@ -362,14 +331,49 @@ namespace TD3d
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
                     currenteffect.CurrentTechnique = currenteffect.Techniques["Textured"];
-                    
+
                     currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currenteffect.Parameters["xView"].SetValue(viewMatrix);
                     currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
-                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[j++]);
+                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
                 }
 
                 modmesh.Draw();
+            }
+
+
+            for (int x = 0; x < this.WIDTH / 2; x++)
+            {
+                for (int y = 0; y < this.HEIGHT / 2; y++)
+                {
+                    foreach (ModelMesh modmesh in mapModel.Meshes)
+                    {
+                        //worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH / 2, this.HEIGHT / 2, -.15f);
+                        worldMatrix = Matrix.CreateScale(1.7f, 1.7f, .1f) * Matrix.CreateTranslation((float)(2 * x) + 1f, (float)(2 * y) + 1f, -.15f);
+                        foreach (Effect currenteffect in modmesh.Effects)
+                        {
+                            //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
+                            float red = (float)(x % 2) / 4 + .25f;
+                            float blue = (float)(y % 2) / 4 + .25f;
+                            currenteffect.Parameters["I_a"].SetValue(new Vector4(red, .5f, blue, 1f));
+                            currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                            currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
+                            currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                            currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                            currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                            currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                            currenteffect.Parameters["noisescale"].SetValue(5f);
+                            currenteffect.Parameters["alph"].SetValue(.75f);
+                            //currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
+
+                            currenteffect.Parameters["World"].SetValue(worldMatrix);
+                            currenteffect.Parameters["View"].SetValue(viewMatrix);
+                            currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
+                            //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
+                        }
+                        modmesh.Draw();
+                    }
+                }
             }
 
             base.Draw(gameTime);
