@@ -466,6 +466,12 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>four</Name>
     </Content>
+    <Content Include="Content\HUD\gameover.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>gameover</Name>
+    </Content>
     <Content Include="Content\HUD\nine.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
