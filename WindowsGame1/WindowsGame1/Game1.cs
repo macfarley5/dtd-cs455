@@ -36,8 +36,8 @@ namespace TD3d
         Matrix projectionMatrix;
         Texture2D scenerytexture;        
 
-        int WIDTH = 40;
-        int HEIGHT = 40;
+        int WIDTH = 22;
+        int HEIGHT = 26;
         int differentbuildings = 5;
         private int[] buildingheights = new int[] { 0, 10, 1, 3, 2, 5 };
         Vector3 cameraposition = new Vector3(5, -2, 20);
@@ -58,6 +58,13 @@ namespace TD3d
         ArrayList verticeslist = new ArrayList();
         Model spacemodel;
         Random globalRand = new Random(0);
+
+        int maxCreeps = 10;
+        int numCreeps = 0;
+        int waveNum = 1;
+        ArrayList thePath = null;
+        int totalTime = 0;
+        PathPlanner planner;
 
         public Game1()
         {
@@ -82,43 +89,8 @@ namespace TD3d
         {
             this.map = new Map(WIDTH, HEIGHT);
             
-            ArrayList thePath = null;
-            Random r = new Random(0);
-
-            for (int i = 0; i < 30; i++)
-            {
-                Tower t = new Tower(graphics, content, device);
-                t.setPosition(r.Next(WIDTH - 15), r.Next(HEIGHT - 15));
-                this.map.placeTower(t);
-            }
-
-            PathPlanner planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map);
-            thePath = null;
+            planner = new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map);
             thePath = planner.getPath();
-
-            for (int i = 0; i < 1; i++)
-            {
-                int x = 0;// r.Next(WIDTH - 1);
-                int y = HEIGHT / 2;// r.Next(HEIGHT - 1);
-
-                if (this.map.layout[x, y] == null)
-                {
-                    int whichCreep = r.Next(1);
-                    Creep c;
-                    if (whichCreep == 0)
-                    {
-                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
-                        c.setPath(thePath);
-                    }
-                    else
-                    {
-                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
-                        c.setPath(thePath);
-                    }
-
-                    this.creeps.Add(c);
-                }
-            }
         }
 
         private void SetUpXNADevice()
@@ -234,7 +206,43 @@ namespace TD3d
         
         protected override void Update(GameTime gameTime)
         {
-            mouse.update(cameraRot, cameraDist);
+            totalTime += (int)(gameTime.ElapsedGameTime.TotalMilliseconds);
+            if (numCreeps < maxCreeps && totalTime > 1000)
+            {
+                totalTime = 0;
+                int x = 0;
+                int y = HEIGHT / 2;
+                if (this.map.layout[x, y] == null)
+                {
+                    int whichCreep = waveNum % 2;
+                    Creep c;
+                    if (whichCreep == 0)
+                    {
+                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
+                        c.setPlanner(new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map));
+                        c.setPath(thePath);
+                    }
+                    else
+                    {
+                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
+                        c.setPlanner(new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map));
+                        c.setPath(thePath);
+                    }
+                    this.creeps.Add(c);
+                    numCreeps++;
+                }
+            }
+            if (this.creeps.Count == 0)
+            {
+                this.waveNum++;
+                this.numCreeps = 0;
+            }
+
+            thePath = mouse.update(cameraRot, cameraDist, planner, thePath);
+            foreach (Creep creep in creeps)
+            {
+                creep.setPath(thePath);
+            }
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -263,7 +271,7 @@ namespace TD3d
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
 
             Matrix worldMatrix = Matrix.Identity;
-            /**/effect.CurrentTechnique = effect.Techniques["Textured"];
+            /**effect.CurrentTechnique = effect.Techniques["Textured"];
             effect.Parameters["xEnableLighting"].SetValue(1);
             effect.Parameters["xWorld"].SetValue(worldMatrix);
             effect.Parameters["xView"].SetValue(viewMatrix);
@@ -282,6 +290,7 @@ namespace TD3d
             }
 
             effect.End();
+            /**/
 
             Position mousePos = mouse.getPos();
 
@@ -305,16 +314,46 @@ namespace TD3d
                 t.draw(viewMatrix, projectionMatrix);
             }
 
-            foreach (Creep creep in this.creeps)
+            for (int i = 0; i < this.creeps.Count; i++ )
             {
-                if (globalRand.NextDouble() < .001 * gameTime.ElapsedGameTime.Milliseconds)
-                    creep.injure(1);
-                creep.updateState(gameTime.ElapsedGameTime.Milliseconds);
-                creep.move(gameTime.ElapsedGameTime.Milliseconds);
-                creep.draw(viewMatrix,projectionMatrix);
+                if (((Creep)creeps[i]).getPosition().getX() > (WIDTH - 1) - .1f && ((Creep)creeps[i]).getPosition().getY() > (HEIGHT / 2) - .1f)
+                {
+                    creeps.RemoveAt(i);
+                    i--;
+                }
+                else
+                {
+                    ((Creep)creeps[i]).updateState(gameTime.ElapsedGameTime.Milliseconds);
+                    ((Creep)creeps[i]).move(gameTime.ElapsedGameTime.Milliseconds);
+                    ((Creep)creeps[i]).draw(viewMatrix, projectionMatrix);
+                }
             }
 
-            int i = 0;
+            foreach (ModelMesh modmesh in mapModel.Meshes)
+            {
+                worldMatrix = Matrix.CreateScale(this.WIDTH, this.HEIGHT, .3f) * Matrix.CreateTranslation(this.WIDTH / 2, this.HEIGHT / 2, -.15f);
+                foreach (Effect currenteffect in modmesh.Effects)
+                {
+                    //currenteffect.CurrentTechnique = currenteffect.Techniques["Colored"];
+                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
+                    currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["k_s"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["k_r"].SetValue(new Vector4(.5f, .5f, .8f, 1f));
+                    currenteffect.Parameters["noisescale"].SetValue(20f);
+                    //currenteffect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
+
+                    currenteffect.Parameters["World"].SetValue(worldMatrix);
+                    currenteffect.Parameters["View"].SetValue(viewMatrix);
+                    currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
+                    //currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
+                }
+                modmesh.Draw();
+            }/**/
+
+            int j = 0;
 
             foreach (ModelMesh modmesh in skybox.Meshes)
             {
@@ -327,7 +366,7 @@ namespace TD3d
                     currenteffect.Parameters["xWorld"].SetValue(worldMatrix);
                     currenteffect.Parameters["xView"].SetValue(viewMatrix);
                     currenteffect.Parameters["xProjection"].SetValue(projectionMatrix);
-                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[i++]);
+                    currenteffect.Parameters["xTexture"].SetValue(skyboxtextures[j++]);
                 }
 
                 modmesh.Draw();
