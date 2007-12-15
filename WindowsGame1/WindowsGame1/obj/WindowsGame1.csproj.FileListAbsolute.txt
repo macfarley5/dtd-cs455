@@ -194,3 +194,5 @@ C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\topright.xnb
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\two.xnb
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\zero.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\empty.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\righthud.xnb

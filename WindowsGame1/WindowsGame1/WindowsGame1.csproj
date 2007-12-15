@@ -480,6 +480,12 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>eight</Name>
     </Content>
+    <Content Include="Content\HUD\empty.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>empty</Name>
+    </Content>
     <Content Include="Content\HUD\five.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -503,6 +509,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>one</Name>
+    </Content>
+    <Content Include="Content\HUD\righthud.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>righthud</Name>
     </Content>
     <Content Include="Content\HUD\seven.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

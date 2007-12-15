@@ -334,7 +334,7 @@ namespace TD3d
             }
 
             base.Draw(gameTime);
-            hud.Draw();
+            hud.Draw(20);
         }
     }
 }
