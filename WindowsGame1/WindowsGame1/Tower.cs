@@ -86,7 +86,7 @@ namespace TD3d
                     float bestDist = 1000000f;
 
                     foreach(Creep c in this.creeps){
-                        float nowdist = dist(this.pos, c.getPosition());
+                        float nowdist = Position.dist(this.pos, c.getPosition());
                         if (nowdist < bestDist)
                         {
                             bestDist = nowdist;
@@ -104,13 +104,6 @@ namespace TD3d
             {
                 p.updateState(elapsedTime);
             }
-        }
-
-        public float dist(Position pos1, Position pos2)
-        {
-            float a = pos1.getX() - pos2.getX();
-            float b = pos1.getY() - pos1.getY();
-            return (float)Math.Sqrt(a * a + b * b);
         }
 
         public override void draw(Matrix vm,Matrix pm)

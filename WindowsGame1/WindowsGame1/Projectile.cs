@@ -15,7 +15,10 @@ namespace TD3d
     {
         protected Position pos;
         protected Position velocity;
-        protected float speed;
+        protected float speed=.01f;
+        protected int damageDone=10;
+        protected bool doesSplash = true;
+
         protected string modelAsset = "Content/sphere0";
         protected float scale = .1f;
         protected Effect effect;
@@ -26,9 +29,12 @@ namespace TD3d
         protected ContentManager content;
         protected GraphicsDevice device;
 
+        protected bool isActive = true;
+
         public Projectile(Position pos, Position velocity,ArrayList creeps,GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
             this.pos = pos;
+            this.creeps = creeps;
             this.velocity = velocity;
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
@@ -51,15 +57,40 @@ namespace TD3d
 
         public void updateState(float elapsedTime)
         {
-            float newX = this.pos.getX()+elapsedTime*this.velocity.getX()/20;
-            this.pos.setX(newX);
-            float newY = this.pos.getY() + elapsedTime * this.velocity.getY() / 20;
-            this.pos.setY(newY);
+            if (isActive)
+            {
+                float newX = this.pos.getX() + elapsedTime * this.velocity.getX() * speed;
+                this.pos.setX(newX);
+                float newY = this.pos.getY() + elapsedTime * this.velocity.getY() * speed;
+                this.pos.setY(newY);
+
+                if (this.creeps.Count > 0)
+                {
+                    ArrayList hurtCreeps = new ArrayList();
+
+                    foreach (Creep c in this.creeps)
+                    {
+                        float nowdist = Position.dist(this.pos, c.getPosition());
+                        if (nowdist < .05)
+                        {
+                            hurtCreeps.Add(c);
+                            isActive = false;
+                        }
+                    }
+                    if (this.doesSplash)
+                    {
+                        foreach (Creep c in hurtCreeps)
+                        {
+                            c.injure(this.damageDone);
+                        }
+                    }
+                }
+            }
         }
 
         public void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
-            {
+            if (isActive){
                 Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
