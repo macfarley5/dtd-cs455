@@ -16,7 +16,7 @@ namespace TD3d
         protected Position pos;
         protected Position velocity;
         protected float speed=.01f;
-        protected int damageDone=100;
+        protected int damageDone=50;
         protected bool doesSplash = false;
 
         protected string modelAsset = "Content/sphere0";

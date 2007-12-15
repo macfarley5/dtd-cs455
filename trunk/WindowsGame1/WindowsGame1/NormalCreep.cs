@@ -66,7 +66,7 @@ namespace TD3d
                 float scaleReducer = 40;
                 if (this.currentState == States.DAMAGED)
                 {
-                    scaleReducer = 15 + (100/this.currentStateCountdown);
+                    scaleReducer = 25 + (100/this.currentStateCountdown);
                 }
                 xScale = this.scale + (1 + (float)Math.Cos(currentXSizeAngle)) / scaleReducer;
                 yScale = this.scale + (1 + (float)Math.Cos(currentYSizeAngle)) / scaleReducer;
