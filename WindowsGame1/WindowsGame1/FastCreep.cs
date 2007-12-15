@@ -13,7 +13,7 @@ namespace TD3d
     class FastCreep : Creep
     {
         private string modelAsset = "Content/sphere0";
-        private float scale = .1f;
+        private float scale = .05f;
 
         public FastCreep(Position pos, int level, GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {

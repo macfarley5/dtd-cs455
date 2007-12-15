@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -15,7 +16,10 @@ namespace TD3d
         Creep target;
         private string modelAsset = "Content/tower";
         private float scale = .13f;
+        protected float fireSpeed = 1f;
+        protected float fireCounter = 1f;
         private float rot = 0;
+        protected ArrayList projectiles = new ArrayList();
 
         public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
@@ -64,7 +68,12 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
+            
             rot += elapsedTime / 700;
+            foreach (Projectile p in this.projectiles)
+            {
+                p.updateState(elapsedTime);
+            }
         }
 
         public override void draw(Matrix vm,Matrix pm)
