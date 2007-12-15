@@ -22,7 +22,7 @@ namespace TD3d
         public enum TileType { Tower, Wall, Exit, Entrance };
         public enum Player { p1, p2 };
 
-        Position pos;
+        protected Position pos;
         Player owner;
 
         public Tile() { }
@@ -35,7 +35,7 @@ namespace TD3d
 
         public Position getPosition()
         {
-            return pos;
+            return pos.Clone();
         }
 
         public void setPosition(int x, int y)

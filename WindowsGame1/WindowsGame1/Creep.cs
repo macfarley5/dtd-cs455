@@ -57,7 +57,8 @@ namespace TD3d
 
         public Position getPosition()
         {
-            return pos;
+            return pos.Clone();
+
         }
         public void setPosition(Position pos)
         {
