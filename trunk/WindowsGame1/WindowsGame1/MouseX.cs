@@ -33,13 +33,13 @@ namespace TD3d
             this.map = map;
         }
 
-        public void update(Vector3 cameraRot, float cameraDist)
+        public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath)
         {
             MouseState ms = Mouse.GetState();
             
             if (ms.X < 0 || ms.X > this.Window.ClientBounds.Width || 
                 ms.Y < 0 || ms.Y > this.Window.ClientBounds.Height)
-                return;
+                return thePath;
             
             float fromX = (float)Math.Cos(cameraRot.X) * 
                           (float)Math.Cos(cameraRot.Z) * 
@@ -93,11 +93,20 @@ namespace TD3d
                         Tower tow = new Tower(graphics, content, device);
                         tow.setPosition(xPos, yPos);
                         this.map.placeTower(tow);
+                        if (planner.isPath())
+                        {
+                            thePath = planner.getPath();
+                        }
+                        else
+                        {
+                            this.map.removeTower(tow);
+                        }
                     }
                 }
                 else mousePos = null;
             }
             else mousePos = null;
+            return thePath;
         }
 
         private float intersectBoard(Vector3 rayO, Vector3 rayD)
