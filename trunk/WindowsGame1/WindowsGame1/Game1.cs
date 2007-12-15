@@ -272,26 +272,6 @@ namespace TD3d
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
 
             Matrix worldMatrix = Matrix.Identity;
-            /**effect.CurrentTechnique = effect.Techniques["Textured"];
-            effect.Parameters["xEnableLighting"].SetValue(1);
-            effect.Parameters["xWorld"].SetValue(worldMatrix);
-            effect.Parameters["xView"].SetValue(viewMatrix);
-            effect.Parameters["xProjection"].SetValue(projectionMatrix);
-            effect.Parameters["xTexture"].SetValue(scenerytexture);
-            effect.Begin();
-
-            foreach (EffectPass pass in effect.CurrentTechnique.Passes)
-            {
-                pass.Begin();
-
-                device.VertexDeclaration = new VertexDeclaration(device, VertexPositionNormalTexture.VertexElements);
-                device.DrawUserPrimitives(PrimitiveType.TriangleList, verticesarray, 0, verticesarray.Length / 3);
-
-                pass.End();
-            }*/
-
-            //weffect.End();
-
             Position mousePos = mouse.getPos();
 
             if (mousePos != null)
