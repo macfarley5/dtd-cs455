@@ -20,6 +20,7 @@ namespace TD3d
         ContentManager content;
         GraphicsDevice device;
         Map map;
+        long cash;
 
         public MouseX(GameWindow Window, int WIDTH, int HEIGHT, GraphicsDeviceManager graphics, 
                       ContentManager content, GraphicsDevice device, Map map)
@@ -33,8 +34,9 @@ namespace TD3d
             this.map = map;
         }
 
-        public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath, ArrayList creeps)
+        public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath, ArrayList creeps, long cash)
         {
+            this.cash = cash;
             MouseState ms = Mouse.GetState();
             
             if (ms.X < 0 || ms.X > this.Window.ClientBounds.Width || 
@@ -92,11 +94,20 @@ namespace TD3d
                     {
                         Tower tow = new Tower(graphics, content, device,creeps);
                         tow.setPosition(xPos, yPos);
+
+                        if (!this.map.isOccupied(xPos, yPos))
+                            this.cash = this.cash - 80;
+
                         this.map.placeTower(tow);
+                        
                         if (planner.isPath())
                         {
                             thePath = planner.getPath();
                             bool anyBlocked = false;
+                            
+                            if (this.cash < 0)
+                                anyBlocked = true;
+
                             foreach (Creep creep in creeps)
                             {
                                 if (!creep.hasPath())
@@ -108,6 +119,7 @@ namespace TD3d
                             if (anyBlocked)
                             {
                                 this.map.removeTower(tow);
+                                this.cash = this.cash + 80;
                             }
                             else
                             {
@@ -120,6 +132,7 @@ namespace TD3d
                         else
                         {
                             this.map.removeTower(tow);
+                            this.cash = this.cash + 80;
                         }
                     }
                 }
@@ -143,6 +156,11 @@ namespace TD3d
         public Position getPos()
         {
             return mousePos;
+        }
+
+        public long getCash()
+        {
+            return cash;
         }
     }
 }
