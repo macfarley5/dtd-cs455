@@ -284,7 +284,7 @@ namespace TD3d
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
 
-                Tower tow = new Tower(graphics, content, device);
+                Tower tow = new Tower(graphics, content, device,creeps);
                 tow.setPosition(xPos, yPos);
 
                 if (this.map.canPlaceTower(tow))

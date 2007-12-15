@@ -27,5 +27,11 @@ namespace TD3d
         {
             this.y = y;
         }
+
+        public Position Clone()
+        {
+            Position p = new Position(this.x, this.y);
+            return p;
+        }
     }
 }

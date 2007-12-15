@@ -16,14 +16,22 @@ namespace TD3d
         Creep target;
         private string modelAsset = "Content/tower";
         private float scale = .13f;
-        protected float fireSpeed = 1f;
+        protected float fireSpeed = 1000f;
         protected float fireCounter = 1f;
         private float rot = 0;
         protected ArrayList projectiles = new ArrayList();
+        GraphicsDeviceManager graphics;
+        ContentManager content;
+        GraphicsDevice device;
+        ArrayList creeps;
 
-        public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
+        public Tower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
         {
             target = null;
+            this.creeps = creeps;
+            this.graphics = graphics;
+            this.content = content;
+            this.device = device;
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
             this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
@@ -68,7 +76,29 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
-            
+            this.fireCounter -= elapsedTime;
+            if (this.fireCounter < 0)
+            {
+                //Fire!
+                if (this.creeps.Count > 0)
+                {
+                    Position bestPos = ((Creep)creeps[0]).getPosition(); ;
+                    float bestDist = 1000000f;
+
+                    foreach(Creep c in this.creeps){
+                        float nowdist = dist(this.pos, c.getPosition());
+                        if (nowdist < bestDist)
+                        {
+                            bestDist = nowdist;
+                            bestPos = c.getPosition();
+                        }
+                    }
+                    Vector2 velocity = new Vector2(bestPos.getX()-this.pos.getX() , bestPos.getY()-this.pos.getY() );
+                    velocity.Normalize();
+                    this.fireCounter = this.fireSpeed;
+                    this.projectiles.Add(new Projectile(this.getPosition(), new Position(velocity.X,velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                }
+            }
             rot += elapsedTime / 700;
             foreach (Projectile p in this.projectiles)
             {
@@ -76,11 +106,22 @@ namespace TD3d
             }
         }
 
+        public float dist(Position pos1, Position pos2)
+        {
+            float a = pos1.getX() - pos2.getX();
+            float b = pos1.getY() - pos1.getY();
+            return (float)Math.Sqrt(a * a + b * b);
+        }
+
         public override void draw(Matrix vm,Matrix pm)
         {
             Matrix wm = Matrix.CreateRotationX((float)Math.PI)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
            // rot += .01f;
             int count = 0;
+            foreach (Projectile p in this.projectiles)
+            {
+                p.draw(vm, pm);
+            }
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
