@@ -87,7 +87,7 @@ namespace TD3d
             hud = new HUD(this.Window, graphics, content);
 
             score = 20;
-            cash = 4000;
+            cash = 800;
         }
 
         private void LoadFloorplan()
@@ -247,7 +247,9 @@ namespace TD3d
                 this.numCreeps = 0;
             }
 
-            thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps);
+            thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
+            cash = mouse.getCash();
+
             /*foreach (Creep creep in creeps)
             {
                 creep.setPath(thePath);
