@@ -75,6 +75,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FastCreep</Name>
     </Compile>
+    <Compile Include="HUD.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>HUD</Name>
+    </Compile>
     <Compile Include="KeyboardX.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>KeyboardX</Name>
@@ -470,6 +474,84 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\HUD\eight.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>eight</Name>
+    </Content>
+    <Content Include="Content\HUD\five.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>five</Name>
+    </Content>
+    <Content Include="Content\HUD\four.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>four</Name>
+    </Content>
+    <Content Include="Content\HUD\nine.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>nine</Name>
+    </Content>
+    <Content Include="Content\HUD\one.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>one</Name>
+    </Content>
+    <Content Include="Content\HUD\seven.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>seven</Name>
+    </Content>
+    <Content Include="Content\HUD\six.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>six</Name>
+    </Content>
+    <Content Include="Content\HUD\slash.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>slash</Name>
+    </Content>
+    <Content Include="Content\HUD\three.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>three</Name>
+    </Content>
+    <Content Include="Content\HUD\tophud.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>tophud</Name>
+    </Content>
+    <Content Include="Content\HUD\topright.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>topright</Name>
+    </Content>
+    <Content Include="Content\HUD\two.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>two</Name>
+    </Content>
+    <Content Include="Content\HUD\zero.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>zero</Name>
+    </Content>
     <Content Include="Content\sphere0_ndx.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>

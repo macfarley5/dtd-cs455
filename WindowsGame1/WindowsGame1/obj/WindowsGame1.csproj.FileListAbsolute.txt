@@ -181,3 +181,16 @@ C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
 C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\eight.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\five.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\four.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\nine.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\one.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\seven.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\six.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\slash.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\three.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\tophud.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\topright.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\two.xnb
+C:\Documents and Settings\david\Desktop\dtd-cs455\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\HUD\zero.xnb
