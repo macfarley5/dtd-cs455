@@ -21,7 +21,7 @@ namespace TD3d
 
         public NormalCreep(Position pos, int level, GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
-            this.speed = .002f;
+            this.speed = .001f;
             this.pos = pos;
             this.level = level;
 

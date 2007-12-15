@@ -16,8 +16,8 @@ namespace TD3d
         protected Position pos;
         protected Position velocity;
         protected float speed=.01f;
-        protected int damageDone=10;
-        protected bool doesSplash = true;
+        protected int damageDone=100;
+        protected bool doesSplash = false;
 
         protected string modelAsset = "Content/sphere0";
         protected float scale = .1f;
@@ -70,18 +70,25 @@ namespace TD3d
 
                     foreach (Creep c in this.creeps)
                     {
-                        float nowdist = Position.dist(this.pos, c.getPosition());
-                        if (nowdist < .05)
+                        Position visualPos = c.getVisualPosition();
+                        float nowdist = Position.dist(this.pos, visualPos);
+                        if (nowdist < .09)
                         {
                             hurtCreeps.Add(c);
                             isActive = false;
                         }
                     }
-                    if (this.doesSplash)
-                    {
-                        foreach (Creep c in hurtCreeps)
+                    if (hurtCreeps.Count>0){
+                        if (this.doesSplash)
                         {
-                            c.injure(this.damageDone);
+                            foreach (Creep c in hurtCreeps)
+                            {
+                                c.injure(this.damageDone);
+                            }
+                        }
+                        else
+                        {
+                            ((Creep)hurtCreeps[0]).injure(this.damageDone);
                         }
                     }
                 }
@@ -91,7 +98,7 @@ namespace TD3d
         public void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             if (isActive){
-                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
+                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)

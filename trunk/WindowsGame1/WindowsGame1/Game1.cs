@@ -279,6 +279,7 @@ namespace TD3d
 
         protected override void Draw(GameTime gameTime)
         {
+            
             device.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, Color.DarkSlateBlue, 1.0f, 0);
 
             Matrix worldMatrix = Matrix.Identity;
@@ -315,6 +316,7 @@ namespace TD3d
                 else if (c.getHealth() <= 0)
                 {
                     creeps.RemoveAt(i--);
+                    this.cash += c.getCashValue();
                 }
                 else
                 {
