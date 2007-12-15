@@ -78,7 +78,9 @@ namespace TD3d
         {
             this.health -= amount;
             if (this.health < 0)
+            {
                 this.health = 0;
+            }
             currentStateCountdown = 500f;
             currentState = States.DAMAGED;
             //Console.Out.WriteLine("**************DAMAGES*");
