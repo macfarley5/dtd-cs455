@@ -209,8 +209,8 @@ namespace TD3d
         
         protected override void Update(GameTime gameTime)
         {
-            //if (score == 0)
-              //  Environment.Exit(1);
+            if (score == 0)
+                return;
 
             totalTime += (int)(gameTime.ElapsedGameTime.TotalMilliseconds);
             if (numCreeps < maxCreeps && totalTime > 1000)
