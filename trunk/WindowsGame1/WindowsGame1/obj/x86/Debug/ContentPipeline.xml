@@ -8,7 +8,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\testtex.xnb</Output>
-      <Time>2007-12-14T13:21:01.875-07:00</Time>
+      <Time>2007-12-15T11:44:44.0921295-07:00</Time>
     </Item>
     <Item>
       <Source>Content\texturemap.jpg</Source>
@@ -17,7 +17,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\texturemap.xnb</Output>
-      <Time>2007-12-14T13:21:01.890625-07:00</Time>
+      <Time>2007-12-15T11:44:44.1021438-07:00</Time>
     </Item>
     <Item>
       <Source>Content\bullet.jpg</Source>
@@ -26,61 +26,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\bullet.xnb</Output>
-      <Time>2007-12-14T13:21:01.71875-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_back.JPG</Source>
-      <Name>Content\skybox_back</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_back.xnb</Output>
-      <Time>2007-12-14T13:21:01.9375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_bottom.JPG</Source>
-      <Name>Content\skybox_bottom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_bottom.xnb</Output>
-      <Time>2007-12-14T13:21:02.109375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_front.JPG</Source>
-      <Name>Content\skybox_front</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_front.xnb</Output>
-      <Time>2007-12-14T13:21:02.359375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_left.JPG</Source>
-      <Name>Content\skybox_left</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_left.xnb</Output>
-      <Time>2007-12-14T13:21:01.78125-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_right.JPG</Source>
-      <Name>Content\skybox_right</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_right.xnb</Output>
-      <Time>2007-12-14T13:21:01.46875-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\skybox_top.JPG</Source>
-      <Name>Content\skybox_top</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\skybox_top.xnb</Output>
-      <Time>2007-12-14T13:21:01.34375-07:00</Time>
+      <Time>2007-12-15T11:44:43.9819722-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Armor.dds</Source>
@@ -89,7 +35,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Armor.xnb</Output>
-      <Time>2007-12-14T13:21:01.390625-07:00</Time>
+      <Time>2007-12-15T11:44:43.8517863-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Armor_bumpmap.dds</Source>
@@ -98,7 +44,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Armor_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:02.5-07:00</Time>
+      <Time>2007-12-15T11:44:44.4927015-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Body.dds</Source>
@@ -107,7 +53,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Body.xnb</Output>
-      <Time>2007-12-14T13:21:02.390625-07:00</Time>
+      <Time>2007-12-15T11:44:44.3324727-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Body_bumpmap.dds</Source>
@@ -116,7 +62,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Body_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:02.296875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2824012-07:00</Time>
     </Item>
     <Item>
       <Source>Content\DwarfHead.dds</Source>
@@ -125,7 +71,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\DwarfHead.xnb</Output>
-      <Time>2007-12-14T13:21:01.625-07:00</Time>
+      <Time>2007-12-15T11:44:43.9619436-07:00</Time>
     </Item>
     <Item>
       <Source>Content\DwarfHead_bumpmap.dds</Source>
@@ -134,7 +80,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\DwarfHead_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:01.3125-07:00</Time>
+      <Time>2007-12-15T11:44:43.7816862-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Headgear.dds</Source>
@@ -143,7 +89,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Headgear.xnb</Output>
-      <Time>2007-12-14T13:21:01.8125-07:00</Time>
+      <Time>2007-12-15T11:44:44.0620866-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Headgear_bumpmap.dds</Source>
@@ -152,7 +98,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Headgear_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:01.40625-07:00</Time>
+      <Time>2007-12-15T11:44:43.8618006-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Helmet.dds</Source>
@@ -161,7 +107,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Helmet.xnb</Output>
-      <Time>2007-12-14T13:21:02.21875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2523583-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Helmet_bumpmap.dds</Source>
@@ -170,7 +116,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Helmet_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:01.8125-07:00</Time>
+      <Time>2007-12-15T11:44:44.042058-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Pack.dds</Source>
@@ -179,7 +125,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Pack.xnb</Output>
-      <Time>2007-12-14T13:21:01.375-07:00</Time>
+      <Time>2007-12-15T11:44:43.841772-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Pack_bumpmap.dds</Source>
@@ -188,7 +134,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Pack_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:02.40625-07:00</Time>
+      <Time>2007-12-15T11:44:44.342487-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Weapons.dds</Source>
@@ -197,7 +143,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Weapons.xnb</Output>
-      <Time>2007-12-14T13:21:02.1875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2323297-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Weapons_bumpmap.dds</Source>
@@ -206,7 +152,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Weapons_bumpmap.xnb</Output>
-      <Time>2007-12-14T13:21:01.71875-07:00</Time>
+      <Time>2007-12-15T11:44:44.0220294-07:00</Time>
     </Item>
     <Item>
       <Source>Content\LobbyCube.dds</Source>
@@ -215,7 +161,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\LobbyCube.xnb</Output>
-      <Time>2007-12-14T13:21:01.953125-07:00</Time>
+      <Time>2007-12-15T11:44:44.1321867-07:00</Time>
     </Item>
     <Item>
       <Source>Content\smallnoise3d.dds</Source>
@@ -224,7 +170,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\smallnoise3d.xnb</Output>
-      <Time>2007-12-14T13:21:01.75-07:00</Time>
+      <Time>2007-12-15T11:44:43.9719579-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Lobby\LobbyCube.dds</Source>
@@ -233,7 +179,7 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Lobby\LobbyCube.xnb</Output>
-      <Time>2007-12-14T13:20:41.328125-07:00</Time>
+      <Time>2007-12-15T11:44:24.0334866-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Default_color.dds</Source>
@@ -242,7 +188,142 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Default_color.xnb</Output>
-      <Time>2007-12-14T13:21:01.609375-07:00</Time>
+      <Time>2007-12-15T11:44:43.941915-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\eight.png</Source>
+      <Name>Content\HUD\eight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\eight.xnb</Output>
+      <Time>2007-12-15T11:44:19.4669658-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\empty.png</Source>
+      <Name>Content\HUD\empty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\empty.xnb</Output>
+      <Time>2007-12-15T11:44:19.4669658-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\five.png</Source>
+      <Name>Content\HUD\five</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\five.xnb</Output>
+      <Time>2007-12-15T11:44:19.5270516-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\four.png</Source>
+      <Name>Content\HUD\four</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\four.xnb</Output>
+      <Time>2007-12-15T11:44:19.507023-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\nine.png</Source>
+      <Name>Content\HUD\nine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\nine.xnb</Output>
+      <Time>2007-12-15T11:44:19.5370659-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\one.png</Source>
+      <Name>Content\HUD\one</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\one.xnb</Output>
+      <Time>2007-12-15T11:44:19.5270516-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\righthud.png</Source>
+      <Name>Content\HUD\righthud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\righthud.xnb</Output>
+      <Time>2007-12-15T11:44:19.507023-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\seven.png</Source>
+      <Name>Content\HUD\seven</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\seven.xnb</Output>
+      <Time>2007-12-15T11:44:19.5170373-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\six.png</Source>
+      <Name>Content\HUD\six</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\six.xnb</Output>
+      <Time>2007-12-15T11:44:19.4769801-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\slash.png</Source>
+      <Name>Content\HUD\slash</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\slash.xnb</Output>
+      <Time>2007-12-15T11:44:19.4970087-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\three.png</Source>
+      <Name>Content\HUD\three</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\three.xnb</Output>
+      <Time>2007-12-15T11:44:19.4869944-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\tophud.png</Source>
+      <Name>Content\HUD\tophud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\tophud.xnb</Output>
+      <Time>2007-12-15T11:44:19.4869944-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\topright.png</Source>
+      <Name>Content\HUD\topright</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\topright.xnb</Output>
+      <Time>2007-12-15T11:44:19.4769801-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\two.png</Source>
+      <Name>Content\HUD\two</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\two.xnb</Output>
+      <Time>2007-12-15T11:44:19.4970087-07:00</Time>
+    </Item>
+    <Item>
+      <Source>Content\HUD\zero.png</Source>
+      <Name>Content\HUD\zero</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>bin\x86\Debug\Content\HUD\zero.xnb</Output>
+      <Time>2007-12-15T11:44:19.5170373-07:00</Time>
     </Item>
     <Item>
       <Source>Content\effects.fx</Source>
@@ -251,7 +332,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\effects.xnb</Output>
-      <Time>2007-12-14T13:21:01.421875-07:00</Time>
+      <Time>2007-12-15T11:44:43.8718149-07:00</Time>
     </Item>
     <Item>
       <Source>Content\reflect.fx</Source>
@@ -260,7 +341,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\reflect.xnb</Output>
-      <Time>2007-12-14T13:21:01.625-07:00</Time>
+      <Time>2007-12-15T11:44:43.9619436-07:00</Time>
     </Item>
     <Item>
       <Source>Content\specular.fx</Source>
@@ -269,7 +350,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\specular.xnb</Output>
-      <Time>2007-12-14T13:21:01.421875-07:00</Time>
+      <Time>2007-12-15T11:44:43.8718149-07:00</Time>
     </Item>
     <Item>
       <Source>Content\MetallicFlakes.fx</Source>
@@ -278,7 +359,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\MetallicFlakes.xnb</Output>
-      <Time>2007-12-14T13:21:02.296875-07:00</Time>
+      <Time>2007-12-15T13:12:59.4930768-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Copy of effects.fx</Source>
@@ -287,7 +368,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Copy of effects.xnb</Output>
-      <Time>2007-12-14T13:21:01.828125-07:00</Time>
+      <Time>2007-12-15T11:44:44.0620866-07:00</Time>
     </Item>
     <Item>
       <Source>Content\goochy.fx</Source>
@@ -296,7 +377,7 @@
       <Processor>EffectProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\goochy.xnb</Output>
-      <Time>2007-12-14T13:21:02.328125-07:00</Time>
+      <Time>2007-12-15T11:44:44.3024298-07:00</Time>
     </Item>
     <Item>
       <Source>Content\skybox2.x</Source>
@@ -305,10 +386,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\skybox2.xnb</Output>
-      <Time>2007-12-14T13:21:01.75-07:00</Time>
+      <Time>2007-12-15T11:44:44.0320437-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\skybox2~0.xml</Key>
-        <Value>2007-12-14T16:23:07.765625-07:00</Value>
+        <Value>2007-12-15T12:14:49.4246048-07:00</Value>
       </Dependency>
       <Request>bin\x86\Debug\Content\SkyBox_Top~0.xnb</Request>
       <Request>bin\x86\Debug\Content\SkyBox_Right~0.xnb</Request>
@@ -324,10 +405,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\target.xnb</Output>
-      <Time>2007-12-14T13:21:01.609375-07:00</Time>
+      <Time>2007-12-15T11:44:43.9519293-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\target~0.xml</Key>
-        <Value>2007-12-14T16:23:10.9375-07:00</Value>
+        <Value>2007-12-15T12:14:55.313072-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -337,10 +418,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\xwing.xnb</Output>
-      <Time>2007-12-14T13:21:02.328125-07:00</Time>
+      <Time>2007-12-15T11:44:44.3024298-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\xwing~0.xml</Key>
-        <Value>2007-12-14T16:23:11.0625-07:00</Value>
+        <Value>2007-12-15T12:14:55.5033456-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -350,10 +431,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\tower.xnb</Output>
-      <Time>2007-12-14T17:41:15.21875-07:00</Time>
+      <Time>2007-12-15T11:44:43.9819722-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\tower~0.xml</Key>
-        <Value>2007-12-14T17:41:23.078125-07:00</Value>
+        <Value>2007-12-15T12:14:55.6235184-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -363,10 +444,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\knot.xnb</Output>
-      <Time>2007-12-14T13:21:02.0625-07:00</Time>
+      <Time>2007-12-15T11:44:44.1722439-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\knot~0.xml</Key>
-        <Value>2007-12-14T16:23:11.890625-07:00</Value>
+        <Value>2007-12-15T12:14:57.0355488-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -376,10 +457,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\heli.xnb</Output>
-      <Time>2007-12-14T13:21:01.359375-07:00</Time>
+      <Time>2007-12-15T11:44:43.8317577-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\heli~0.xml</Key>
-        <Value>2007-12-14T16:23:12.09375-07:00</Value>
+        <Value>2007-12-15T12:14:57.4060816-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -389,10 +470,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\shapes1.xnb</Output>
-      <Time>2007-12-14T13:21:02.53125-07:00</Time>
+      <Time>2007-12-15T11:44:44.5127301-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\shapes1~0.xml</Key>
-        <Value>2007-12-14T16:23:12.3125-07:00</Value>
+        <Value>2007-12-15T12:14:57.8066576-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -402,10 +483,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\skullocc.xnb</Output>
-      <Time>2007-12-14T13:21:02.171875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2223154-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\skullocc~0.xml</Key>
-        <Value>2007-12-14T16:23:13.296875-07:00</Value>
+        <Value>2007-12-15T12:14:59.7995232-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -415,10 +496,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\sphere0.xnb</Output>
-      <Time>2007-12-14T13:21:01.859375-07:00</Time>
+      <Time>2007-12-15T11:44:44.0721009-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\sphere0~0.xml</Key>
-        <Value>2007-12-14T16:23:13.484375-07:00</Value>
+        <Value>2007-12-15T12:15:00.1400128-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -428,10 +509,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Cube.xnb</Output>
-      <Time>2007-12-14T13:21:01.359375-07:00</Time>
+      <Time>2007-12-15T11:44:43.8317577-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\Cube~0.xml</Key>
-        <Value>2007-12-14T16:23:13.578125-07:00</Value>
+        <Value>2007-12-15T12:15:00.1600416-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -441,10 +522,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\teapot.xnb</Output>
-      <Time>2007-12-14T13:21:02.3125-07:00</Time>
+      <Time>2007-12-15T11:44:44.2924155-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\teapot~0.xml</Key>
-        <Value>2007-12-14T16:23:13.671875-07:00</Value>
+        <Value>2007-12-15T12:15:00.2802144-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -454,10 +535,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\bigship1.xnb</Output>
-      <Time>2007-12-14T13:21:01.859375-07:00</Time>
+      <Time>2007-12-15T11:44:44.0821152-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\bigship1~0.xml</Key>
-        <Value>2007-12-14T16:23:13.921875-07:00</Value>
+        <Value>2007-12-15T12:15:00.6908048-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -467,10 +548,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\bigship1_ndx.xnb</Output>
-      <Time>2007-12-14T13:21:02.1875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2323297-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\bigship1_ndx~0.xml</Key>
-        <Value>2007-12-14T16:23:14.078125-07:00</Value>
+        <Value>2007-12-15T12:15:00.8610496-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -480,10 +561,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\DwarfWithEffectInstance_ndx.xnb</Output>
-      <Time>2007-12-14T13:21:01.328125-07:00</Time>
+      <Time>2007-12-15T11:44:43.8117291-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\DwarfWithEffectInstance_ndx~0.xml</Key>
-        <Value>2007-12-14T16:23:14.34375-07:00</Value>
+        <Value>2007-12-15T12:15:01.2816544-07:00</Value>
       </Dependency>
       <Request>bin\x86\Debug\Content\Weapons~0.xnb</Request>
       <Request>bin\x86\Debug\Content\Lobby\LobbyCube~0.xnb</Request>
@@ -502,10 +583,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Cube_ndx.xnb</Output>
-      <Time>2007-12-14T13:21:01.609375-07:00</Time>
+      <Time>2007-12-15T11:44:43.9519293-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\Cube_ndx~0.xml</Key>
-        <Value>2007-12-14T16:23:15.34375-07:00</Value>
+        <Value>2007-12-15T12:15:02.4633536-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -515,10 +596,10 @@
       <Processor>ModelProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\sphere0_ndx.xnb</Output>
-      <Time>2007-12-14T13:21:02.203125-07:00</Time>
+      <Time>2007-12-15T11:44:44.242344-07:00</Time>
       <Dependency>
         <Key>obj\x86\Debug\Content\sphere0_ndx~0.xml</Key>
-        <Value>2007-12-14T16:23:15.40625-07:00</Value>
+        <Value>2007-12-15T12:15:02.5034112-07:00</Value>
       </Dependency>
     </Item>
     <Item>
@@ -526,7 +607,7 @@
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\skybox2~0.xml</Output>
-      <Time>2007-12-14T13:21:01.75-07:00</Time>
+      <Time>2007-12-15T11:44:44.0320437-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Top.jpg</Source>
@@ -534,7 +615,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Top~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.34375-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Right.jpg</Source>
@@ -542,7 +623,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Right~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.46875-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Left.jpg</Source>
@@ -550,7 +631,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Left~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.78125-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Front.jpg</Source>
@@ -558,7 +639,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Front~0.xnb</Output>
-      <Time>2007-12-14T13:21:02.359375-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Back.jpg</Source>
@@ -566,7 +647,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Back~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.9375-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\SkyBox_Bottom.jpg</Source>
@@ -574,98 +655,98 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\SkyBox_Bottom~0.xnb</Output>
-      <Time>2007-12-14T13:21:02.109375-07:00</Time>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
       <Source>Content\target.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\target~0.xml</Output>
-      <Time>2007-12-14T13:21:01.609375-07:00</Time>
+      <Time>2007-12-15T11:44:43.9519293-07:00</Time>
     </Item>
     <Item>
       <Source>Content\xwing.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\xwing~0.xml</Output>
-      <Time>2007-12-14T13:21:02.328125-07:00</Time>
+      <Time>2007-12-15T11:44:44.3024298-07:00</Time>
     </Item>
     <Item>
       <Source>Content\tower.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\tower~0.xml</Output>
-      <Time>2007-12-14T17:41:15.21875-07:00</Time>
+      <Time>2007-12-15T11:44:43.9819722-07:00</Time>
     </Item>
     <Item>
       <Source>Content\knot.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\knot~0.xml</Output>
-      <Time>2007-12-14T13:21:02.0625-07:00</Time>
+      <Time>2007-12-15T11:44:44.1722439-07:00</Time>
     </Item>
     <Item>
       <Source>Content\heli.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\heli~0.xml</Output>
-      <Time>2007-12-14T13:21:01.359375-07:00</Time>
+      <Time>2007-12-15T11:44:43.8317577-07:00</Time>
     </Item>
     <Item>
       <Source>Content\shapes1.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\shapes1~0.xml</Output>
-      <Time>2007-12-14T13:21:02.53125-07:00</Time>
+      <Time>2007-12-15T11:44:44.5127301-07:00</Time>
     </Item>
     <Item>
       <Source>Content\skullocc.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\skullocc~0.xml</Output>
-      <Time>2007-12-14T13:21:02.171875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2223154-07:00</Time>
     </Item>
     <Item>
       <Source>Content\sphere0.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\sphere0~0.xml</Output>
-      <Time>2007-12-14T13:21:01.859375-07:00</Time>
+      <Time>2007-12-15T11:44:44.0721009-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Cube.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\Cube~0.xml</Output>
-      <Time>2007-12-14T13:21:01.359375-07:00</Time>
+      <Time>2007-12-15T11:44:43.8317577-07:00</Time>
     </Item>
     <Item>
       <Source>Content\teapot.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\teapot~0.xml</Output>
-      <Time>2007-12-14T13:21:02.3125-07:00</Time>
+      <Time>2007-12-15T11:44:44.2924155-07:00</Time>
     </Item>
     <Item>
       <Source>Content\bigship1.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\bigship1~0.xml</Output>
-      <Time>2007-12-14T13:21:01.859375-07:00</Time>
+      <Time>2007-12-15T11:44:44.0821152-07:00</Time>
     </Item>
     <Item>
       <Source>Content\bigship1_ndx.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\bigship1_ndx~0.xml</Output>
-      <Time>2007-12-14T13:21:02.1875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2323297-07:00</Time>
     </Item>
     <Item>
       <Source>Content\DwarfWithEffectInstance_ndx.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\DwarfWithEffectInstance_ndx~0.xml</Output>
-      <Time>2007-12-14T13:21:01.328125-07:00</Time>
+      <Time>2007-12-15T11:44:43.8117291-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Weapons.dds</Source>
@@ -673,7 +754,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Weapons~0.xnb</Output>
-      <Time>2007-12-14T13:21:02.1875-07:00</Time>
+      <Time>2007-12-15T11:44:44.2323297-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Lobby\LobbyCube.dds</Source>
@@ -681,7 +762,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Lobby\LobbyCube~0.xnb</Output>
-      <Time>2007-12-14T13:20:41.328125-07:00</Time>
+      <Time>2007-12-15T11:44:24.0334866-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Pack.dds</Source>
@@ -689,7 +770,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Pack~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.375-07:00</Time>
+      <Time>2007-12-15T11:44:43.841772-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Body.dds</Source>
@@ -697,7 +778,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Body~0.xnb</Output>
-      <Time>2007-12-14T13:21:02.390625-07:00</Time>
+      <Time>2007-12-15T11:44:44.3324727-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Armor.dds</Source>
@@ -705,7 +786,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Armor~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.390625-07:00</Time>
+      <Time>2007-12-15T11:44:43.8517863-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Headgear.dds</Source>
@@ -713,7 +794,7 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\Headgear~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.8125-07:00</Time>
+      <Time>2007-12-15T11:44:44.0620866-07:00</Time>
     </Item>
     <Item>
       <Source>Content\DwarfHead.dds</Source>
@@ -721,156 +802,75 @@
       <Processor>ModelTextureProcessor</Processor>
       <Options>None</Options>
       <Output>bin\x86\Debug\Content\DwarfHead~0.xnb</Output>
-      <Time>2007-12-14T13:21:01.625-07:00</Time>
+      <Time>2007-12-15T11:44:43.9619436-07:00</Time>
     </Item>
     <Item>
       <Source>Content\Cube_ndx.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\Cube_ndx~0.xml</Output>
-      <Time>2007-12-14T13:21:01.609375-07:00</Time>
+      <Time>2007-12-15T11:44:43.9519293-07:00</Time>
     </Item>
     <Item>
       <Source>Content\sphere0_ndx.x</Source>
       <Importer>XImporter</Importer>
       <Options>IntermediateFile, DontCacheImportedData</Options>
       <Output>obj\x86\Debug\Content\sphere0_ndx~0.xml</Output>
-      <Time>2007-12-14T13:21:02.203125-07:00</Time>
+      <Time>2007-12-15T11:44:44.242344-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\eight.png</Source>
-      <Name>Content\HUD\eight</Name>
+      <Source>Content\SkyBox_Back.JPG</Source>
+      <Name>Content\SkyBox_Back</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\eight.xnb</Output>
-      <Time>2007-12-14T17:18:49.078125-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Back.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\five.png</Source>
-      <Name>Content\HUD\five</Name>
+      <Source>Content\SkyBox_Bottom.JPG</Source>
+      <Name>Content\SkyBox_Bottom</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\five.xnb</Output>
-      <Time>2007-12-14T17:16:53.546875-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Bottom.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\four.png</Source>
-      <Name>Content\HUD\four</Name>
+      <Source>Content\SkyBox_Front.JPG</Source>
+      <Name>Content\SkyBox_Front</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\four.xnb</Output>
-      <Time>2007-12-14T17:15:38.234375-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Front.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\nine.png</Source>
-      <Name>Content\HUD\nine</Name>
+      <Source>Content\SkyBox_Left.JPG</Source>
+      <Name>Content\SkyBox_Left</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\nine.xnb</Output>
-      <Time>2007-12-14T17:19:28.015625-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Left.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\one.png</Source>
-      <Name>Content\HUD\one</Name>
+      <Source>Content\SkyBox_Right.JPG</Source>
+      <Name>Content\SkyBox_Right</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\one.xnb</Output>
-      <Time>2007-12-14T17:12:50.703125-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Right.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Item>
-      <Source>Content\HUD\seven.png</Source>
-      <Name>Content\HUD\seven</Name>
+      <Source>Content\SkyBox_Top.JPG</Source>
+      <Name>Content\SkyBox_Top</Name>
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\seven.xnb</Output>
-      <Time>2007-12-14T17:18:07.453125-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\six.png</Source>
-      <Name>Content\HUD\six</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\six.xnb</Output>
-      <Time>2007-12-14T17:17:33.953125-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\slash.png</Source>
-      <Name>Content\HUD\slash</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\slash.xnb</Output>
-      <Time>2007-12-14T17:22:26.9375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\three.png</Source>
-      <Name>Content\HUD\three</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\three.xnb</Output>
-      <Time>2007-12-14T17:11:30-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\tophud.png</Source>
-      <Name>Content\HUD\tophud</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\tophud.xnb</Output>
-      <Time>2007-12-14T17:09:29.78125-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\topright.png</Source>
-      <Name>Content\HUD\topright</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\topright.xnb</Output>
-      <Time>2007-12-14T16:51:10.234375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\two.png</Source>
-      <Name>Content\HUD\two</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\two.xnb</Output>
-      <Time>2007-12-14T17:13:51.15625-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\zero.png</Source>
-      <Name>Content\HUD\zero</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\zero.xnb</Output>
-      <Time>2007-12-14T17:14:47.4375-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\empty.png</Source>
-      <Name>Content\HUD\empty</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\empty.xnb</Output>
-      <Time>2007-12-14T17:51:00.3125-07:00</Time>
-    </Item>
-    <Item>
-      <Source>Content\HUD\righthud.png</Source>
-      <Name>Content\HUD\righthud</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>bin\x86\Debug\Content\HUD\righthud.xnb</Output>
-      <Time>2007-12-14T18:39:01.140625-07:00</Time>
+      <Output>bin\x86\Debug\Content\SkyBox_Top.xnb</Output>
+      <Time>2007-12-15T13:23:41.8667648-07:00</Time>
     </Item>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>
@@ -881,24 +881,24 @@
     </Settings>
     <Assemblies>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
         <Value>2007-04-05T13:17:30-06:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
         <Value>2007-04-05T13:18:14-06:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
         <Value>2007-04-05T13:18:04-06:00</Value>
       </Assembly>
       <Assembly>
-        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Key>C:\Program Files\Microsoft XNA\XNA Game Studio Express\v1.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
         <Value>2007-04-05T13:17:16-06:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\WINDOWS\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\1.0.0.0__6d5c3888ef60e27d\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2007-12-14T13:52:21.171875-07:00</Value>
+        <Value>2007-12-15T11:42:43.4899146-07:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
