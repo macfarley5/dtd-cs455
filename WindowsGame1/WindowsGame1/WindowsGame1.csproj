@@ -75,6 +75,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FastCreep</Name>
     </Compile>
+    <Compile Include="FastTower.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Class1</Name>
+    </Compile>
     <Compile Include="HUD.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>HUD</Name>
@@ -98,6 +102,10 @@
     <Compile Include="NormalCreep.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>NormalCreep</Name>
+    </Compile>
+    <Compile Include="NormalTower.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Class2</Name>
     </Compile>
     <Compile Include="PathPlanner.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
@@ -585,6 +593,26 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>sphere0_ndx</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\entrance.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>entrance</Name>
+    </Content>
+    <Content Include="Content\exit.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>exit</Name>
+    </Content>
+    <Content Include="Content\newTower.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>newTower</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
