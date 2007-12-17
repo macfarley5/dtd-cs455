@@ -16,7 +16,7 @@ namespace TD3d
         protected Position pos;
         protected Position velocity;
         protected float speed=.01f;
-        protected int damageDone=50;
+        protected int damageDone = 50;
         protected bool doesSplash = false;
 
         protected string modelAsset = "Content/sphere0";
@@ -78,7 +78,7 @@ namespace TD3d
                             isActive = false;
                         }
                     }
-                    if (hurtCreeps.Count>0){
+                    if (hurtCreeps.Count > 0){
                         if (this.doesSplash)
                         {
                             foreach (Creep c in hurtCreeps)
