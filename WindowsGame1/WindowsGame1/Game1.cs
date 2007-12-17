@@ -402,7 +402,6 @@ namespace TD3d
 
             if (mouse.getSelectedTower() != null)
             {
-<<<<<<< .mine
                 Tower temp = (Tower)this.map.towers[0];
                 Tile.TileType towType = temp.getTileType();
                 if(towType == Tile.TileType.NORMALTOWER)
@@ -421,14 +420,6 @@ namespace TD3d
                     display.draw(hudView, hudProjection, false);
                     display.setPosition((int)tmp.getX(), (int)tmp.getY());
                 }
-                
-=======
-                Tower display = mouse.getSelectedTower();
-                Position tmp = display.getPosition();
-                display.setPosition(10, 10);
-                display.draw(hudView, hudProjection, false);
-                display.setPosition((int)tmp.getX(), (int)tmp.getY());
->>>>>>> .r68
             }
         }
     }
