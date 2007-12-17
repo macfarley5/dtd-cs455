@@ -400,9 +400,9 @@ namespace TD3d
             Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 8), new Vector3(this.WIDTH / 2 - 7.0f, this.HEIGHT / 2, -3), new Vector3(0, -0.3f, 1));
             Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
 
-            if (this.map.towers.Count > 0)
+            if (mouse.getSelectedTower() != null)
             {
-                Tower display = (Tower)this.map.towers[0];
+                Tower display = mouse.getSelectedTower();
                 Position tmp = display.getPosition();
                 display.setPosition(10, 10);
                 display.draw(hudView, hudProjection, false);
