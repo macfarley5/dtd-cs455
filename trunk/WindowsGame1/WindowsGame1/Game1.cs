@@ -250,10 +250,30 @@ namespace TD3d
             thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
             cash = mouse.getCash();
 
-            /*foreach (Creep creep in creeps)
+            foreach (Tower t in this.map.towers)
             {
-                creep.setPath(thePath);
-            }*/
+                t.updateState(gameTime.ElapsedGameTime.Milliseconds);
+            }
+
+            for (int i = 0; i < creeps.Count; i++)
+            {
+                Creep c = (Creep)creeps[i];
+                if (c.getPosition().getX() > (WIDTH - 1) - .1f && c.getPosition().getY() > (HEIGHT / 2) - .1f)
+                {
+                    creeps.RemoveAt(i--);
+                    score--;
+                }
+                else if (c.getHealth() <= 0)
+                {
+                    creeps.RemoveAt(i--);
+                    this.cash += c.getCashValue();
+                }
+                else
+                {
+                    c.updateState(gameTime.ElapsedGameTime.Milliseconds);
+                    c.move(gameTime.ElapsedGameTime.Milliseconds);
+                }
+            }
             
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
@@ -301,29 +321,13 @@ namespace TD3d
 
             foreach (Tower t in this.map.towers)
             {
-                t.updateState(gameTime.ElapsedGameTime.Milliseconds);
                 t.draw(viewMatrix, projectionMatrix);
             }
-
+            
             for(int i=0;i<creeps.Count;i++)
             {
                 Creep c = (Creep)creeps[i];
-                if (c.getPosition().getX() > (WIDTH - 1) - .1f && c.getPosition().getY() > (HEIGHT / 2) - .1f)
-                {
-                    creeps.RemoveAt(i--);
-                    score--;
-                }
-                else if (c.getHealth() <= 0)
-                {
-                    creeps.RemoveAt(i--);
-                    this.cash += c.getCashValue();
-                }
-                else
-                {
-                    c.updateState(gameTime.ElapsedGameTime.Milliseconds);
-                    c.move(gameTime.ElapsedGameTime.Milliseconds);
-                    c.draw(viewMatrix, projectionMatrix);
-                }
+                c.draw(viewMatrix, projectionMatrix);
             }
 
 
@@ -382,6 +386,12 @@ namespace TD3d
 
             base.Draw(gameTime);
             hud.Draw(score, cash);
+
+            /*Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 0), new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0), new Vector3(0, 0, 1));
+            Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
+            Tower display = new Tower(graphics, content, device, null);
+            display.setPosition(10, 10);
+            display.draw(hudView, hudProjection);*/
         }
     }
 }
