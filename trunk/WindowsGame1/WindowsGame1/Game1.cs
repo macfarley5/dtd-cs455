@@ -320,7 +320,7 @@ namespace TD3d
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
 
-                Tower tow = new Tower(graphics, content, device,creeps);
+                FastTower tow = new FastTower(graphics, content, device,creeps);
                 tow.setPosition(xPos, yPos);
 
                 if (this.map.canPlaceTower(tow))
@@ -402,11 +402,33 @@ namespace TD3d
 
             if (mouse.getSelectedTower() != null)
             {
+<<<<<<< .mine
+                Tower temp = (Tower)this.map.towers[0];
+                Tile.TileType towType = temp.getTileType();
+                if(towType == Tile.TileType.NORMALTOWER)
+                {
+                    NormalTower display = (NormalTower)this.map.towers[0];
+                    Position tmp = display.getPosition();
+                    display.setPosition(10, 10);
+                    display.draw(hudView, hudProjection, false);
+                    display.setPosition((int)tmp.getX(), (int)tmp.getY());
+                }
+                else if (towType == Tile.TileType.FASTTOWER)
+                {
+                    FastTower display = (FastTower)this.map.towers[0];
+                    Position tmp = display.getPosition();
+                    display.setPosition(10, 10);
+                    display.draw(hudView, hudProjection, false);
+                    display.setPosition((int)tmp.getX(), (int)tmp.getY());
+                }
+                
+=======
                 Tower display = mouse.getSelectedTower();
                 Position tmp = display.getPosition();
                 display.setPosition(10, 10);
                 display.draw(hudView, hudProjection, false);
                 display.setPosition((int)tmp.getX(), (int)tmp.getY());
+>>>>>>> .r68
             }
         }
     }
