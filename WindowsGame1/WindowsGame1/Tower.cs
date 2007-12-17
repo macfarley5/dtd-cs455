@@ -11,11 +11,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
-<<<<<<< .mine
-    abstract class Tower : Tile
-=======
-    public class Tower : Tile
->>>>>>> .r68
+    public abstract class Tower : Tile
     {
         protected Creep target;
         protected float scale = .13f;
