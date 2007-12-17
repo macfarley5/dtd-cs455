@@ -28,6 +28,7 @@ namespace TD3d
         HUD hud;
         int score;
         long cash;
+        bool newWave = false;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -215,25 +216,33 @@ namespace TD3d
             if (score == 0)
                 return;
 
+            System.Console.WriteLine(waveNum);
+
             totalTime += (int)(gameTime.ElapsedGameTime.TotalMilliseconds);
+
+            if (numCreeps == 10)
+                newWave = true;
+
             if (numCreeps < maxCreeps && totalTime > 1000)
             {
                 totalTime = 0;
                 int x = 0;
                 int y = HEIGHT / 2;
+
                 if (this.map.layout[x, y] == null)
                 {
                     int whichCreep = waveNum % 2;
                     Creep c;
-                    if (whichCreep == 0)
+
+                    if (whichCreep == 1)
                     {
-                        c = new NormalCreep(new Position(x, y), 0, graphics, content, device);
+                        c = new NormalCreep(new Position(x, y), waveNum, graphics, content, device);
                         c.setPlanner(new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map));
                         c.setPath(thePath);
                     }
                     else
                     {
-                        c = new FastCreep(new Position(x, y), 0, graphics, content, device);
+                        c = new FastCreep(new Position(x, y), waveNum, graphics, content, device);
                         c.setPlanner(new PathPlanner(WIDTH, HEIGHT, 0, HEIGHT / 2, WIDTH - 1, HEIGHT / 2, this.map));
                         c.setPath(thePath);
                     }
@@ -241,10 +250,11 @@ namespace TD3d
                     numCreeps++;
                 }
             }
-            if (this.creeps.Count == 0)
+            if (newWave && this.creeps.Count == 0)
             {
                 this.waveNum++;
                 this.numCreeps = 0;
+                newWave = false;
             }
 
             thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
