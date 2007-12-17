@@ -57,7 +57,7 @@ namespace TD3d
             
         }
 
-        public override void draw(Matrix vm,Matrix pm)
+        public override void draw(Matrix vm,Matrix pm, bool showProjectile)
         {
             Matrix wm = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(2.0f, 2.0f, 2.0f) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1, this.getPosition().getY() + 1, 0.0f));
             foreach (ModelMesh modmesh in this.model.Meshes)

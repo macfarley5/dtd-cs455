@@ -315,13 +315,13 @@ namespace TD3d
 
                 if (this.map.canPlaceTower(tow))
                 {
-                    tow.draw(viewMatrix, projectionMatrix);
+                    tow.draw(viewMatrix, projectionMatrix, true);
                 }
             }
 
             foreach (Tower t in this.map.towers)
             {
-                t.draw(viewMatrix, projectionMatrix);
+                t.draw(viewMatrix, projectionMatrix, true);
             }
             
             for(int i=0;i<creeps.Count;i++)
@@ -389,9 +389,15 @@ namespace TD3d
 
             Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 8), new Vector3(this.WIDTH / 2 - 7.0f, this.HEIGHT / 2, -3), new Vector3(0, -0.3f, 1));
             Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
-            Tower display = new Tower(graphics, content, device, null);
-            display.setPosition(10, 10);
-            display.draw(hudView, hudProjection);
+
+            if (this.map.towers.Count > 0)
+            {
+                Tower display = (Tower)this.map.towers[0];
+                Position tmp = display.getPosition();
+                display.setPosition(10, 10);
+                display.draw(hudView, hudProjection, false);
+                display.setPosition((int)tmp.getX(), (int)tmp.getY());
+            }
         }
     }
 }

@@ -119,15 +119,18 @@ namespace TD3d
             }
         }
 
-        public override void draw(Matrix vm,Matrix pm)
+        public override void draw(Matrix vm,Matrix pm, bool showProjectile)
         {
             Matrix wm = Matrix.CreateRotationX((float)Math.PI)*Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
            // rot += .01f;
             int count = 0;
-            foreach (Projectile p in this.projectiles)
-            {
-                p.draw(vm, pm);
-            }
+
+            if(showProjectile)
+                foreach (Projectile p in this.projectiles)
+                {
+                    p.draw(vm, pm);
+                }
+
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)

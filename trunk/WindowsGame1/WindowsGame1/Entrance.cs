@@ -27,7 +27,7 @@ namespace  TD3d
             throw new Exception("The method or operation is not implemented.");
         }
 
-        public override void draw(Matrix viewMatrix, Matrix projectionMatrix)
+        public override void draw(Matrix viewMatrix, Matrix projectionMatrix, bool showProjectile)
         {
             throw new Exception("The method or operation is not implemented.");
         }
