@@ -50,6 +50,7 @@ namespace TD3d
         }
 
         public abstract bool isOccupied();
+        public abstract bool isTower();
         public abstract TileType getTileType();
         public abstract void updateState(float elapsedTime);
         public abstract void draw( Matrix viewMatrix,Matrix projectionMatrix, bool showProjectile);

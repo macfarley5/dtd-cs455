@@ -17,6 +17,11 @@ namespace TD3d
             return true;
         }
 
+        public override bool isTower()
+        {
+            return false;
+        }
+
         public override TileType getTileType()
         {
             return TileType.Wall;

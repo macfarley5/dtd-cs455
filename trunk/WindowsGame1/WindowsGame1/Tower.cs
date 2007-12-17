@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
-    class Tower : Tile
+    public class Tower : Tile
     {
         Creep target;
         private string modelAsset = "Content/tower";
@@ -66,6 +66,11 @@ namespace TD3d
         }
         
         public override bool isOccupied()
+        {
+            return true;
+        }
+
+        public override bool isTower()
         {
             return true;
         }

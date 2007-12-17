@@ -34,6 +34,15 @@ namespace TD3d
             return retVal;
         }
 
+        public Tower getTower(int x, int y)
+        {
+            if (this.layout[x, y] != null && this.layout[x, y].isTower())
+            {
+                return (Tower)this.layout[x, y];
+            }
+            else return null;
+        }
+
         /// <summary>
         /// Initializes the board. Every location is set to null.
         /// </summary>

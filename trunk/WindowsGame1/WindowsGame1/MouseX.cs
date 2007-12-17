@@ -21,6 +21,7 @@ namespace TD3d
         GraphicsDevice device;
         Map map;
         long cash;
+        Tower selectedTower;
 
         public MouseX(GameWindow Window, int WIDTH, int HEIGHT, GraphicsDeviceManager graphics, 
                       ContentManager content, GraphicsDevice device, Map map)
@@ -32,6 +33,7 @@ namespace TD3d
             this.content = content;
             this.device = device;
             this.map = map;
+            selectedTower = null;
         }
 
         public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath, ArrayList creeps, long cash)
@@ -97,6 +99,13 @@ namespace TD3d
 
                         if (!this.map.isOccupied(xPos, yPos))
                             this.cash = this.cash - 80;
+                        else
+                        {
+                            Tower tmpTower = this.map.getTower(xPos, yPos);
+
+                            if (tmpTower != null)
+                                selectedTower = tmpTower;
+                        }
 
                         this.map.placeTower(tow);
                         
@@ -123,6 +132,8 @@ namespace TD3d
                             }
                             else
                             {
+                                selectedTower = this.map.getTower(xPos, yPos);
+
                                 foreach (Creep creep in creeps)
                                 {
                                     creep.setNewPath();
@@ -161,6 +172,11 @@ namespace TD3d
         public long getCash()
         {
             return cash;
+        }
+
+        public Tower getSelectedTower()
+        {
+            return selectedTower;
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
-    abstract class Creep
+    public abstract class Creep
     {
         protected Position pos = new Position(0f, 0f);
         protected  int level = 0;
