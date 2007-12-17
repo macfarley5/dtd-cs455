@@ -387,11 +387,11 @@ namespace TD3d
             base.Draw(gameTime);
             hud.Draw(score, cash);
 
-            /*Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 0), new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0), new Vector3(0, 0, 1));
+            Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 8), new Vector3(this.WIDTH / 2 - 7.0f, this.HEIGHT / 2, -3), new Vector3(0, -0.3f, 1));
             Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
             Tower display = new Tower(graphics, content, device, null);
             display.setPosition(10, 10);
-            display.draw(hudView, hudProjection);*/
+            display.draw(hudView, hudProjection);
         }
     }
 }
