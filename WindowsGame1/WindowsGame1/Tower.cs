@@ -19,6 +19,7 @@ namespace TD3d
         protected float fireSpeed = 1000f;
         protected float fireCounter = 1f;
         private float rot = 0;
+        private int range = 3;
         protected ArrayList projectiles = new ArrayList();
         GraphicsDeviceManager graphics;
         ContentManager content;
@@ -86,7 +87,7 @@ namespace TD3d
                     Position myVisPos = this.getPosition();
                     myVisPos.setX(myVisPos.getX() + .5f);
                     myVisPos.setY(myVisPos.getY() + .5f);
-                    float bestDist = 1000000f;
+                    float bestDist = 100000f;
 
                     foreach (Creep c in this.creeps)
                     {
@@ -97,15 +98,18 @@ namespace TD3d
                             bestPos = c.getVisualPosition();
                         }
                     }
-                    Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
-                    velocity.Normalize();
-                    float yOverX = (velocity.Y ) /
-                                (velocity.X );
-                    rot = (float)Math.Atan(yOverX);
+                    if (bestDist < this.range)
+                    {
+                        Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
+                        velocity.Normalize();
+                        float yOverX = (velocity.Y) /
+                                    (velocity.X);
+                        rot = (float)Math.Atan(yOverX);
 
-                    this.fireCounter = this.fireSpeed;
-                    this.projectiles.Add(new Projectile(myVisPos.Clone(),
-                        new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                        this.fireCounter = this.fireSpeed;
+                        this.projectiles.Add(new Projectile(myVisPos.Clone(),
+                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                    }
                 }
             }
             else
