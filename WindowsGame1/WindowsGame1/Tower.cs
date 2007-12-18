@@ -24,6 +24,7 @@ namespace TD3d
         protected ContentManager content;
         protected GraphicsDevice device;
         protected ArrayList creeps;
+        protected float alphaVal;
 
         public Tower()
         {
@@ -71,6 +72,11 @@ namespace TD3d
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
+        }
+
+        public void setAlpha(float alph)
+        {
+            this.alphaVal = alph;
         }
         
     }

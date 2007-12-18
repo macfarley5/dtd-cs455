@@ -313,20 +313,6 @@ namespace TD3d
             Matrix worldMatrix = Matrix.Identity;
             Position mousePos = mouse.getPos();
 
-            if (mousePos != null)
-            {
-                int xPos = (int)(mousePos.getX());
-                int yPos = (int)(mousePos.getY());
-
-                NormalTower tow = new NormalTower(graphics, content, device,creeps);
-                tow.setPosition(xPos, yPos);
-
-                if (this.map.canPlaceTower(tow))
-                {
-                    tow.draw(viewMatrix, projectionMatrix, true);
-                }
-            }
-
             foreach (Tower t in this.map.towers)
             {
                 t.draw(viewMatrix, projectionMatrix, true);
@@ -389,6 +375,27 @@ namespace TD3d
                         }
                         modmesh.Draw();
                     }
+                }
+            }
+
+            if (mousePos != null)
+            {
+                int xPos = (int)(mousePos.getX());
+                int yPos = (int)(mousePos.getY());
+
+                NormalTower tow = new NormalTower(graphics, content, device, creeps);
+                tow.setPosition(xPos, yPos);
+
+                if (this.map.canPlaceTower(tow))
+                {
+                    tow.setAlpha(.5f);
+                    tow.draw(viewMatrix, projectionMatrix, true);
+                }
+                else
+                {
+                    SelectionTile sel = new SelectionTile(graphics, content, device);
+                    sel.setPosition(xPos, yPos);
+                    sel.draw(viewMatrix, projectionMatrix, true);
                 }
             }
 

@@ -19,7 +19,7 @@ namespace TD3d
         protected string viewEffectString = "g_mView";
         protected string projectionEffectString = "g_mProj";
 
-        public enum TileType { TOWER, WALL, EXIT, ENTRANCE, FASTTOWER, NORMALTOWER };
+        public enum TileType { TOWER, WALL, EXIT, ENTRANCE, FASTTOWER, NORMALTOWER, SELECTION };
         public enum Player { p1, p2 };
 
         protected Position pos;
