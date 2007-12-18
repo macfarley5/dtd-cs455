@@ -24,7 +24,7 @@ namespace TD3d
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
             this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
-
+            this.alphaVal = 1f;
 
             this.model = content.Load<Model>(modelAsset);
             foreach (ModelMesh modmesh in model.Meshes)
@@ -120,6 +120,7 @@ namespace TD3d
                     currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.3f, .3f, .4f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .2f, .3f, 1f));
+                    currenteffect.Parameters["alph"].SetValue(this.alphaVal);
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
 
                     if (count == 2)

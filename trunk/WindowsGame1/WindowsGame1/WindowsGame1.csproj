@@ -128,6 +128,10 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Game1</Name>
     </Compile>
+    <Compile Include="SelectionTile.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>SelectionTile</Name>
+    </Compile>
     <Compile Include="Tile.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Tile</Name>
