@@ -408,6 +408,8 @@ namespace TD3d
             {
                 Tower temp = (Tower)this.map.towers[0];
                 Tile.TileType towType = temp.getTileType();
+                hud.setSelectedTower(temp);
+
                 if(towType == Tile.TileType.NORMALTOWER)
                 {
                     NormalTower display = (NormalTower)this.map.towers[0];

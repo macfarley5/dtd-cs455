@@ -14,6 +14,7 @@ namespace TD3d
     class NormalTower : Tower
     {
         private string modelAsset = "Content/tower";
+
         public NormalTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
         {
             target = null;

@@ -612,6 +612,24 @@
       <Processor>ModelProcessor</Processor>
       <Name>exit</Name>
     </Content>
+    <Content Include="Content\HUD\hover.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>hover</Name>
+    </Content>
+    <Content Include="Content\HUD\scout.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>scout</Name>
+    </Content>
+    <Content Include="Content\HUD\towerdata.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>towerdata</Name>
+    </Content>
     <Content Include="Content\HUD\upgrade.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
