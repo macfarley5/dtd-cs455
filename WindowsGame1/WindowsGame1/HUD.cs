@@ -16,7 +16,8 @@ namespace TD3d
         GameWindow Window;
         SpriteBatch spriteBatch;
         Texture2D tophud, righthud, zero, one, two, three, four, five, 
-                  six, seven, eight, nine, slash, empty, gameover, dollar;
+                  six, seven, eight, nine, slash, empty, gameover, dollar,
+                  upgrade;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
         {
@@ -38,6 +39,7 @@ namespace TD3d
             empty = content.Load<Texture2D>("Content/HUD/empty");
             gameover = content.Load<Texture2D>("Content/HUD/gameover");
             dollar = content.Load<Texture2D>("Content/HUD/dollar");
+            upgrade = content.Load<Texture2D>("Content/HUD/upgrade");
         }
 
         public void Draw(int score, long cash)
@@ -226,6 +228,7 @@ namespace TD3d
             if(cash10000 != 0)
                 spriteBatch.Draw(dollar, new Rectangle((Window.ClientBounds.Width - (dollar.Width + cash10000img.Width + cash1000img.Width + cash100img.Width + cash10img.Width + cash1img.Width) - 30), (55), dollar.Width, dollar.Height), Color.White);
 
+            spriteBatch.Draw(upgrade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
             spriteBatch.End();
         }
     }

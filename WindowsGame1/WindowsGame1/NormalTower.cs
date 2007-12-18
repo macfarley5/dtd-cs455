@@ -85,6 +85,8 @@ namespace TD3d
                                 this.target = creep;
                             }
                         }
+
+                        rot += elapsedTime / 2500;
                     }
                     if (this.target != null && Position.dist(this.target.getVisualPosition(), myVisPos) < this.range)
                     {
@@ -101,7 +103,7 @@ namespace TD3d
             }
             else
             {
-                //rot += elapsedTime / 700;
+                
             }
 
             for (int i = 0; i < this.projectiles.Count; i++)// (Projectile p in this.projectiles)

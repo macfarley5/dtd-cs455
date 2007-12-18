@@ -612,6 +612,12 @@
       <Processor>ModelProcessor</Processor>
       <Name>exit</Name>
     </Content>
+    <Content Include="Content\HUD\upgrade.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>upgrade</Name>
+    </Content>
     <Content Include="Content\newTower.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>XImporter</Importer>

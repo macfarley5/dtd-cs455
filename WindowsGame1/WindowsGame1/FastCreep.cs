@@ -20,7 +20,7 @@ namespace TD3d
             this.speed = .003f;;
             this.pos = pos;
             this.level = level;
-            this.health = 50 + (8 * level);
+            this.health = 200 + (20 * level);
             this.cash = 4 + (int)(1.2 * level);
 
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);

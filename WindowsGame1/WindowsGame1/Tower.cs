@@ -18,7 +18,7 @@ namespace TD3d
         protected float fireSpeed = 2000f;
         protected float fireCounter = 1f;
         protected float rot = 0;
-        protected int range = 3;
+        protected int range = 4;
         protected ArrayList projectiles = new ArrayList();
         protected GraphicsDeviceManager graphics;
         protected ContentManager content;
