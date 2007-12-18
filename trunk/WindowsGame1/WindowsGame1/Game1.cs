@@ -324,6 +324,10 @@ namespace TD3d
                 c.draw(viewMatrix, projectionMatrix);
             }
 
+            NormalCreep tempCreep = new NormalCreep(new Position(2, 3), 20, this.graphics, this.content, this.device);
+            tempCreep.draw(viewMatrix, projectionMatrix);
+            FastCreep tempCreep2 = new FastCreep(new Position(3, 4), 20, this.graphics, this.content, this.device);
+            tempCreep2.draw(viewMatrix, projectionMatrix);
 
             int j = 0;
             foreach (ModelMesh modmesh in skybox.Meshes)

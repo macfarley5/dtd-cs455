@@ -15,15 +15,16 @@ namespace TD3d
     {
         protected Position pos;
         protected Position velocity;
-        protected float speed=.01f;
+        protected float speed=.005f;
         protected int damageDone = 50;
         protected bool doesSplash = false;
 
         protected string modelAsset = "Content/sphere0";
-        protected float scale = .1f;
+        protected float scale = .05f;
         protected Effect effect;
         protected Model model;
         protected ArrayList creeps;
+        protected Creep target;
 
         protected GraphicsDeviceManager graphics;
         protected ContentManager content;
@@ -31,8 +32,9 @@ namespace TD3d
 
         protected bool isActive = true;
 
-        public Projectile(Position pos, Position velocity,ArrayList creeps,GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
+        public Projectile(Position pos, Position velocity,ArrayList creeps,GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, Creep target)
         {
+            this.target = target;
             this.pos = pos;
             this.creeps = creeps;
             this.velocity = velocity;
@@ -55,10 +57,23 @@ namespace TD3d
             this.pos = pos;
         }
 
+        public Position getVelocity()
+        {
+            return this.velocity;
+        }
+
+        public Creep getTarget()
+        {
+            return this.target;
+        }
+
         public void updateState(float elapsedTime)
         {
             if (isActive)
             {
+                Vector2 newVelocity = new Vector2(this.target.getVisualPosition().getX() - this.pos.getX(), this.target.getVisualPosition().getY() - this.pos.getY());
+                newVelocity.Normalize();
+                this.velocity = new Position(newVelocity.X, newVelocity.Y);
                 float newX = this.pos.getX() + elapsedTime * this.velocity.getX() * speed;
                 this.pos.setX(newX);
                 float newY = this.pos.getY() + elapsedTime * this.velocity.getY() * speed;
@@ -72,7 +87,7 @@ namespace TD3d
                     {
                         Position visualPos = c.getVisualPosition();
                         float nowdist = Position.dist(this.pos, visualPos);
-                        if (nowdist < .09)
+                        if (nowdist < .5)
                         {
                             hurtCreeps.Add(c);
                             isActive = false;

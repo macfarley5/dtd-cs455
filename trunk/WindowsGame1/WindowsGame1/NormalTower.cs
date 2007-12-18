@@ -56,24 +56,46 @@ namespace TD3d
                     myVisPos.setY(myVisPos.getY() + .5f);
                     float bestDist = 100000f;
 
-                    foreach (Creep c in this.creeps)
+                    // see if target is out of range. if so, set new target
+                    if (this.target != null && (this.target.getHealth() <= 0 || Position.dist(this.target.getVisualPosition(), myVisPos) > range)) this.target = null;
+                    if (this.target != null)
                     {
-                        float nowdist = Position.dist(myVisPos, c.getVisualPosition());
-                        if (nowdist < bestDist)
+                        if (Position.dist(target.getVisualPosition(), myVisPos) > this.range)
                         {
-                            bestDist = nowdist;
-                            bestPos = c.getVisualPosition();
+                            this.target = null;
+                            foreach (Creep creep in this.creeps)
+                            {
+                                float nowdist = Position.dist(myVisPos, creep.getVisualPosition());
+                                if (nowdist < bestDist && nowdist < this.range)
+                                {
+                                    bestDist = nowdist;
+                                    this.target = creep;
+                                }
+                            }
                         }
                     }
-                    if (bestDist < this.range)
+                    else
+                    {
+                        foreach (Creep creep in this.creeps)
+                        {
+                            float nowdist = Position.dist(myVisPos, creep.getVisualPosition());
+                            if (nowdist < bestDist && nowdist < this.range)
+                            {
+                                bestDist = nowdist;
+                                this.target = creep;
+                            }
+                        }
+                    }
+                    if (this.target != null && Position.dist(this.target.getVisualPosition(), myVisPos) < this.range)
                     {
                         Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
                         velocity.Normalize();
+                        Vector2 iniPos = new Vector2(myVisPos.getX(), myVisPos.getY()) + velocity;
                         rot = (float)Math.Atan2(velocity.Y, velocity.X);
 
                         this.fireCounter = this.fireSpeed;
-                        this.projectiles.Add(new Projectile(myVisPos.Clone(),
-                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                        this.projectiles.Add(new Projectile(new Position(iniPos.X, iniPos.Y),
+                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target));
                     }
                 }
             }
@@ -82,14 +104,21 @@ namespace TD3d
                 //rot += elapsedTime / 700;
             }
 
-            foreach (Projectile p in this.projectiles)
+            for (int i = 0; i < this.projectiles.Count; i++)// (Projectile p in this.projectiles)
             {
-                p.updateState(elapsedTime);
+                if (Position.dist(((Projectile)this.projectiles[i]).getPosition(), ((Projectile)this.projectiles[i]).getTarget().getVisualPosition()) < .05)
+                {
+                    this.projectiles.RemoveAt(i--);
+                }
+                else
+                {
+                    ((Projectile)this.projectiles[i]).updateState(elapsedTime);
+                }
             }
 
             if (target != null)
             {
-                this.rot = (float)(Math.Atan2(target.getPosition().getY() - this.pos.getY(), target.getPosition().getX() - this.pos.getX()));
+                this.rot = (float)(Math.Atan2(target.getVisualPosition().getY() - this.pos.getY() - .5, target.getVisualPosition().getX() - this.pos.getX() - .5));
             }
             else
             {

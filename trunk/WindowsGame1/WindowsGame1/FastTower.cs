@@ -74,7 +74,7 @@ namespace TD3d
 
                         this.fireCounter = this.fireSpeed;
                         this.projectiles.Add(new Projectile(myVisPos.Clone(),
-                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device));
+                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target));
                     }
                 }
             }

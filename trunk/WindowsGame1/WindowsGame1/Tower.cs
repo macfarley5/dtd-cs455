@@ -15,7 +15,7 @@ namespace TD3d
     {
         protected Creep target;
         protected float scale = .13f;
-        protected float fireSpeed = 1000f;
+        protected float fireSpeed = 2000f;
         protected float fireCounter = 1f;
         protected float rot = 0;
         protected int range = 3;
@@ -44,9 +44,7 @@ namespace TD3d
         {
             if (target != null)
             {
-                double yOverX = (target.getPosition().getY() - getPosition().getY()) /
-                                (target.getPosition().getX() - getPosition().getX());
-                return Math.Atan(yOverX);
+                return Math.Atan2(target.getPosition().getY() - getPosition().getY(), target.getPosition().getX() - getPosition().getX());
             }
             else return 0;
         }
