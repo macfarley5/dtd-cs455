@@ -54,7 +54,7 @@ namespace TD3d
 
         public override Tile.TileType getTileType()
         {
-            return TileType.Tower;
+            return TileType.TOWER;
         }
 
         public override void updateState(float elapsedTime)

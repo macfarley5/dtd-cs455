@@ -94,7 +94,8 @@ namespace TD3d
 
                     if (ms.LeftButton == ButtonState.Pressed)
                     {
-                        FastTower tow = new FastTower(graphics, content, device,creeps);
+                        System.Console.WriteLine(xPos + " " + yPos);
+                        NormalTower tow = new NormalTower(graphics, content, device, creeps);
                         tow.setPosition(xPos, yPos);
 
                         if (!this.map.isOccupied(xPos, yPos))

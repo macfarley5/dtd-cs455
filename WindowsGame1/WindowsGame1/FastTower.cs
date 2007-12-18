@@ -70,9 +70,7 @@ namespace TD3d
                     {
                         Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
                         velocity.Normalize();
-                        float yOverX = (velocity.Y) /
-                                    (velocity.X);
-                        rot = (float)Math.Atan(yOverX);
+                        rot = (float)Math.Atan2(velocity.Y, velocity.X);
 
                         this.fireCounter = this.fireSpeed;
                         this.projectiles.Add(new Projectile(myVisPos.Clone(),
@@ -88,6 +86,15 @@ namespace TD3d
             foreach (Projectile p in this.projectiles)
             {
                 p.updateState(elapsedTime);
+            }
+
+            if (target != null)
+            {
+                this.rot = (float)(Math.Atan2(target.getPosition().getY() - this.pos.getY(), target.getPosition().getX() - this.pos.getX()));
+            }
+            else
+            {
+                //this.rot += .001f * elapsedTime;
             }
         }
 
@@ -117,7 +124,7 @@ namespace TD3d
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
                     if (count == 1 || count == 4 || count == 5)
                     {
-                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot + ((float)Math.PI) / 2) * wm);
+                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot) * wm);
                     }
                     else
                     {
