@@ -624,6 +624,66 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>scout</Name>
     </Content>
+    <Content Include="Content\HUD\smalleight.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalleight</Name>
+    </Content>
+    <Content Include="Content\HUD\smallfive.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallfive</Name>
+    </Content>
+    <Content Include="Content\HUD\smallfour.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallfour</Name>
+    </Content>
+    <Content Include="Content\HUD\smallnine.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallnine</Name>
+    </Content>
+    <Content Include="Content\HUD\smallone.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallone</Name>
+    </Content>
+    <Content Include="Content\HUD\smallseven.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallseven</Name>
+    </Content>
+    <Content Include="Content\HUD\smallsix.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallsix</Name>
+    </Content>
+    <Content Include="Content\HUD\smallthree.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallthree</Name>
+    </Content>
+    <Content Include="Content\HUD\smalltwo.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalltwo</Name>
+    </Content>
+    <Content Include="Content\HUD\smallzero.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallzero</Name>
+    </Content>
     <Content Include="Content\HUD\towerdata.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -635,6 +695,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>upgrade</Name>
+    </Content>
+    <Content Include="Content\HUD\upgradehover.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>upgradehover</Name>
     </Content>
     <Content Include="Content\newTower.x">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

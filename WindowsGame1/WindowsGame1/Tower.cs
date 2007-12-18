@@ -31,6 +31,34 @@ namespace TD3d
         {
         }
 
+        public int getLevel()
+        {
+            return level;
+        }
+
+        public int getRange()
+        {
+            return range;
+        }
+
+        public int getFireSpeed()
+        {
+            return (int)fireSpeed;
+        }
+
+        public int getAngle()
+        {
+            int angle = (int)(180f * rot / Math.PI);
+
+            while (angle > 360)
+                angle -= 360;
+
+            while (angle < 0)
+                angle += 360;
+
+            return angle;
+        }
+
         public void setTarget(Creep creep)
         {
             target = creep;
