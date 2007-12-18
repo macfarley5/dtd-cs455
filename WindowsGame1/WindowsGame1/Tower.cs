@@ -14,6 +14,7 @@ namespace TD3d
     public abstract class Tower : Tile
     {
         protected Creep target;
+        protected int level = 1;
         protected float scale = .13f;
         protected float fireSpeed = 2000f;
         protected float fireCounter = 1f;

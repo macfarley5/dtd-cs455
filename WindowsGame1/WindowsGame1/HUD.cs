@@ -17,7 +17,8 @@ namespace TD3d
         SpriteBatch spriteBatch;
         Texture2D tophud, righthud, zero, one, two, three, four, five, 
                   six, seven, eight, nine, slash, empty, gameover, dollar,
-                  upgrade;
+                  upgrade, towerdata, scout, hover;
+        Tower selectedTower;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
         {
@@ -40,6 +41,16 @@ namespace TD3d
             gameover = content.Load<Texture2D>("Content/HUD/gameover");
             dollar = content.Load<Texture2D>("Content/HUD/dollar");
             upgrade = content.Load<Texture2D>("Content/HUD/upgrade");
+            towerdata = content.Load<Texture2D>("Content/HUD/towerdata");
+            scout = content.Load<Texture2D>("Content/HUD/scout");
+            hover = content.Load<Texture2D>("Content/HUD/hover");
+
+            selectedTower = null;
+        }
+
+        public void setSelectedTower(Tower selected)
+        {
+            selectedTower = selected;
         }
 
         public void Draw(int score, long cash)
@@ -228,8 +239,23 @@ namespace TD3d
             if(cash10000 != 0)
                 spriteBatch.Draw(dollar, new Rectangle((Window.ClientBounds.Width - (dollar.Width + cash10000img.Width + cash1000img.Width + cash100img.Width + cash10img.Width + cash1img.Width) - 30), (55), dollar.Width, dollar.Height), Color.White);
 
-            spriteBatch.Draw(upgrade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
+            drawTowerInfo();
+            
             spriteBatch.End();
+        }
+
+        private void drawTowerInfo()
+        {
+            if (selectedTower == null)
+                return;
+
+            if(selectedTower.getTileType() == Tile.TileType.NORMALTOWER)
+                spriteBatch.Draw(scout, new Rectangle((Window.ClientBounds.Width - scout.Width - 30), (235), scout.Width, scout.Height), Color.White);
+            else if(selectedTower.getTileType() == Tile.TileType.FASTTOWER)
+                spriteBatch.Draw(hover, new Rectangle((Window.ClientBounds.Width - hover.Width - 30), (235), hover.Width, hover.Height), Color.White);
+
+            spriteBatch.Draw(towerdata, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), (265), towerdata.Width, towerdata.Height), Color.White);
+            spriteBatch.Draw(upgrade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
         }
     }
 }
