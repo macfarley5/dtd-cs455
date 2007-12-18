@@ -170,6 +170,18 @@ namespace TD3d
             return mousePos;
         }
 
+        public int getScreenXPos()
+        {
+            MouseState ms = Mouse.GetState();
+            return ms.X;
+        }
+
+        public int getScreenYPos()
+        {
+            MouseState ms = Mouse.GetState();
+            return ms.Y;
+        }
+
         public long getCash()
         {
             return cash;
