@@ -216,8 +216,6 @@ namespace TD3d
             if (score == 0)
                 return;
 
-            System.Console.WriteLine(waveNum);
-
             totalTime += (int)(gameTime.ElapsedGameTime.TotalMilliseconds);
 
             if (numCreeps == 10)
@@ -320,7 +318,7 @@ namespace TD3d
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
 
-                FastTower tow = new FastTower(graphics, content, device,creeps);
+                NormalTower tow = new NormalTower(graphics, content, device,creeps);
                 tow.setPosition(xPos, yPos);
 
                 if (this.map.canPlaceTower(tow))
