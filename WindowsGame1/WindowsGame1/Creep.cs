@@ -59,8 +59,8 @@ namespace TD3d
         {
             //shifted by -.5 to show where it really appears
             Position visualPos = this.getPosition();
-            visualPos.setX(visualPos.getX() - .5f);
-            visualPos.setY(visualPos.getY() - .5f);
+            visualPos.setX(visualPos.getX());
+            visualPos.setY(visualPos.getY());
             return visualPos;
         }
 

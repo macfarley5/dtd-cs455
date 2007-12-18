@@ -37,7 +37,7 @@ namespace TD3d
         public static float dist(Position pos1, Position pos2)
         {
             float a = pos1.getX() - pos2.getX();
-            float b = pos1.getY() - pos1.getY();
+            float b = pos1.getY() - pos2.getY();
             return (float)Math.Sqrt(a * a + b * b);
         }
     }

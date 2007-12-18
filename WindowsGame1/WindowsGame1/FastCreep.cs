@@ -37,7 +37,7 @@ namespace TD3d
         public override void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             {
-                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, 0.40f));
+                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.20f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)

@@ -77,7 +77,7 @@ namespace TD3d
 
 
                 Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) *
-                                Matrix.CreateScale(xScale,yScale,zScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .25f, this.getPosition().getY() + .25f, .20f));
+                                Matrix.CreateScale(xScale,yScale,zScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, .20f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)
