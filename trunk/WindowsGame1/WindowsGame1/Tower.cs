@@ -198,7 +198,7 @@ namespace TD3d
                 if (this.getTileType() == TileType.FASTTOWER)
                 {
                     System.Console.WriteLine("FASTTOWER");
-                    rot += .005f * elapsedTime;
+                    rot += .005f * elapsedTime * level;
                 }
                 else this.rot = (float)(Math.Atan2(target.getVisualPosition().getY() - this.pos.getY() - .5, target.getVisualPosition().getX() - this.pos.getX() - .5));
             }

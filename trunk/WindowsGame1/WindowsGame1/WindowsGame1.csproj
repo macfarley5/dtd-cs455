@@ -760,6 +760,12 @@
       <Processor>SpriteTextureProcessor</Processor>
       <Name>gatling</Name>
     </Content>
+    <Content Include="Content\HUD\level.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>level</Name>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\laser.x">
