@@ -17,7 +17,7 @@ namespace TD3d
         SpriteBatch spriteBatch;
         Texture2D tophud, righthud, zero, one, two, three, four, five, 
                   six, seven, eight, nine, slash, empty, gameover, dollar,
-                  upgrade, towerdata, scout, hover, splash, upgradehover, upgradefade,
+                  upgrade, towerdata, scout, hover, gatling, upgradehover, upgradefade,
                   smallzero, smallone, smalltwo, smallthree, smallfour,
                   smallfive, smallsix, smallseven, smalleight, smallnine,
                   cashamount, upgradecost, smalldollar;
@@ -35,7 +35,7 @@ namespace TD3d
             towerdata = content.Load<Texture2D>("Content/HUD/towerdata");
             scout = content.Load<Texture2D>("Content/HUD/scout");
             hover = content.Load<Texture2D>("Content/HUD/hover");
-            splash = content.Load<Texture2D>("Content/HUD/splash");
+            gatling = content.Load<Texture2D>("Content/HUD/gatling");
             upgradehover = content.Load<Texture2D>("Content/HUD/upgradehover");
             upgradefade = content.Load<Texture2D>("Content/HUD/upgradefade");
             cashamount = content.Load<Texture2D>("Content/HUD/cash");
@@ -133,9 +133,9 @@ namespace TD3d
             if(selectedTower.getTileType() == Tile.TileType.NORMALTOWER)
                 spriteBatch.Draw(scout, new Rectangle((Window.ClientBounds.Width - scout.Width - 30), (235), scout.Width, scout.Height), Color.White);
             else if(selectedTower.getTileType() == Tile.TileType.FASTTOWER)
-                spriteBatch.Draw(hover, new Rectangle((Window.ClientBounds.Width - hover.Width - 30), (235), hover.Width, hover.Height), Color.White);
+                spriteBatch.Draw(gatling, new Rectangle((Window.ClientBounds.Width - gatling.Width - 10), (235), gatling.Width, gatling.Height), Color.White);
             else if(selectedTower.getTileType() == Tile.TileType.SPLASHTOWER)
-                spriteBatch.Draw(splash, new Rectangle((Window.ClientBounds.Width - splash.Width - 30), (235), splash.Width, splash.Height), Color.White);
+                spriteBatch.Draw(hover, new Rectangle((Window.ClientBounds.Width - hover.Width - 30), (235), hover.Width, hover.Height), Color.White);
 
             spriteBatch.Draw(towerdata, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), (265), towerdata.Width, towerdata.Height), Color.White);
 

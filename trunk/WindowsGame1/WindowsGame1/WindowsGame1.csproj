@@ -738,12 +738,6 @@
       <Processor>ModelProcessor</Processor>
       <Name>bullet</Name>
     </Content>
-    <Content Include="Content\HUD\splash.png">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>splash</Name>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fastTower.x">
@@ -751,6 +745,12 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>fastTower</Name>
+    </Content>
+    <Content Include="Content\HUD\gatling.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>gatling</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
