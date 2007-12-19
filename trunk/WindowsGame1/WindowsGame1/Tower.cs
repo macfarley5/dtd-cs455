@@ -22,6 +22,8 @@ namespace TD3d
         protected int range;
         protected int cost;
         protected int damage;
+        protected enum ProjectileType { BULLET, LASER };
+        protected ProjectileType projType = ProjectileType.BULLET;
         protected ArrayList projectiles = new ArrayList();
         protected GraphicsDeviceManager graphics;
         protected ContentManager content;
@@ -169,7 +171,7 @@ namespace TD3d
                         }
 
                         this.fireCounter = this.fireSpeed;
-                        this.projectiles.Add(new Projectile(new Position(iniPos.X, iniPos.Y),
+                        this.projectiles.Add(new ProjectileLaser(new Position(iniPos.X, iniPos.Y),
                             new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
                     }
                 }

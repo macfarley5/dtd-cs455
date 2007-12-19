@@ -55,6 +55,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectileBullet.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ProjectileBullet</Name>
+    </Compile>
+    <Compile Include="ProjectileLaser.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ProjectileLaser</Name>
+    </Compile>
     <Compile Include="FastTower.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FastTower</Name>
@@ -751,6 +759,14 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>gatling</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\laser.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>laser</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
