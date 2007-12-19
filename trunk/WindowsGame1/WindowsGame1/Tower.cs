@@ -110,9 +110,90 @@ namespace TD3d
         {
             return TileType.TOWER;
         }
-
         public override void updateState(float elapsedTime)
         {
+            this.fireCounter -= elapsedTime;
+            if (this.fireCounter < 0)
+            {
+                //Fire!
+                if (this.creeps.Count > 0)
+                {
+                    Position bestPos = ((Creep)creeps[0]).getVisualPosition();
+                    Position myVisPos = this.getPosition();
+                    myVisPos.setX(myVisPos.getX() + .5f);
+                    myVisPos.setY(myVisPos.getY() + .5f);
+                    float bestDist = 100000f;
+
+                    // see if target is out of range. if so, set new target
+                    if (this.target != null && (this.target.getHealth() <= 0 || Position.dist(this.target.getVisualPosition(), myVisPos) > range)) this.target = null;
+                    if (this.target != null)
+                    {
+                        if (Position.dist(target.getVisualPosition(), myVisPos) > this.range)
+                        {
+                            this.target = null;
+                            foreach (Creep creep in this.creeps)
+                            {
+                                float nowdist = Position.dist(myVisPos, creep.getVisualPosition());
+                                if (nowdist < bestDist && nowdist < this.range)
+                                {
+                                    bestDist = nowdist;
+                                    this.target = creep;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (Creep creep in this.creeps)
+                        {
+                            float nowdist = Position.dist(myVisPos, creep.getVisualPosition());
+                            if (nowdist < bestDist && nowdist < this.range)
+                            {
+                                bestDist = nowdist;
+                                this.target = creep;
+                            }
+                        }
+
+                        rot += elapsedTime / 2500;
+                    }
+                    if (this.target != null && Position.dist(this.target.getVisualPosition(), myVisPos) < this.range)
+                    {
+                        Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
+                        velocity.Normalize();
+                        Vector2 iniPos = new Vector2(myVisPos.getX(), myVisPos.getY()) + velocity;
+                        rot = (float)Math.Atan2(velocity.Y, velocity.X);
+
+                        this.fireCounter = this.fireSpeed;
+                        this.projectiles.Add(new Projectile(new Position(iniPos.X, iniPos.Y),
+                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
+                    }
+                }
+            }
+            else
+            {
+
+            }
+
+            for (int i = 0; i < this.projectiles.Count; i++)// (Projectile p in this.projectiles)
+            {
+                if (Position.dist(((Projectile)this.projectiles[i]).getPosition(), ((Projectile)this.projectiles[i]).getTarget().getVisualPosition()) < .05)
+                {
+                    this.projectiles.RemoveAt(i--);
+                }
+                else
+                {
+                    ((Projectile)this.projectiles[i]).updateState(elapsedTime);
+                }
+            }
+
+            if (target != null)
+            {
+                this.rot = (float)(Math.Atan2(target.getVisualPosition().getY() - this.pos.getY() - .5, target.getVisualPosition().getX() - this.pos.getX() - .5));
+            }
+            else
+            {
+                //this.rot += .001f * elapsedTime;
+            }
         }
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)

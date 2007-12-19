@@ -11,17 +11,17 @@ using Microsoft.Xna.Framework.Storage;
 
 namespace TD3d
 {
-    class NormalTower : Tower
+    class SplashTower : Tower
     {
-        private string modelAsset = "Content/tower";
-
-        public NormalTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
+        private string modelAsset = "Content/newTower";
+        public SplashTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
         {
             target = null;
             this.creeps = creeps;
             this.graphics = graphics;
             this.content = content;
             this.device = device;
+            this.fireSpeed = 500f;
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
             this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
@@ -32,9 +32,9 @@ namespace TD3d
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
                     modmeshpart.Effect = this.effect.Clone(device);
 
-            this.cost = 50;
+            this.cost = 80;
             this.damage = 30;
-        }
+        }       
 
         public override bool isOccupied()
         {
@@ -43,21 +43,21 @@ namespace TD3d
 
         public override Tile.TileType getTileType()
         {
-            return TileType.NORMALTOWER;
+            return TileType.FASTTOWER;
         }
 
         public override void updateState(float elapsedTime)
         {
-            this.fireSpeed = 2000 / level;
-            this.range = 4 + level;
+            this.fireSpeed = 500 / level;
+            this.range = 2 + level;
             this.damage = 30 + (5 * level);
+
             base.updateState(elapsedTime);
         }
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
-            float newScale = this.scale;
-            Matrix wm = Matrix.CreateRotationX((float)Math.PI) * Matrix.CreateScale(newScale, newScale, newScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
+            Matrix wm = Matrix.CreateRotationX((float)Math.PI) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
             // rot += .01f;
             int count = 0;
 
@@ -66,22 +66,21 @@ namespace TD3d
                 {
                     p.draw(vm, pm);
                 }
-            float blueval = (this.level/5f);
+
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
-                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.015f, .05f, .015f, .1f));
+                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.015f, this.alphaVal < 1 ? 1 : .05f, .015f, .1f));
                     currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["I_s"].SetValue(new Vector4(.35f, .35f, .45f, 1f));
                     currenteffect.Parameters["k_a"].SetValue(new Vector4(.05f, .05f, .05f, 1f));
-                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.2f, .3f, .2f+blueval, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.3f, .3f, .4f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .2f, .3f, 1f));
                     currenteffect.Parameters["alph"].SetValue(this.alphaVal);
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
-
-                    if (count == 2)
+                    if (count == 1 || count == 4 || count == 5)
                     {
                         currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot) * wm);
                     }
@@ -89,7 +88,6 @@ namespace TD3d
                     {
                         currenteffect.Parameters["World"].SetValue(wm);
                     }
-
                     currenteffect.Parameters["View"].SetValue(vm);
                     currenteffect.Parameters["Projection"].SetValue(pm);
                     count++;

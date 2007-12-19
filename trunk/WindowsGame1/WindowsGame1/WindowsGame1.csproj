@@ -75,7 +75,7 @@
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>FastCreep</Name>
     </Compile>
-    <Compile Include="FastTower.cs">
+    <Compile Include="SplashTower.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Class1</Name>
     </Compile>
