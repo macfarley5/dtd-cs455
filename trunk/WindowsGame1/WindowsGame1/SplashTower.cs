@@ -49,8 +49,8 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
-            this.fireSpeed = 500 / level;
-            this.range = 2 + level;
+            this.fireSpeed = 2500 / level;
+            this.range = 5 + 2*level;
             this.damage = 30 + (5 * level);
 
             base.updateState(elapsedTime);
