@@ -50,7 +50,7 @@ namespace TD3d
         public override void updateState(float elapsedTime)
         {
             this.fireSpeed = 500 / level;
-            this.range = 2 + level;
+            this.range = 4 + level/2;
             this.damage = 30 + (5 * level);
 
             base.updateState(elapsedTime);
@@ -58,6 +58,7 @@ namespace TD3d
 
         protected override void fireProjectile(Vector2 velocity, Vector2 iniPos)
         {
+            Console.Out.WriteLine("LASER DUDE!");
             this.projectiles.Add(new ProjectileLaser(new Position(iniPos.X, iniPos.Y),
                 new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
         }
