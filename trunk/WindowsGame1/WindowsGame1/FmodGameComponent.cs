@@ -199,7 +199,7 @@ namespace AudioSystem
 
             if (!IsMusicPlaying())
             {
-                System.Console.WriteLine("Here I am!" + directory);
+                //System.Console.WriteLine("Here I am!" + directory);
                 // zero out, in case we can't start anything
                 lastRandomDirectory = null;
                 musicFilename       = String.Empty;
