@@ -20,7 +20,7 @@ namespace TD3d
                   upgrade, towerdata, scout, hover, upgradehover, upgradefade,
                   smallzero, smallone, smalltwo, smallthree, smallfour,
                   smallfive, smallsix, smallseven, smalleight, smallnine,
-                  cash, upgradecost, smalldollar;
+                  cashamount, upgradecost, smalldollar;
         Tower selectedTower;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
@@ -37,7 +37,7 @@ namespace TD3d
             hover = content.Load<Texture2D>("Content/HUD/hover");
             upgradehover = content.Load<Texture2D>("Content/HUD/upgradehover");
             upgradefade = content.Load<Texture2D>("Content/HUD/upgradefade");
-            cash = content.Load<Texture2D>("Content/HUD/cash");
+            cashamount = content.Load<Texture2D>("Content/HUD/cash");
             upgradecost = content.Load<Texture2D>("Content/HUD/upgradecost");
 
             zero = content.Load<Texture2D>("Content/HUD/zero");
@@ -103,7 +103,11 @@ namespace TD3d
                         
             spriteBatch.Draw(tophud, new Rectangle((Window.ClientBounds.Width - tophud.Width) / 2, 0, tophud.Width, tophud.Height), Color.White);
             spriteBatch.Draw(righthud, new Rectangle((Window.ClientBounds.Width - righthud.Width), 40, righthud.Width, righthud.Height), Color.White);
-            spriteBatch.Draw(tensImage, new Rectangle((Window.ClientBounds.Width - (5 * tensImage.Width)) / 2, 25, tensImage.Width, tensImage.Height), Color.White);
+            spriteBatch.Draw(cashamount, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), 63, cashamount.Width, cashamount.Height), Color.White);
+
+            if(score > 0)
+                spriteBatch.Draw(tensImage, new Rectangle((Window.ClientBounds.Width - (5 * tensImage.Width)) / 2, 25, tensImage.Width, tensImage.Height), Color.White);
+
             spriteBatch.Draw(onesImage, new Rectangle((Window.ClientBounds.Width - (3 * onesImage.Width - 10)) / 2 + xModifier, 25, onesImage.Width, onesImage.Height), Color.White);
             spriteBatch.Draw(slash, new Rectangle((Window.ClientBounds.Width - (slash.Width)) / 2 + xModifier, 25, slash.Width, slash.Height), Color.White);
             spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width + (1 * two.Width)) / 2 + xModifier, 25, two.Width, two.Height), Color.White);
@@ -120,6 +124,8 @@ namespace TD3d
         {
             if (selectedTower == null)
                 return;
+
+            spriteBatch.Draw(upgradecost, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), 83, upgradecost.Width, upgradecost.Height), Color.White);
 
             drawNumber((selectedTower.getCost() * selectedTower.getLevel()), Window.ClientBounds.Width - 5, 95, true);
 

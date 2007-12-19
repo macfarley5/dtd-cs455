@@ -33,7 +33,7 @@ namespace TD3d
                     modmeshpart.Effect = this.effect.Clone(device);
 
             this.cost = 80;
-            this.damage = 50;
+            this.damage = 30;
         }       
 
         public override bool isOccupied()
@@ -48,6 +48,10 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
+            this.fireSpeed = 500 / level;
+            this.range = 2 + level;
+            this.damage = 30 + (5 * level);
+
             this.fireCounter -= elapsedTime;
             if (this.fireCounter < 0)
             {
