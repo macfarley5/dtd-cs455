@@ -22,6 +22,7 @@ namespace TD3d
             this.content = content;
             this.device = device;
             this.fireSpeed = 500f;
+            this.range = 5;
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
             this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
@@ -53,6 +54,12 @@ namespace TD3d
             this.damage = 30 + (5 * level);
 
             base.updateState(elapsedTime);
+        }
+
+        protected override void fireProjectile(Vector2 velocity, Vector2 iniPos)
+        {
+            this.projectiles.Add(new ProjectileLaser(new Position(iniPos.X, iniPos.Y),
+                new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
         }
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)

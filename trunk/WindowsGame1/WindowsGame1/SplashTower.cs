@@ -56,6 +56,13 @@ namespace TD3d
             base.updateState(elapsedTime);
         }
 
+        protected override void fireProjectile(Vector2 velocity, Vector2 iniPos)
+        {
+
+            this.projectiles.Add(new ProjectileCannon(new Position(iniPos.X, iniPos.Y),
+                new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
+        }
+
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
             Matrix wm = Matrix.CreateRotationX((float)Math.PI) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));

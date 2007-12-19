@@ -54,6 +54,13 @@ namespace TD3d
             base.updateState(elapsedTime);
         }
 
+        protected override void fireProjectile(Vector2 velocity, Vector2 iniPos)
+        {
+
+            this.projectiles.Add(new ProjectileBullet(new Position(iniPos.X, iniPos.Y),
+                new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
+        }
+
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
             float newScale = this.scale;

@@ -170,9 +170,8 @@ namespace TD3d
                             rot = (float)Math.Atan2(velocity.Y, velocity.X);
                         }
 
-                        this.fireCounter = this.fireSpeed;
-                        this.projectiles.Add(new ProjectileCannon(new Position(iniPos.X, iniPos.Y),
-                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
+                        this.fireCounter = this.fireSpeed; 
+                        fireProjectile(velocity, iniPos);
                     }
                 }
             }
@@ -207,6 +206,13 @@ namespace TD3d
                 //this.rot += .001f * elapsedTime;
             }
         }
+
+        protected abstract void fireProjectile(Vector2 velocity, Vector2 iniPos);
+       /* {
+
+            this.projectiles.Add(new ProjectileCannon(new Position(iniPos.X, iniPos.Y),
+                new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
+        }*/
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
