@@ -13,7 +13,7 @@ namespace TD3d
 {
     class FastTower : Tower
     {
-        private string modelAsset = "Content/newTower";
+        private string modelAsset = "Content/fastTower";
         public FastTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
         {
             target = null;
