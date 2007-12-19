@@ -268,6 +268,7 @@ namespace TD3d
                 Creep c = (Creep)creeps[i];
                 if (c.getPosition().getX() > (WIDTH - 1) - .1f && c.getPosition().getY() > (HEIGHT / 2) - .1f)
                 {
+                    c.injure(Int32.MaxValue);
                     creeps.RemoveAt(i--);
                     score--;
                 }
@@ -382,7 +383,17 @@ namespace TD3d
                 int xPos = (int)(mousePos.getX());
                 int yPos = (int)(mousePos.getY());
 
-                NormalTower tow = new NormalTower(graphics, content, device, creeps);
+                mouse.setTowerType(keyboard.getTowerNum());
+                Tile.TileType towerType = mouse.getTowerType();
+                Tower tow = null;
+                if (towerType == Tile.TileType.NORMALTOWER)
+                {
+                    tow = new NormalTower(graphics, content, device, creeps);
+                }
+                else if (towerType == Tile.TileType.FASTTOWER)
+                {
+                    tow = new FastTower(graphics, content, device, creeps);
+                }
                 tow.setPosition(xPos, yPos);
 
                 if (this.map.canPlaceTower(tow))
@@ -396,6 +407,15 @@ namespace TD3d
                     sel.setPosition(xPos, yPos);
                     sel.draw(viewMatrix, projectionMatrix, true);
                 }
+            }
+
+            Tower selectedTower = mouse.getSelectedTower();
+            if (selectedTower != null)
+            {
+                SelectionTile sel = new SelectionTile(graphics, content, device);
+                sel.setPosition((int)selectedTower.getPosition().getX(), (int)selectedTower.getPosition().getY());
+                sel.setColor(new Vector4(1f, 1f, 0f, 1f));
+                sel.draw(viewMatrix, projectionMatrix, true);
             }
 
             base.Draw(gameTime);

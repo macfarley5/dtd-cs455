@@ -93,6 +93,8 @@ namespace TD3d
                                 this.target = creep;
                             }
                         }
+
+                        rot += elapsedTime / 2500;
                     }
                     if (this.target != null && Position.dist(this.target.getVisualPosition(), myVisPos) < this.range)
                     {
@@ -112,9 +114,16 @@ namespace TD3d
                 //rot += elapsedTime / 700;
             }
 
-            foreach (Projectile p in this.projectiles)
+            for (int i = 0; i < this.projectiles.Count; i++)// (Projectile p in this.projectiles)
             {
-                p.updateState(elapsedTime);
+                if (Position.dist(((Projectile)this.projectiles[i]).getPosition(), ((Projectile)this.projectiles[i]).getTarget().getVisualPosition()) < .05)
+                {
+                    this.projectiles.RemoveAt(i--);
+                }
+                else
+                {
+                    ((Projectile)this.projectiles[i]).updateState(elapsedTime);
+                }
             }
 
             if (target != null)

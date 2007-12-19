@@ -16,6 +16,7 @@ namespace TD3d
         int WIDTH;
         Vector3 cameraRot;
         float cameraDist;
+        int towerNum = 0;
 
         public KeyboardX(int WIDTH)
         {
@@ -59,6 +60,15 @@ namespace TD3d
                     cameraDist = 5.25f;
             }
 
+            if (keys.IsKeyDown(Keys.D1))
+            {
+                this.towerNum = 0;
+            }
+            if (keys.IsKeyDown(Keys.D2))
+            {
+                this.towerNum = 1;
+            }
+
             this.cameraRot = cameraRot;
             this.cameraDist = cameraDist;
         }
@@ -71,6 +81,11 @@ namespace TD3d
         public float getCameraDist()
         {
             return this.cameraDist;
+        }
+
+        public int getTowerNum()
+        {
+            return this.towerNum;
         }
     }
 }
