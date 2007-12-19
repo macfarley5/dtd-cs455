@@ -14,6 +14,7 @@ namespace TD3d
     class SplashTower : Tower
     {
         private string modelAsset = "Content/newTower";
+
         public SplashTower(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, ArrayList creeps)
         {
             target = null;
@@ -43,7 +44,7 @@ namespace TD3d
 
         public override Tile.TileType getTileType()
         {
-            return TileType.FASTTOWER;
+            return TileType.SPLASHTOWER;
         }
 
         public override void updateState(float elapsedTime)
