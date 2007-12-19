@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Storage;
 using System.IO;
 
+using AudioSystem;
+
 namespace TD3d
 {
     public class Game1 : Microsoft.Xna.Framework.Game
@@ -30,6 +32,7 @@ namespace TD3d
         long cash;
         bool newWave = false;
         Cue musicCue;
+        private static Game1 instance;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -73,12 +76,17 @@ namespace TD3d
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
-            content = new ContentManager(Services);            
+            content = new ContentManager(Services);
+            instance = this;
         }
 
         protected override void Initialize()
         {
-            base.Initialize();
+            Components.Add(new AudioSystem.FmodGameComponent(this));
+            base.Initialize();            
+            Game1.AudioSystem.PlayRandomMusic("");
+            InitializeAudioSystem();            
+            
             LoadFloorplan();
             SetUpVertices();
             this.IsMouseVisible = true;
@@ -89,10 +97,22 @@ namespace TD3d
             hud = new HUD(this.Window, graphics, content);
 
             score = 20;
-            cash = 800;
+            cash = 800;            
+        }
 
-            Music.Initialize();
-            musicCue = Music.Play("sbtechno");
+        public static Game1 Instance { get { return instance; } }
+
+        public static IAudioSystem AudioSystem
+        {
+            get { return Instance.Services.GetService(typeof(IAudioSystem)) as IAudioSystem; }
+        }
+
+        public static void InitializeAudioSystem()
+        {
+            IAudioSystem audioSystem = Game1.AudioSystem;
+            audioSystem.LoadSound("zap1.wav");
+            audioSystem.LoadSound("laser.wav");
+            audioSystem.LoadSound("gun.wav");
         }
 
         private void LoadFloorplan()
@@ -108,9 +128,9 @@ namespace TD3d
         {
             device = graphics.GraphicsDevice;
 
-            graphics.PreferredBackBufferWidth = 1400;
-            graphics.PreferredBackBufferHeight = 900;
-            graphics.IsFullScreen = true;
+            graphics.PreferredBackBufferWidth = 1024;
+            graphics.PreferredBackBufferHeight = 768;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
             Window.Title = "Tower Defense";            
         }
@@ -298,12 +318,12 @@ namespace TD3d
             UpdateCamera();
             base.Update(gameTime);
 
-            if (!musicCue.IsPlaying)
+            /*if (!musicCue.IsPlaying)
             {
                 musicCue.Play();
             }
 
-            Music.Update();
+            Music.Update();*/
         }
 
         private void UpdateCamera()

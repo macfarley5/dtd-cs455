@@ -55,6 +55,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioSystem.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>AudioSystem</Name>
+    </Compile>
+    <Compile Include="fmod.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>fmod</Name>
+    </Compile>
+    <Compile Include="FmodGameComponent.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FmodGameComponent</Name>
+    </Compile>
+    <Compile Include="fmod_dsp.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>fmod_dsp</Name>
+    </Compile>
+    <Compile Include="fmod_errors.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>fmod_errors</Name>
+    </Compile>
     <Compile Include="Music.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>Music</Name>
@@ -782,30 +802,57 @@
       <Processor>ModelProcessor</Processor>
       <Name>laser</Name>
     </Content>
-    <Content Include="Content\Music\sbtechno.wav">
-      <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>sbtechno</Name>
-    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Music\music.xap">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>XactImporter</Importer>
-      <Processor>XactProcessor</Processor>
-      <Name>music</Name>
+    <Content Include="Content\25_-_end_of_stage.ogg">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>25_-_end_of_stage</Name>
     </Content>
-    <None Include="Content\Music\Win\Music Sound Bank.xsb">
+    <Content Include="Content\Audio\Music\Final_Fantasy_6_DevilSLAB_OC_ReMix.mp3">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Music Sound Bank</Name>
-    </None>
-    <None Include="Content\Music\Win\Music Wave Bank.xwb">
+      <Name>Final_Fantasy_6_DevilSLAB_OC_ReMix</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Music\Metroid_MindoftheMotherbrain_OC_ReMix.mp3">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>Music Wave Bank</Name>
-    </None>
-    <None Include="Content\Music\Win\music.xgs">
+      <Name>Metroid_MindoftheMotherbrain_OC_ReMix</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Music\Metroid_SamusStrut_OC_ReMix.mp3">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
-      <Name>music</Name>
-    </None>
+      <Name>Metroid_SamusStrut_OC_ReMix</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Music\Moby - Fireworks.mp3">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Moby - Fireworks</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Music\Tetris_Linear_Groove_OC_ReMix.mp3">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>Tetris_Linear_Groove_OC_ReMix</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Sounds\gun.wav">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>gun</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Sounds\laser.wav">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>laser</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Audio\Sounds\zap1.wav">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>zap1</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="fmodex.dll">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>fmodex</Name>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA\Game Studio Express\v1.0\Microsoft.Xna.ContentPipeline.targets" />
