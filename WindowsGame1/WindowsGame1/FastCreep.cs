@@ -13,7 +13,7 @@ namespace TD3d
     class FastCreep : Creep
     {
         private string modelAsset = "Content/cube_ndx";
-        private float scale = .5f;
+        private float scale = .6f;
         private float currentXSizeAngle = 0;
         private float currentYSizeAngle = 0;
         private float currentZSizeAngle = 0;
@@ -47,15 +47,15 @@ namespace TD3d
             }
             if (this.currentState == States.DAMAGED)
             {
-                currentXSizeAngle += elapsedTime / 60;
-                currentYSizeAngle += elapsedTime / 90;
-                currentZSizeAngle += elapsedTime / 75;
+                currentXSizeAngle += elapsedTime / 200;
+                currentYSizeAngle += elapsedTime / 300;
+                currentZSizeAngle += elapsedTime / 100;
             }
             else
             {
 
-                currentXSizeAngle += elapsedTime / 300;
-                currentYSizeAngle += elapsedTime / 420;
+                currentXSizeAngle += elapsedTime / 600;
+                currentYSizeAngle += elapsedTime / 720;
                 currentZSizeAngle += elapsedTime / 545;
             }
         }
