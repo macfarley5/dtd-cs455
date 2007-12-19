@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProjectileCannon.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>ProjectileCannon</Name>
+    </Compile>
     <Compile Include="ProjectileBullet.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>ProjectileBullet</Name>
