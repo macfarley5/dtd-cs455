@@ -161,7 +161,12 @@ namespace TD3d
                         Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
                         velocity.Normalize();
                         Vector2 iniPos = new Vector2(myVisPos.getX(), myVisPos.getY()) + velocity;
-                        rot = (float)Math.Atan2(velocity.Y, velocity.X);
+
+                        if (this.getTileType() != TileType.FASTTOWER)
+                        {
+                            System.Console.WriteLine("FASTTOWER");
+                            rot = (float)Math.Atan2(velocity.Y, velocity.X);
+                        }
 
                         this.fireCounter = this.fireSpeed;
                         this.projectiles.Add(new Projectile(new Position(iniPos.X, iniPos.Y),
@@ -188,7 +193,12 @@ namespace TD3d
 
             if (target != null)
             {
-                this.rot = (float)(Math.Atan2(target.getVisualPosition().getY() - this.pos.getY() - .5, target.getVisualPosition().getX() - this.pos.getX() - .5));
+                if (this.getTileType() == TileType.FASTTOWER)
+                {
+                    System.Console.WriteLine("FASTTOWER");
+                    rot += .005f * elapsedTime;
+                }
+                else this.rot = (float)(Math.Atan2(target.getVisualPosition().getY() - this.pos.getY() - .5, target.getVisualPosition().getX() - this.pos.getX() - .5));
             }
             else
             {
