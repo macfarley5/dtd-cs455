@@ -138,7 +138,8 @@ namespace TD3d
 
         public override void draw(Matrix vm, Matrix pm, bool showProjectile)
         {
-            Matrix wm = Matrix.CreateRotationX((float)Math.PI) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
+            float newScale = this.scale;
+            Matrix wm = Matrix.CreateRotationX((float)Math.PI) * Matrix.CreateScale(newScale, newScale, newScale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0f));
             // rot += .01f;
             int count = 0;
 
@@ -147,7 +148,7 @@ namespace TD3d
                 {
                     p.draw(vm, pm);
                 }
-
+            float blueval = (this.level/5f);
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
@@ -156,7 +157,7 @@ namespace TD3d
                     currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["I_s"].SetValue(new Vector4(.35f, .35f, .45f, 1f));
                     currenteffect.Parameters["k_a"].SetValue(new Vector4(.05f, .05f, .05f, 1f));
-                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.2f, .3f, .2f+blueval, 1f));
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.3f, .3f, .4f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .2f, .3f, 1f));
                     currenteffect.Parameters["alph"].SetValue(this.alphaVal);

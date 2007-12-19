@@ -164,7 +164,7 @@ namespace TD3d
                 LoadEffect();
 
                 scenerytexture = content.Load<Texture2D>("Content/texturemap");
-                bullettexture = content.Load<Texture2D>("Content/bullet");
+               // bullettexture = content.Load<Texture2D>("Content/bullet");
 
                 LoadModels();
             }
