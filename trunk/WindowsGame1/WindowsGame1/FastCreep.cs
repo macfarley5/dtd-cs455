@@ -56,7 +56,7 @@ namespace TD3d
 
                 currentXSizeAngle += elapsedTime / 600;
                 currentYSizeAngle += elapsedTime / 720;
-                currentZSizeAngle += elapsedTime / 545;
+                currentZSizeAngle += elapsedTime / 505;
             }
         }
 
@@ -67,9 +67,9 @@ namespace TD3d
             {
                 //scaleReducer = 25 + (100 / this.currentStateCountdown);
             }
-            float xScale =  (float)Math.Cos(currentXSizeAngle);
-            float yScale =  (float)Math.Cos(currentYSizeAngle);
-            float zScale =  (float)Math.Cos(currentZSizeAngle);
+            float xScale = currentXSizeAngle;
+            float yScale =  currentYSizeAngle;
+            float zScale =  currentZSizeAngle;
 
             {
                 Matrix worldMatrix = Matrix.CreateRotationX(xScale) *Matrix.CreateRotationY(yScale) *Matrix.CreateRotationZ(zScale) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));

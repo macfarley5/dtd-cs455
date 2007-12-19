@@ -171,7 +171,7 @@ namespace TD3d
                         }
 
                         this.fireCounter = this.fireSpeed;
-                        this.projectiles.Add(new ProjectileLaser(new Position(iniPos.X, iniPos.Y),
+                        this.projectiles.Add(new ProjectileCannon(new Position(iniPos.X, iniPos.Y),
                             new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
                     }
                 }

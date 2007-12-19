@@ -46,12 +46,12 @@ namespace TD3d
                         currenteffect.Parameters["I_a"].SetValue(new Vector4(.25f, .25f, .25f, 1f));
                         currenteffect.Parameters["I_d"].SetValue(new Vector4(.95f, .95f, .95f, 1f));
                         currenteffect.Parameters["I_s"].SetValue(new Vector4(.99f, .99f, .9f, 1f));
-                        currenteffect.Parameters["k_a"].SetValue(new Vector4(.3f, .8f, .3f, 1f));
-                        currenteffect.Parameters["k_d"].SetValue(new Vector4(.8f, .2f, .3f, 1f));
-                        currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .9f, .8f, 1f));
-                        currenteffect.Parameters["k_r"].SetValue(new Vector4(.8f, .5f, .2f, 1f));
+                        currenteffect.Parameters["k_a"].SetValue(new Vector4(.3f, .8f, .05f, 1f));
+                        currenteffect.Parameters["k_d"].SetValue(new Vector4(.3f, .8f, .08f, 1f));
+                        currenteffect.Parameters["k_s"].SetValue(new Vector4(.2f, .9f, .04f, 1f));
+                        currenteffect.Parameters["k_r"].SetValue(new Vector4(.4f, .9f, .02f, 1f));
                         currenteffect.Parameters["noisescale"].SetValue(.70f);
-                        currenteffect.Parameters["alph"].SetValue(.5f);
+                        //currenteffect.Parameters["alph"].SetValue(.85f);
                         currenteffect.Parameters["World"].SetValue(worldMatrix);
                         currenteffect.Parameters["View"].SetValue(viewMatrix);
                         currenteffect.Parameters["Projection"].SetValue(projectionMatrix);
