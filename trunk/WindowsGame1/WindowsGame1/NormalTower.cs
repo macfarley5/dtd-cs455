@@ -50,6 +50,7 @@ namespace TD3d
         {
             this.fireSpeed = 2000 / level;
             this.range = 4 + level;
+            this.damage = 30 + (5 * level);
 
             this.fireCounter -= elapsedTime;
             if (this.fireCounter < 0)
