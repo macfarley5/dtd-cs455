@@ -29,6 +29,7 @@ namespace TD3d
         int score;
         long cash;
         bool newWave = false;
+        Cue musicCue;
 
         // OTHER VARS
         GraphicsDeviceManager graphics;
@@ -89,6 +90,9 @@ namespace TD3d
 
             score = 20;
             cash = 800;
+
+            Music.Initialize();
+            musicCue = Music.Play("sbtechno");
         }
 
         private void LoadFloorplan()
@@ -293,6 +297,13 @@ namespace TD3d
 
             UpdateCamera();
             base.Update(gameTime);
+
+            if (!musicCue.IsPlaying)
+            {
+                musicCue.Play();
+            }
+
+            Music.Update();
         }
 
         private void UpdateCamera()
@@ -460,5 +471,7 @@ namespace TD3d
                 }
             }
         }
+
+        
     }
 }
