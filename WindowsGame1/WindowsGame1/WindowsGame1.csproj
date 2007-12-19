@@ -170,12 +170,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bullet.jpg">
-      <XNAUseContentPipeline>true</XNAUseContentPipeline>
-      <Importer>TextureImporter</Importer>
-      <Processor>SpriteTextureProcessor</Processor>
-      <Name>bullet</Name>
-    </Content>
     <Content Include="Content\effects.fx">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>EffectImporter</Importer>
@@ -731,6 +725,14 @@
       <Importer>XImporter</Importer>
       <Processor>ModelProcessor</Processor>
       <Name>newTower</Name>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bullet.x">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>XImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Name>bullet</Name>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

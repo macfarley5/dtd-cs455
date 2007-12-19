@@ -14,13 +14,14 @@ namespace TD3d
     class Projectile
     {
         protected Position pos;
+        protected float rot;
         protected Position velocity;
         protected float speed = .005f;
         protected int damageDone;
         protected bool doesSplash = false;
 
-        protected string modelAsset = "Content/sphere0";
-        protected float scale = .05f;
+        protected string modelAsset = "Content/bullet";
+        protected float scale = .3f;
         protected Effect effect;
         protected Model model;
         protected ArrayList creeps;
@@ -80,6 +81,8 @@ namespace TD3d
                 float newY = this.pos.getY() + elapsedTime * this.velocity.getY() * speed;
                 this.pos.setY(newY);
 
+                rot = (float)Math.Atan2(newVelocity.Y, newVelocity.X);
+
                 if (this.creeps.Count > 0)
                 {
                     ArrayList hurtCreeps = new ArrayList();
@@ -114,7 +117,7 @@ namespace TD3d
         public void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
             if (isActive){
-                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
+                Matrix worldMatrix = Matrix.CreateRotationZ(this.rot) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)
