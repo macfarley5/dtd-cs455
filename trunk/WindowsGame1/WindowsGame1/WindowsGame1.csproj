@@ -612,6 +612,12 @@
       <Processor>ModelProcessor</Processor>
       <Name>exit</Name>
     </Content>
+    <Content Include="Content\HUD\cash.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>cash</Name>
+    </Content>
     <Content Include="Content\HUD\hover.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
       <Importer>TextureImporter</Importer>
@@ -623,6 +629,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>scout</Name>
+    </Content>
+    <Content Include="Content\HUD\smalldollar.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalldollar</Name>
     </Content>
     <Content Include="Content\HUD\smalleight.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>
@@ -695,6 +707,18 @@
       <Importer>TextureImporter</Importer>
       <Processor>SpriteTextureProcessor</Processor>
       <Name>upgrade</Name>
+    </Content>
+    <Content Include="Content\HUD\upgradecost.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>upgradecost</Name>
+    </Content>
+    <Content Include="Content\HUD\upgradefade.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>upgradefade</Name>
     </Content>
     <Content Include="Content\HUD\upgradehover.png">
       <XNAUseContentPipeline>true</XNAUseContentPipeline>

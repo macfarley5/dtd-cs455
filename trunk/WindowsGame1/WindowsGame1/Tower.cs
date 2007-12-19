@@ -16,10 +16,12 @@ namespace TD3d
         protected Creep target;
         protected int level = 1;
         protected float scale = .13f;
-        protected float fireSpeed = 2000f;
+        protected float fireSpeed;
         protected float fireCounter = 1f;
         protected float rot = 0;
-        protected int range = 4;
+        protected int range;
+        protected int cost;
+        protected int damage;
         protected ArrayList projectiles = new ArrayList();
         protected GraphicsDeviceManager graphics;
         protected ContentManager content;
@@ -34,6 +36,12 @@ namespace TD3d
         public int getLevel()
         {
             return level;
+        }
+
+        public void incrementLevel()
+        {
+            if (level < 5)
+                level++;
         }
 
         public int getRange()
@@ -57,6 +65,16 @@ namespace TD3d
                 angle += 360;
 
             return angle;
+        }
+
+        public int getCost()
+        {
+            return cost;
+        }
+
+        public int getDamage()
+        {
+            return damage;
         }
 
         public void setTarget(Creep creep)

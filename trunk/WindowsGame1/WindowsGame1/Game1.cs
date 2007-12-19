@@ -406,13 +406,13 @@ namespace TD3d
 
             if (mouse.getSelectedTower() != null)
             {
-                Tower temp = (Tower)this.map.towers[0];
+                Tower temp = (Tower)mouse.getSelectedTower();
                 Tile.TileType towType = temp.getTileType();
                 hud.setSelectedTower(temp);
 
                 if(towType == Tile.TileType.NORMALTOWER)
                 {
-                    NormalTower display = (NormalTower)this.map.towers[0];
+                    NormalTower display = (NormalTower)mouse.getSelectedTower();
                     Position tmp = display.getPosition();
                     display.setPosition(10, 10);
                     display.draw(hudView, hudProjection, false);
@@ -420,7 +420,7 @@ namespace TD3d
                 }
                 else if (towType == Tile.TileType.FASTTOWER)
                 {
-                    FastTower display = (FastTower)this.map.towers[0];
+                    FastTower display = (FastTower)mouse.getSelectedTower();
                     Position tmp = display.getPosition();
                     display.setPosition(10, 10);
                     display.draw(hudView, hudProjection, false);

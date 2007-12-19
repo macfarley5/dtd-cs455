@@ -15,8 +15,8 @@ namespace TD3d
     {
         protected Position pos;
         protected Position velocity;
-        protected float speed=.005f;
-        protected int damageDone = 50;
+        protected float speed = .005f;
+        protected int damageDone;
         protected bool doesSplash = false;
 
         protected string modelAsset = "Content/sphere0";
@@ -32,7 +32,7 @@ namespace TD3d
 
         protected bool isActive = true;
 
-        public Projectile(Position pos, Position velocity,ArrayList creeps,GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, Creep target)
+        public Projectile(Position pos, Position velocity,ArrayList creeps,GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device, Creep target, int damage)
         {
             this.target = target;
             this.pos = pos;
@@ -41,6 +41,7 @@ namespace TD3d
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
             this.effect.Parameters["NoiseMap"].SetValue(content.Load<Texture3D>("Content/smallnoise3d"));
+            this.damageDone = damage;
 
             this.model = content.Load<Model>(modelAsset);
             foreach (ModelMesh modmesh in model.Meshes)

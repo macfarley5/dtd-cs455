@@ -22,6 +22,7 @@ namespace TD3d
         Map map;
         long cash;
         Tower selectedTower;
+        bool pressButton = false;
 
         public MouseX(GameWindow Window, int WIDTH, int HEIGHT, GraphicsDeviceManager graphics, 
                       ContentManager content, GraphicsDevice device, Map map)
@@ -40,7 +41,37 @@ namespace TD3d
         {
             this.cash = cash;
             MouseState ms = Mouse.GetState();
-            
+
+            if (ms.X > (Window.ClientBounds.Width - 231) &&
+               ms.X < Window.ClientBounds.Width &&
+               ms.Y > 40 &&
+               ms.Y < (40 + 385)) // if the pointer is within the bounds of the right HUD
+            {
+                if (ms.X > (Window.ClientBounds.Width - 113 - 45) &&
+                    ms.X < (Window.ClientBounds.Width - 45) &&
+                    ms.Y > 375 &&
+                    ms.Y < (375 + 30) && 
+                    selectedTower != null && 
+                    this.cash >= selectedTower.getCost() * selectedTower.getLevel()) // if the pointer is on the upgrade button
+                {
+                    if (ms.LeftButton == ButtonState.Pressed) // clicked on the upgrade button
+                    {
+                        pressButton = true;
+                    }
+                    else if (ms.LeftButton == ButtonState.Released && pressButton)
+                    {
+                        this.cash -= selectedTower.getCost() * selectedTower.getLevel();
+                        selectedTower.incrementLevel();                        
+                        pressButton = false;
+                    }
+                }
+                else pressButton = false;
+                
+                return thePath;
+            }
+
+            pressButton = false;
+
             if (ms.X < 0 || ms.X > this.Window.ClientBounds.Width || 
                 ms.Y < 0 || ms.Y > this.Window.ClientBounds.Height)
                 return thePath;
@@ -94,12 +125,11 @@ namespace TD3d
 
                     if (ms.LeftButton == ButtonState.Pressed)
                     {
-                        System.Console.WriteLine(xPos + " " + yPos);
                         NormalTower tow = new NormalTower(graphics, content, device, creeps);
                         tow.setPosition(xPos, yPos);
 
                         if (!this.map.isOccupied(xPos, yPos))
-                            this.cash = this.cash - 80;
+                            this.cash = this.cash - tow.getCost();
                         else
                         {
                             Tower tmpTower = this.map.getTower(xPos, yPos);
@@ -129,11 +159,11 @@ namespace TD3d
                             if (anyBlocked)
                             {
                                 this.map.removeTower(tow);
-                                this.cash = this.cash + 80;
+                                this.cash = this.cash + tow.getCost();
                             }
                             else
                             {
-                                selectedTower = this.map.getTower(xPos, yPos);
+                                //selectedTower = this.map.getTower(xPos, yPos);
 
                                 foreach (Creep creep in creeps)
                                 {
@@ -144,7 +174,7 @@ namespace TD3d
                         else
                         {
                             this.map.removeTower(tow);
-                            this.cash = this.cash + 80;
+                            this.cash = this.cash + tow.getCost();
                         }
                     }
                 }
