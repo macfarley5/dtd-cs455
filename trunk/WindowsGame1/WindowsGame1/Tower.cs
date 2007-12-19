@@ -160,6 +160,7 @@ namespace TD3d
                     }
                     if (this.target != null && Position.dist(this.target.getVisualPosition(), myVisPos) < this.range)
                     {
+                        bestPos = target.getVisualPosition();
                         Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
                         velocity.Normalize();
                         Vector2 iniPos = new Vector2(myVisPos.getX(), myVisPos.getY()) + velocity;

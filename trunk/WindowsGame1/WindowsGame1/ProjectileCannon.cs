@@ -38,7 +38,7 @@ namespace TD3d
         {
             float length = 1;// this.speed * 150;
             if (isActive){
-                Matrix worldMatrix = Matrix.CreateScale(this.scale*length, this.scale, this.scale)* Matrix.CreateRotationZ(this.rot) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
+                Matrix worldMatrix = Matrix.CreateScale(this.scale*length, this.scale, this.scale)* Matrix.CreateRotationZ(this.rot) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.175f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)
