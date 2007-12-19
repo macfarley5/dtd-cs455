@@ -56,7 +56,7 @@ namespace TD3d
 
         protected override void fireProjectile(Vector2 velocity, Vector2 iniPos)
         {
-
+            //Game1.AudioSystem.PlaySound("gun.wav");
             this.projectiles.Add(new ProjectileBullet(new Position(iniPos.X, iniPos.Y),
                 new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
         }
