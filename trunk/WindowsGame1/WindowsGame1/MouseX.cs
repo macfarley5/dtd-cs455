@@ -183,7 +183,7 @@ namespace TD3d
                             }
                             else
                             {
-                                //selectedTower = this.map.getTower(xPos, yPos);
+                                selectedTower = this.map.getTower(xPos, yPos);
 
                                 foreach (Creep creep in creeps)
                                 {
