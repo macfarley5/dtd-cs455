@@ -23,6 +23,9 @@ namespace TD3d
         long cash;
         Tower selectedTower;
         bool pressButton = false;
+        bool pressedBoard = false;
+        Tile.TileType towerType = Tile.TileType.NORMALTOWER;
+        int scrollWheelValue = 0;
 
         public MouseX(GameWindow Window, int WIDTH, int HEIGHT, GraphicsDeviceManager graphics, 
                       ContentManager content, GraphicsDevice device, Map map)
@@ -125,7 +128,20 @@ namespace TD3d
 
                     if (ms.LeftButton == ButtonState.Pressed)
                     {
-                        NormalTower tow = new NormalTower(graphics, content, device, creeps);
+                        pressedBoard = true;
+                    }
+                    else if (ms.LeftButton == ButtonState.Released && pressedBoard)
+                    {
+                        pressedBoard = false;
+                        Tower tow = null;
+                        if (this.towerType == Tile.TileType.NORMALTOWER)
+                        {
+                            tow = new NormalTower(graphics, content, device, creeps);
+                        }
+                        else if (this.towerType == Tile.TileType.FASTTOWER)
+                        {
+                            tow = new FastTower(graphics, content, device, creeps);
+                        }
                         tow.setPosition(xPos, yPos);
 
                         if (!this.map.isOccupied(xPos, yPos))
@@ -181,6 +197,7 @@ namespace TD3d
                 else mousePos = null;
             }
             else mousePos = null;
+
             return thePath;
         }
 
@@ -193,6 +210,24 @@ namespace TD3d
             float t = -(Vector3.Dot(pN, rayO) + d) / Vector3.Dot(pN, rayD);
             if (t <= 0) return 1e8f;
             return t;
+        }
+
+        public Tile.TileType getTowerType()
+        {
+            return this.towerType;
+        }
+
+        public void setTowerType(int towNum)
+        {
+            switch (towNum)
+            {
+                case 0:
+                    this.towerType = Tile.TileType.NORMALTOWER;
+                    break;
+                case 1:
+                    this.towerType = Tile.TileType.FASTTOWER;
+                    break;
+            }
         }
 
         public Position getPos()

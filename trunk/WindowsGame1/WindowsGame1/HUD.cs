@@ -224,7 +224,7 @@ namespace TD3d
                 }
             }
 
-            System.Console.WriteLine(hundredT + "," + tenT + "," + thousands + "," + hundreds + "," + tens + "," + ones);
+            //System.Console.WriteLine(hundredT + "," + tenT + "," + thousands + "," + hundreds + "," + tens + "," + ones);
 
             onesImg = getNumberImg(ones, true);
             tensImg = getNumberImg(tens, true);

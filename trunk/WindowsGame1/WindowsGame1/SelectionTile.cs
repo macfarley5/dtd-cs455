@@ -16,12 +16,14 @@ namespace TD3d
         protected GraphicsDeviceManager graphics;
         protected ContentManager content;
         protected GraphicsDevice device;
+        protected Vector4 color;
 
         public SelectionTile(GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
             this.graphics = graphics;
             this.content = content;
             this.device = device;
+            this.color = new Vector4(1f, 0f, 0f, 1f);
             CompiledEffect compiledEffect = Effect.CompileEffectFromFile("@/../../../../Content/MetallicFlakes.fx", null, null, CompilerOptions.None, TargetPlatform.Windows);
             this.effect = new Effect(graphics.GraphicsDevice, compiledEffect.GetEffectCode(), CompilerOptions.None, null);
 
@@ -51,6 +53,11 @@ namespace TD3d
             //;
         }
 
+        public void setColor(Vector4 color)
+        {
+            this.color = color;
+        }
+
         public override void draw(Microsoft.Xna.Framework.Matrix viewMatrix, Microsoft.Xna.Framework.Matrix projectionMatrix, bool showProjectile)
         {
             Matrix wm = Matrix.CreateScale(1.7f, 1.7f, .2f) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + 1.0f, this.getPosition().getY() + 1.0f, 0.05f));
@@ -59,7 +66,7 @@ namespace TD3d
             {
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
-                    currenteffect.Parameters["I_a"].SetValue(new Vector4(1f, 0f, 0f, 1f));
+                    currenteffect.Parameters["I_a"].SetValue(this.color);
                     currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["I_s"].SetValue(new Vector4(.5f, .5f, .9f, 1f));
                     currenteffect.Parameters["k_a"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
