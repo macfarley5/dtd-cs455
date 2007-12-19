@@ -444,6 +444,14 @@ namespace TD3d
                 }
                 else if (towType == Tile.TileType.FASTTOWER)
                 {
+                    FastTower display = (FastTower)mouse.getSelectedTower();
+                    Position tmp = display.getPosition();
+                    display.setPosition(10, 10);
+                    display.draw(hudView, hudProjection, false);
+                    display.setPosition((int)tmp.getX(), (int)tmp.getY());
+                }
+                else if (towType == Tile.TileType.SPLASHTOWER)
+                {
                     SplashTower display = (SplashTower)mouse.getSelectedTower();
                     Position tmp = display.getPosition();
                     display.setPosition(10, 10);
