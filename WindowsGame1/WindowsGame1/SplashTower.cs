@@ -74,16 +74,16 @@ namespace TD3d
                 {
                     p.draw(vm, pm);
                 }
-
+            float blueval = (this.level / 5f);
             foreach (ModelMesh modmesh in this.model.Meshes)
             {
                 foreach (Effect currenteffect in modmesh.Effects)
                 {
-                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.015f, this.alphaVal < 1 ? 1 : .05f, .015f, .1f));
+                    currenteffect.Parameters["I_a"].SetValue(new Vector4(.015f, .05f, .015f, .1f));
                     currenteffect.Parameters["I_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
                     currenteffect.Parameters["I_s"].SetValue(new Vector4(.35f, .35f, .45f, 1f));
                     currenteffect.Parameters["k_a"].SetValue(new Vector4(.05f, .05f, .05f, 1f));
-                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.5f, .5f, .5f, 1f));
+                    currenteffect.Parameters["k_d"].SetValue(new Vector4(.2f + blueval, .05f, .15f, 1f));
                     currenteffect.Parameters["k_s"].SetValue(new Vector4(.3f, .3f, .4f, 1f));
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .2f, .3f, 1f));
                     currenteffect.Parameters["alph"].SetValue(this.alphaVal);

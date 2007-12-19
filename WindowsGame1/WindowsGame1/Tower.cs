@@ -166,7 +166,7 @@ namespace TD3d
 
                         if (this.getTileType() != TileType.FASTTOWER)
                         {
-                            System.Console.WriteLine("FASTTOWER");
+                            //System.Console.WriteLine("FASTTOWER");
                             rot = (float)Math.Atan2(velocity.Y, velocity.X);
                         }
 
