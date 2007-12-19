@@ -9,11 +9,11 @@ Global Settings
 {
     Xbox File = Xbox\music.xgs;
     Windows File = Win\music.xgs;
-    Header File = music.h;
+    Header File = C:\Documents and Settings\mfarley\Desktop\cs455game\code-base\WindowsGame1\WindowsGame1\Content\Music\music.h;
     Exclude Category Names = 0;
     Exclude Variable Names = 0;
-    Last Modified Low = 0;
-    Last Modified High = 0;
+    Last Modified Low = 3559673694;
+    Last Modified High = 29901311;
 
     Category
     {
@@ -219,6 +219,10 @@ Wave Bank
     Windows File = Win\Music Wave Bank.xwb;
     Seek Tables = 1;
     Compression Preset Name = <none>;
+    Xbox Bank Last Modified Low = 0;
+    Xbox Bank Last Modified High = 0;
+    PC Bank Last Modified Low = 3559673694;
+    PC Bank Last Modified High = 29901311;
 
     Wave
     {
@@ -249,6 +253,10 @@ Sound Bank
     Name = Music Sound Bank;
     Xbox File = Xbox\Music Sound Bank.xsb;
     Windows File = Win\Music Sound Bank.xsb;
+    Bank Last Modified Low = 3560142444;
+    Bank Last Modified High = 29901311;
+    Header Last Modified High = 0;
+    Header Last Modified Low = 0;
 
     Sound
     {
