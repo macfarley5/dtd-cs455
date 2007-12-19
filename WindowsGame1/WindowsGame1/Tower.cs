@@ -114,6 +114,9 @@ namespace TD3d
         }
         public override void updateState(float elapsedTime)
         {
+            Position myVisPos = this.getPosition();
+            myVisPos.setX(myVisPos.getX() + .5f);
+            myVisPos.setY(myVisPos.getY() + .5f);
             this.fireCounter -= elapsedTime;
             if (this.fireCounter < 0)
             {
@@ -121,9 +124,6 @@ namespace TD3d
                 if (this.creeps.Count > 0)
                 {
                     Position bestPos = ((Creep)creeps[0]).getVisualPosition();
-                    Position myVisPos = this.getPosition();
-                    myVisPos.setX(myVisPos.getX() + .5f);
-                    myVisPos.setY(myVisPos.getY() + .5f);
                     float bestDist = 100000f;
 
                     // see if target is out of range. if so, set new target
@@ -182,7 +182,8 @@ namespace TD3d
 
             for (int i = 0; i < this.projectiles.Count; i++)// (Projectile p in this.projectiles)
             {
-                if (Position.dist(((Projectile)this.projectiles[i]).getPosition(), ((Projectile)this.projectiles[i]).getTarget().getVisualPosition()) < .05)
+                if (Position.dist(((Projectile)this.projectiles[i]).getPosition(), ((Projectile)this.projectiles[i]).getTarget().getVisualPosition()) < .05 ||
+                    Position.dist(((Projectile)this.projectiles[i]).getPosition(), myVisPos) > Position.dist(((Projectile)this.projectiles[i]).getTarget().getVisualPosition(), myVisPos))
                 {
                     this.projectiles.RemoveAt(i--);
                 }
