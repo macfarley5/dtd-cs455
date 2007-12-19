@@ -423,7 +423,7 @@ namespace TD3d
             }
 
             base.Draw(gameTime);
-            hud.Draw(score, cash, mouse.getScreenXPos(), mouse.getScreenYPos());
+            hud.Draw(score, cash, waveNum, mouse.getScreenXPos(), mouse.getScreenYPos());
 
             Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 8), new Vector3(this.WIDTH / 2 - 7.1f, this.HEIGHT / 2, -2.7f), new Vector3(0, -0.35f, 1));
             Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
