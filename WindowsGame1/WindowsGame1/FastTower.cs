@@ -51,7 +51,7 @@ namespace TD3d
         {
             this.fireSpeed = 500 / level;
             this.range = 4 + level/2;
-            this.damage = 30 + (5 * level);
+            this.damage = 15 + (5 * level);
 
             base.updateState(elapsedTime);
         }
