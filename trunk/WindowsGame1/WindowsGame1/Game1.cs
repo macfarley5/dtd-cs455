@@ -104,9 +104,9 @@ namespace TD3d
         {
             device = graphics.GraphicsDevice;
 
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
-            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 1400;
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
             Window.Title = "Tower Defense";            
         }
