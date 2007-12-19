@@ -17,17 +17,29 @@ namespace TD3d
         SpriteBatch spriteBatch;
         Texture2D tophud, righthud, zero, one, two, three, four, five, 
                   six, seven, eight, nine, slash, empty, gameover, dollar,
-                  upgrade, towerdata, scout, hover, upgradehover,
+                  upgrade, towerdata, scout, hover, upgradehover, upgradefade,
                   smallzero, smallone, smalltwo, smallthree, smallfour,
-                  smallfive, smallsix, smallseven, smalleight, smallnine;
+                  smallfive, smallsix, smallseven, smalleight, smallnine,
+                  cash, upgradecost, smalldollar;
         Tower selectedTower;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
         {
             this.Window = Window;
+
             spriteBatch = new SpriteBatch(graphics.GraphicsDevice);
             tophud = content.Load<Texture2D>("Content/HUD/tophud");
             righthud = content.Load<Texture2D>("Content/HUD/righthud");
+            gameover = content.Load<Texture2D>("Content/HUD/gameover");
+            upgrade = content.Load<Texture2D>("Content/HUD/upgrade");
+            towerdata = content.Load<Texture2D>("Content/HUD/towerdata");
+            scout = content.Load<Texture2D>("Content/HUD/scout");
+            hover = content.Load<Texture2D>("Content/HUD/hover");
+            upgradehover = content.Load<Texture2D>("Content/HUD/upgradehover");
+            upgradefade = content.Load<Texture2D>("Content/HUD/upgradefade");
+            cash = content.Load<Texture2D>("Content/HUD/cash");
+            upgradecost = content.Load<Texture2D>("Content/HUD/upgradecost");
+
             zero = content.Load<Texture2D>("Content/HUD/zero");
             one = content.Load<Texture2D>("Content/HUD/one");
             two = content.Load<Texture2D>("Content/HUD/two");
@@ -40,14 +52,8 @@ namespace TD3d
             nine = content.Load<Texture2D>("Content/HUD/nine");
             slash = content.Load<Texture2D>("Content/HUD/slash");
             empty = content.Load<Texture2D>("Content/HUD/empty");
-            gameover = content.Load<Texture2D>("Content/HUD/gameover");
             dollar = content.Load<Texture2D>("Content/HUD/dollar");
-            upgrade = content.Load<Texture2D>("Content/HUD/upgrade");
-            towerdata = content.Load<Texture2D>("Content/HUD/towerdata");
-            scout = content.Load<Texture2D>("Content/HUD/scout");
-            hover = content.Load<Texture2D>("Content/HUD/hover");
-            upgradehover = content.Load<Texture2D>("Content/HUD/upgradehover");
-
+            
             smallzero = content.Load<Texture2D>("Content/HUD/smallzero");
             smallone = content.Load<Texture2D>("Content/HUD/smallone");
             smalltwo = content.Load<Texture2D>("Content/HUD/smalltwo");
@@ -58,6 +64,7 @@ namespace TD3d
             smallseven = content.Load<Texture2D>("Content/HUD/smallseven");
             smalleight = content.Load<Texture2D>("Content/HUD/smalleight");
             smallnine = content.Load<Texture2D>("Content/HUD/smallnine");
+            smalldollar = content.Load<Texture2D>("Content/HUD/smalldollar");
 
             selectedTower = null;
         }
@@ -68,20 +75,12 @@ namespace TD3d
         }
 
         public void Draw(int score, long cash, int mouseXPos, int mouseYPos)
-        {            
+        {
             Texture2D tensImage = empty;
             Texture2D onesImage = empty;
-            Texture2D cash1img = empty;
-            Texture2D cash10img = empty;
-            Texture2D cash100img = empty;
-            Texture2D cash1000img = empty;
-            Texture2D cash10000img = empty;
             int ones = 0;
             int xModifier;
-            int cash1, cash10, cash100, cash1000, cash10000;
-            cash1 = cash10 = cash100 = cash1000 = cash10000 = 0;
-            cash += 1000000;
-
+         
             spriteBatch.Begin(SpriteBlendMode.AlphaBlend, SpriteSortMode.Deferred, SaveStateMode.SaveState);
 
             if(score == 0)
@@ -93,142 +92,8 @@ namespace TD3d
                 ones++;
             }
 
-            switch (score)
-            {
-                case 0: tensImage = empty; break;
-                case 10: tensImage = one; break;
-                case 20: tensImage = two; break;
-            }
-
-            switch (ones)
-            {
-                case 0: onesImage = zero; break;
-                case 1: onesImage = one; break;
-                case 2: onesImage = two; break;
-                case 3: onesImage = three; break;
-                case 4: onesImage = four; break;
-                case 5: onesImage = five; break;
-                case 6: onesImage = six; break;
-                case 7: onesImage = seven; break;
-                case 8: onesImage = eight; break;
-                case 9: onesImage = nine; break;
-            }
-
-            while (cash % 10 != 0)
-            {
-                cash--;
-                cash1++;
-            }
-
-            while (cash % 100 != 0)
-            {
-                cash = cash - 10;
-                cash10++;
-            }
-
-            while (cash % 1000 != 0)
-            {
-                cash = cash - 100;
-                cash100++;
-            }
-
-            while (cash % 10000 != 0)
-            {
-                cash = cash - 1000;
-                cash1000++; 
-            }
-
-            while (cash % 100000 != 0)
-            {
-                cash = cash - 10000;
-                cash10000++;
-            }
-
-            switch(cash1)
-            {
-                case 0: cash1img = zero; break;
-                case 1: cash1img = one; break;
-                case 2: cash1img = two; break;
-                case 3: cash1img = three; break;
-                case 4: cash1img = four; break;
-                case 5: cash1img = five; break;
-                case 6: cash1img = six; break;
-                case 7: cash1img = seven; break;
-                case 8: cash1img = eight; break;
-                case 9: cash1img = nine; break;
-            }
-
-            switch(cash10)
-            {
-                case 0:
-                    if(cash10000 == 0 && cash1000 == 0 && cash100 == 0)
-                        cash10img = dollar;
-                    else cash10img = zero; break;
-                case 1: cash10img = one; break;
-                case 2: cash10img = two; break;
-                case 3: cash10img = three; break;
-                case 4: cash10img = four; break;
-                case 5: cash10img = five; break;
-                case 6: cash10img = six; break;
-                case 7: cash10img = seven; break;
-                case 8: cash10img = eight; break;
-                case 9: cash10img = nine; break;
-            }
-
-            switch(cash100)
-            {
-                case 0: 
-                    if(cash10 == 0 && cash1000 == 0 && cash10000 == 0)                        
-                        cash100img = empty;
-                    else if(cash10000 == 0 && cash1000 == 0)
-                        cash100img = dollar; 
-                    else cash100img = zero; break;
-                case 1: cash100img = one; break;
-                case 2: cash100img = two; break;
-                case 3: cash100img = three; break;
-                case 4: cash100img = four; break;
-                case 5: cash100img = five; break;
-                case 6: cash100img = six; break;
-                case 7: cash100img = seven; break;
-                case 8: cash100img = eight; break;
-                case 9: cash100img = nine; break;
-            }
-
-            switch(cash1000)
-            {
-                case 0: 
-                    if(cash100 == 0 && cash10000 == 0)
-                         cash1000img = empty;
-                    else if(cash10000 == 0)
-                        cash1000img = dollar; 
-                    else cash1000img = zero; break;
-                case 1: cash1000img = one; break;
-                case 2: cash1000img = two; break;
-                case 3: cash1000img = three; break;
-                case 4: cash1000img = four; break;
-                case 5: cash1000img = five; break;
-                case 6: cash1000img = six; break;
-                case 7: cash1000img = seven; break;
-                case 8: cash1000img = eight; break;
-                case 9: cash1000img = nine; break;
-            }
-
-            switch(cash10000)
-            {
-                case 0:
-                    if(cash1000 == 0)
-                        cash10000img = empty;
-                    else cash10000img = dollar; break;
-                case 1: cash10000img = one; break;
-                case 2: cash10000img = two; break;
-                case 3: cash10000img = three; break;
-                case 4: cash10000img = four; break;
-                case 5: cash10000img = five; break;
-                case 6: cash10000img = six; break;
-                case 7: cash10000img = seven; break;
-                case 8: cash10000img = eight; break;
-                case 9: cash10000img = nine; break;
-            }
+            onesImage = getNumberImg(ones, false);
+            tensImage = getNumberImg(score / 10, false);
 
             if (score < 10)
             {
@@ -244,24 +109,19 @@ namespace TD3d
             spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width + (1 * two.Width)) / 2 + xModifier, 25, two.Width, two.Height), Color.White);
             spriteBatch.Draw(zero, new Rectangle((Window.ClientBounds.Width + (3 * zero.Width)) / 2 + xModifier, 25, zero.Width, zero.Height), Color.White);
 
-            spriteBatch.Draw(cash1img, new Rectangle((Window.ClientBounds.Width - cash1img.Width - 5), (55), cash1img.Width, cash1img.Height), Color.White);
-            spriteBatch.Draw(cash10img, new Rectangle((Window.ClientBounds.Width - (cash10img.Width + cash1img.Width) - 10), (55), cash10img.Width, cash10img.Height), Color.White);
-            spriteBatch.Draw(cash100img, new Rectangle((Window.ClientBounds.Width - (cash100img.Width + cash10img.Width + cash1img.Width) - 15), (55), cash100img.Width, cash100img.Height), Color.White);
-            spriteBatch.Draw(cash1000img, new Rectangle((Window.ClientBounds.Width - (cash1000img.Width + cash100img.Width + cash10img.Width + cash1img.Width) - 20), (55), cash1000img.Width, cash1000img.Height), Color.White);
-            spriteBatch.Draw(cash10000img, new Rectangle((Window.ClientBounds.Width - (cash10000img.Width + cash1000img.Width + cash100img.Width + cash10img.Width + cash1img.Width) - 25), (55), cash10000img.Width, cash10000img.Height), Color.White);
-
-            if(cash10000 != 0)
-                spriteBatch.Draw(dollar, new Rectangle((Window.ClientBounds.Width - (dollar.Width + cash10000img.Width + cash1000img.Width + cash100img.Width + cash10img.Width + cash1img.Width) - 30), (55), dollar.Width, dollar.Height), Color.White);
-
-            drawTowerInfo(mouseXPos, mouseYPos);
+            drawNumber(cash, Window.ClientBounds.Width - 5, 75, true);
+                        
+            drawTowerInfo(mouseXPos, mouseYPos, cash);
             
             spriteBatch.End();
         }
 
-        private void drawTowerInfo(int mouseXPos, int mouseYPos)
+        private void drawTowerInfo(int mouseXPos, int mouseYPos, long cash)
         {
             if (selectedTower == null)
                 return;
+
+            drawNumber((selectedTower.getCost() * selectedTower.getLevel()), Window.ClientBounds.Width - 5, 95, true);
 
             if(selectedTower.getTileType() == Tile.TileType.NORMALTOWER)
                 spriteBatch.Draw(scout, new Rectangle((Window.ClientBounds.Width - scout.Width - 30), (235), scout.Width, scout.Height), Color.White);
@@ -270,16 +130,18 @@ namespace TD3d
 
             spriteBatch.Draw(towerdata, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), (265), towerdata.Width, towerdata.Height), Color.White);
 
-            drawNumber(selectedTower.getLevel(), Window.ClientBounds.Width - 10, 277);
-            drawNumber(selectedTower.getRange(), Window.ClientBounds.Width - 10, 298);
-            drawNumber((long)((1.0f / selectedTower.getFireSpeed()) * 10000), Window.ClientBounds.Width - 10, 319);
-            drawNumber(selectedTower.getAngle(), Window.ClientBounds.Width - 10, 340);
+            drawNumber(selectedTower.getLevel(), Window.ClientBounds.Width - 10, 277, false);
+            drawNumber(selectedTower.getRange(), Window.ClientBounds.Width - 10, 298, false);
+            drawNumber((long)((1.0f / selectedTower.getFireSpeed()) * 10000), Window.ClientBounds.Width - 10, 319, false);
+            drawNumber(selectedTower.getAngle(), Window.ClientBounds.Width - 10, 340, false);
 
             if(selectedTower.getTarget() != null)
-                drawNumber(selectedTower.getTarget().getHealth(), Window.ClientBounds.Width - 10, 360);
-            else drawNumber(0, Window.ClientBounds.Width - 10, 360);
+                drawNumber(selectedTower.getTarget().getHealth(), Window.ClientBounds.Width - 10, 360, false);
+            else drawNumber(0, Window.ClientBounds.Width - 10, 360, false);
 
-            if(mouseXPos > (Window.ClientBounds.Width - upgrade.Width - 45) && 
+            if(selectedTower.getLevel() >= 5 || cash < (selectedTower.getCost() * selectedTower.getLevel()))
+                spriteBatch.Draw(upgradefade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
+            else if(mouseXPos > (Window.ClientBounds.Width - upgrade.Width - 45) && 
                mouseXPos < (Window.ClientBounds.Width - 45) &&
                mouseYPos > 375 &&
                mouseYPos < (375 + upgrade.Height))
@@ -287,7 +149,7 @@ namespace TD3d
             else spriteBatch.Draw(upgrade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
         }
 
-        private void drawNumber(long number, int xPos, int yPos) // xPos and YPos are bottom right corner of number, numbers must be >= 0 and <= 999,999
+        private void drawNumber(long number, int xPos, int yPos, bool dollars) // xPos and YPos are bottom right corner of number, numbers must be >= 0 and <= 999,999
         {
             int ones, tens, hundreds, thousands, tenT, hundredT, places;
             ones = tens = hundreds = thousands = tenT = hundredT = 0;
@@ -370,24 +232,39 @@ namespace TD3d
             spriteBatch.Draw(onesImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), onesImg.Width, onesImg.Height), Color.White);
             xMod += 10;
 
-            if(places > 1)
+            if (places > 1)
+            {
                 spriteBatch.Draw(tensImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), tensImg.Width, tensImg.Height), Color.White);
-            xMod += 10;
+                xMod += 10;
+            }
 
-            if(places > 2)
+            if (places > 2)
+            {
                 spriteBatch.Draw(hundredsImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), hundredsImg.Width, hundredsImg.Height), Color.White);
-            xMod += 10;
+                xMod += 10;
+            }
 
-            if(places > 3)
+            if (places > 3)
+            {
                 spriteBatch.Draw(thousandsImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), thousandsImg.Width, thousandsImg.Height), Color.White);
-            xMod += 10;
+                xMod += 10;
+            }
 
-            if(places > 4)
+            if (places > 4)
+            {
                 spriteBatch.Draw(tenTImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), tenTImg.Width, tenTImg.Height), Color.White);
-            xMod += 10;
+                xMod += 10;
+            }
 
-            if(places > 5)
+            if (places > 5)
+            {
                 spriteBatch.Draw(hundredTImg, new Rectangle((xPos - xMod), (yPos - onesImg.Height), hundredTImg.Width, hundredTImg.Height), Color.White);
+                xMod += 10;
+            }
+
+            if(dollars)
+                spriteBatch.Draw(smalldollar, new Rectangle((xPos - xMod), (yPos - onesImg.Height), smalldollar.Width, smalldollar.Height), Color.White);
+
         }
 
         private Texture2D getNumberImg(int switchOn, bool small)

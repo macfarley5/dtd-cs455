@@ -31,6 +31,9 @@ namespace TD3d
             foreach (ModelMesh modmesh in model.Meshes)
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
                     modmeshpart.Effect = this.effect.Clone(device);
+
+            this.cost = 50;
+            this.damage = 30;
         }
 
         public override bool isOccupied()
@@ -45,6 +48,9 @@ namespace TD3d
 
         public override void updateState(float elapsedTime)
         {
+            this.fireSpeed = 2000 / level;
+            this.range = 4 + level;
+
             this.fireCounter -= elapsedTime;
             if (this.fireCounter < 0)
             {
@@ -98,7 +104,7 @@ namespace TD3d
 
                         this.fireCounter = this.fireSpeed;
                         this.projectiles.Add(new Projectile(new Position(iniPos.X, iniPos.Y),
-                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target));
+                            new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage));
                     }
                 }
             }
