@@ -91,7 +91,7 @@ namespace TD3d
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
                     if (count == 0)
                     {
-                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot) * Matrix.CreateTranslation(new Vector3(0f, 0f, 2f)) * wm);
+                        currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot) * wm);
                     }
                     else
                     {
@@ -103,20 +103,6 @@ namespace TD3d
                 }
                 modmesh.Draw();
             }
-
-            Position myVisPos = this.getPosition();
-            myVisPos.setX(myVisPos.getX() + .5f);
-            myVisPos.setY(myVisPos.getY() + .5f);
-
-            Position bestPos = new Position((float)Math.Cos(rot * Math.PI / 180) + myVisPos.getX(), (float)Math.Sin(rot * Math.PI / 180) + myVisPos.getY());// ((Creep)creeps[0]).getVisualPosition();
-
-            Vector2 velocity = new Vector2(bestPos.getX() - myVisPos.getX(), bestPos.getY() - myVisPos.getY());
-            velocity.Normalize();
-            Vector2 iniPos = new Vector2(myVisPos.getX(), myVisPos.getY()) + velocity;
-
-            ProjectileLaser bullet = new ProjectileLaser(new Position(iniPos.X, iniPos.Y),
-                new Position(velocity.X, velocity.Y), this.creeps, this.graphics, this.content, this.device, this.target, this.damage);
-            bullet.draw(vm, pm);
         }
     }
 }
