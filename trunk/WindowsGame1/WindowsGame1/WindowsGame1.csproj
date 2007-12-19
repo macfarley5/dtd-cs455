@@ -55,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FastTower.cs">
+      <XNAUseContentPipeline>false</XNAUseContentPipeline>
+      <Name>FastTower</Name>
+    </Compile>
     <Compile Include="DwarfTower.cs">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>DwarfTower</Name>
