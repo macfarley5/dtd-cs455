@@ -151,7 +151,7 @@ namespace TD3d
                 }
                 else
                 {
-                    System.Console.WriteLine("Ran out of Path draw  me no more");
+                    //System.Console.WriteLine("Ran out of Path draw  me no more");
                     //this.generateTestPath();
                 }
             }
