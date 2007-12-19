@@ -12,8 +12,11 @@ namespace TD3d
 {
     class FastCreep : Creep
     {
-        private string modelAsset = "Content/sphere0";
-        private float scale = .1f;
+        private string modelAsset = "Content/cube_ndx";
+        private float scale = .5f;
+        private float currentXSizeAngle = 0;
+        private float currentYSizeAngle = 0;
+        private float currentZSizeAngle = 0;
 
         public FastCreep(Position pos, int level, GraphicsDeviceManager graphics, ContentManager content, GraphicsDevice device)
         {
@@ -34,10 +37,42 @@ namespace TD3d
                     modmeshpart.Effect = this.effect.Clone(device);
         }
 
+        public override void updateState(float elapsedTime)
+        {
+            this.currentStateCountdown -= elapsedTime;
+            if (this.currentStateCountdown < 0)
+            {
+                this.currentStateCountdown = 0;
+                this.currentState = States.NOTHING;
+            }
+            if (this.currentState == States.DAMAGED)
+            {
+                currentXSizeAngle += elapsedTime / 60;
+                currentYSizeAngle += elapsedTime / 90;
+                currentZSizeAngle += elapsedTime / 75;
+            }
+            else
+            {
+
+                currentXSizeAngle += elapsedTime / 300;
+                currentYSizeAngle += elapsedTime / 420;
+                currentZSizeAngle += elapsedTime / 545;
+            }
+        }
+
+
         public override void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
+            if (this.currentState == States.DAMAGED)
             {
-                Matrix worldMatrix = Matrix.CreateRotationX(3.14f / 2) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.20f));
+                //scaleReducer = 25 + (100 / this.currentStateCountdown);
+            }
+            float xScale =  (float)Math.Cos(currentXSizeAngle);
+            float yScale =  (float)Math.Cos(currentYSizeAngle);
+            float zScale =  (float)Math.Cos(currentZSizeAngle);
+
+            {
+                Matrix worldMatrix = Matrix.CreateRotationX(xScale) *Matrix.CreateRotationY(yScale) *Matrix.CreateRotationZ(zScale) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)
