@@ -140,7 +140,7 @@ namespace TD3d
                         }
                         else if (this.towerType == Tile.TileType.FASTTOWER)
                         {
-                            tow = new FastTower(graphics, content, device, creeps);
+                            tow = new SplashTower(graphics, content, device, creeps);
                         }
                         tow.setPosition(xPos, yPos);
 

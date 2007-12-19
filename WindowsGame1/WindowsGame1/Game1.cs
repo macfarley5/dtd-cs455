@@ -392,7 +392,7 @@ namespace TD3d
                 }
                 else if (towerType == Tile.TileType.FASTTOWER)
                 {
-                    tow = new FastTower(graphics, content, device, creeps);
+                    tow = new SplashTower(graphics, content, device, creeps);
                 }
                 tow.setPosition(xPos, yPos);
 
@@ -440,7 +440,7 @@ namespace TD3d
                 }
                 else if (towType == Tile.TileType.FASTTOWER)
                 {
-                    FastTower display = (FastTower)mouse.getSelectedTower();
+                    SplashTower display = (SplashTower)mouse.getSelectedTower();
                     Position tmp = display.getPosition();
                     display.setPosition(10, 10);
                     display.draw(hudView, hudProjection, false);

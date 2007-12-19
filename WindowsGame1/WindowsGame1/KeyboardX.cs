@@ -26,7 +26,6 @@ namespace TD3d
         public void update(Vector3 cameraRot, float cameraDist, float speed)
         {
             KeyboardState keys = Keyboard.GetState();
-            
             if (keys.IsKeyDown(Keys.Right))
                 cameraRot.X += .05f;
             if (keys.IsKeyDown(Keys.Left))
