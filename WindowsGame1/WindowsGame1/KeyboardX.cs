@@ -67,6 +67,10 @@ namespace TD3d
             {
                 this.towerNum = 1;
             }
+            if (keys.IsKeyDown(Keys.D3))
+            {
+                this.towerNum = 2;
+            }
 
             this.cameraRot = cameraRot;
             this.cameraDist = cameraDist;
