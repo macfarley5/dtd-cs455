@@ -17,6 +17,7 @@ namespace TD3d
         protected float rot;
         protected Position velocity;
         protected float speed = .005f;
+        //protected float length = 2.5f;
         protected int damageDone;
         protected bool doesSplash = false;
 
@@ -116,8 +117,9 @@ namespace TD3d
 
         public void draw(Matrix viewMatrix, Matrix projectionMatrix)
         {
+            float length = this.speed * 150;
             if (isActive){
-                Matrix worldMatrix = Matrix.CreateRotationZ(this.rot) * Matrix.CreateScale(this.scale, this.scale, this.scale) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
+                Matrix worldMatrix = Matrix.CreateScale(this.scale*length, this.scale, this.scale)* Matrix.CreateRotationZ(this.rot) * Matrix.CreateTranslation(new Vector3(this.getPosition().getX() + .5f, this.getPosition().getY() + .5f, 0.40f));
                 foreach (ModelMesh modmesh in model.Meshes)
                 {
                     foreach (Effect currenteffect in modmesh.Effects)
