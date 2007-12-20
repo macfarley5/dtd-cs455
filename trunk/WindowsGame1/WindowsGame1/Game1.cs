@@ -281,7 +281,7 @@ namespace TD3d
 
             thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
             cash = mouse.getCash();
-            cameraDist = mouse.getCameraDist();
+            //cameraDist = mouse.getCameraDist();
 
             foreach (Tower t in this.map.towers)
             {
@@ -315,6 +315,7 @@ namespace TD3d
             keyboard.update(cameraRot, cameraDist, gameTime.ElapsedGameTime.Milliseconds / 500.0f * gamespeed);
             this.cameraRot = keyboard.getCameraRot();
             this.cameraDist = keyboard.getCameraDist();
+            this.mouse.setCameraDist(this.cameraDist);
 
             UpdateCamera();
             base.Update(gameTime);
