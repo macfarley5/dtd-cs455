@@ -25,7 +25,8 @@ namespace TD3d
         bool pressButton = false;
         bool pressedBoard = false;
         Tile.TileType towerType = Tile.TileType.NORMALTOWER;
-        int scrollWheelValue = 0;
+        float cameraDist;
+        long previousWheel;
 
         public MouseX(GameWindow Window, int WIDTH, int HEIGHT, GraphicsDeviceManager graphics, 
                       ContentManager content, GraphicsDevice device, Map map)
@@ -38,6 +39,8 @@ namespace TD3d
             this.device = device;
             this.map = map;
             selectedTower = null;
+            previousWheel = 0;
+            this.cameraDist = 30;
         }
 
         public ArrayList update(Vector3 cameraRot, float cameraDist, PathPlanner planner, ArrayList thePath, ArrayList creeps, long cash)
@@ -45,8 +48,14 @@ namespace TD3d
             this.cash = cash;
             MouseState ms = Mouse.GetState();
 
+            int dWheel = (int)(ms.ScrollWheelValue - previousWheel);
+            this.cameraDist -= dWheel / 50;
+            previousWheel = ms.ScrollWheelValue;
+
+            if (this.cameraDist < 5)
+                this.cameraDist = 5;
+
             if (ms.X > (Window.ClientBounds.Width - 231) &&
-               ms.X < Window.ClientBounds.Width &&
                ms.Y > 40 &&
                ms.Y < (40 + 385)) // if the pointer is within the bounds of the right HUD
             {
@@ -81,11 +90,11 @@ namespace TD3d
             
             float fromX = (float)Math.Cos(cameraRot.X) * 
                           (float)Math.Cos(cameraRot.Z) * 
-                          cameraDist + this.WIDTH / 2;
+                          this.cameraDist + this.WIDTH / 2;
             float fromY = (float)Math.Sin(cameraRot.X) * 
                           (float)Math.Cos(cameraRot.Z) * 
-                          cameraDist + this.HEIGHT / 2;
-            float fromZ = (float)Math.Sin(cameraRot.Z) * cameraDist;
+                          this.cameraDist + this.HEIGHT / 2;
+            float fromZ = (float)Math.Sin(cameraRot.Z) * this.cameraDist;
 
             Vector3 LookFrom = new Vector3(fromX, fromY, fromZ);
             Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);            
@@ -262,6 +271,11 @@ namespace TD3d
         public Tower getSelectedTower()
         {
             return selectedTower;
+        }
+
+        public float getCameraDist()
+        {
+            return this.cameraDist;
         }
     }
 }

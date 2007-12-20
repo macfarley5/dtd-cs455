@@ -848,6 +848,78 @@
       <Name>zap1</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\HUD\notapplicable.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>notapplicable</Name>
+    </Content>
+    <Content Include="Content\HUD\smalldollarred.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalldollarred</Name>
+    </Content>
+    <Content Include="Content\HUD\smalleightred.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalleightred</Name>
+    </Content>
+    <Content Include="Content\HUD\smallfivered.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallfivered</Name>
+    </Content>
+    <Content Include="Content\HUD\smallfourred.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallfourred</Name>
+    </Content>
+    <Content Include="Content\HUD\smallninered.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallninered</Name>
+    </Content>
+    <Content Include="Content\HUD\smallonered.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallonered</Name>
+    </Content>
+    <Content Include="Content\HUD\smallsevenred.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallsevenred</Name>
+    </Content>
+    <Content Include="Content\HUD\smallsixred.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallsixred</Name>
+    </Content>
+    <Content Include="Content\HUD\smallthreered.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallthreered</Name>
+    </Content>
+    <Content Include="Content\HUD\smalltwored.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smalltwored</Name>
+    </Content>
+    <Content Include="Content\HUD\smallzerored.png">
+      <XNAUseContentPipeline>true</XNAUseContentPipeline>
+      <Importer>TextureImporter</Importer>
+      <Processor>SpriteTextureProcessor</Processor>
+      <Name>smallzerored</Name>
+    </Content>
     <Content Include="fmodex.dll">
       <XNAUseContentPipeline>false</XNAUseContentPipeline>
       <Name>fmodex</Name>

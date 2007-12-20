@@ -32,7 +32,7 @@ namespace TD3d
                 foreach (ModelMeshPart modmeshpart in modmesh.MeshParts)
                     modmeshpart.Effect = this.effect.Clone(device);
 
-            this.cost = 50;
+            this.cost = 30;
             this.damage = 30;
         }
 

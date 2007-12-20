@@ -20,7 +20,10 @@ namespace TD3d
                   upgrade, towerdata, scout, hover, gatling, upgradehover, upgradefade,
                   smallzero, smallone, smalltwo, smallthree, smallfour,
                   smallfive, smallsix, smallseven, smalleight, smallnine,
-                  cashamount, upgradecost, smalldollar, level;
+                  cashamount, upgradecost, smalldollar, level, notapplicable,
+                  smallzerored, smallonered, smalltwored, smallthreered, smallfourred,
+                  smallfivered, smallsixred, smallsevenred, smalleightred, smallninered,
+                  smalldollarred;
         Tower selectedTower;
 
         public HUD(GameWindow Window, GraphicsDeviceManager graphics, ContentManager content) 
@@ -41,6 +44,7 @@ namespace TD3d
             cashamount = content.Load<Texture2D>("Content/HUD/cash");
             upgradecost = content.Load<Texture2D>("Content/HUD/upgradecost");
             level = content.Load<Texture2D>("Content/HUD/level");
+            notapplicable = content.Load<Texture2D>("Content/HUD/notapplicable");
 
             zero = content.Load<Texture2D>("Content/HUD/zero");
             one = content.Load<Texture2D>("Content/HUD/one");
@@ -68,6 +72,18 @@ namespace TD3d
             smallnine = content.Load<Texture2D>("Content/HUD/smallnine");
             smalldollar = content.Load<Texture2D>("Content/HUD/smalldollar");
 
+            smallzerored = content.Load<Texture2D>("Content/HUD/smallzerored");
+            smallonered = content.Load<Texture2D>("Content/HUD/smallonered");
+            smalltwored = content.Load<Texture2D>("Content/HUD/smalltwored");
+            smallthreered = content.Load<Texture2D>("Content/HUD/smallthreered");
+            smallfourred = content.Load<Texture2D>("Content/HUD/smallfourred");
+            smallfivered = content.Load<Texture2D>("Content/HUD/smallfivered");
+            smallsixred = content.Load<Texture2D>("Content/HUD/smallsixred");
+            smallsevenred = content.Load<Texture2D>("Content/HUD/smallsevenred");
+            smalleightred = content.Load<Texture2D>("Content/HUD/smalleightred");
+            smallninered = content.Load<Texture2D>("Content/HUD/smallninered");
+            smalldollarred = content.Load<Texture2D>("Content/HUD/smalldollarred");
+
             selectedTower = null;
         }
 
@@ -76,7 +92,7 @@ namespace TD3d
             selectedTower = selected;
         }
 
-        public void Draw(int score, long cash, int round, int mouseXPos, int mouseYPos)
+        public void Draw(int score, long cash, int round, int mouseXPos, int mouseYPos, int towerNum)
         {
             Texture2D tensImage = empty;
             Texture2D onesImage = empty;
@@ -94,8 +110,8 @@ namespace TD3d
                 ones++;
             }
 
-            onesImage = getNumberImg(ones, false);
-            tensImage = getNumberImg(score / 10, false);
+            onesImage = getNumberImg(ones, false, false);
+            tensImage = getNumberImg(score / 10, false, false);
 
             if (score < 10)
             {
@@ -107,11 +123,29 @@ namespace TD3d
 
             if (round < 10)
                 levelMod = -10;
-                        
+
+            int towerValue;
+
+            if (towerNum == 0)
+                towerValue = 30;
+            else if (towerNum == 1)
+                towerValue = 200;
+            else towerValue = 80;
+
+            if (!(mouseXPos > (Window.ClientBounds.Width - 231) &&
+               mouseYPos > 40 &&
+               mouseYPos < (40 + 385)))
+            {
+                if(cash < towerValue)
+                    drawNumber(towerValue, mouseXPos + 35, mouseYPos + 35, true, false);
+                else
+                    drawNumber(towerValue, mouseXPos + 35, mouseYPos + 35, true, true); // Draw dollar number by mouse pointer
+            }
+
             spriteBatch.Draw(tophud, new Rectangle((Window.ClientBounds.Width - tophud.Width) / 2, 0, tophud.Width, tophud.Height), Color.White);
             spriteBatch.Draw(righthud, new Rectangle((Window.ClientBounds.Width - righthud.Width), 40, righthud.Width, righthud.Height), Color.White);
             spriteBatch.Draw(level, new Rectangle((Window.ClientBounds.Width - level.Width)/2 - 15, 10, level.Width, level.Height), Color.White);
-            drawNumber(round, (Window.ClientBounds.Width)/2 + 70 + levelMod, 22, false);
+            drawNumber(round, (Window.ClientBounds.Width)/2 + 70 + levelMod, 22, false, false);
             spriteBatch.Draw(cashamount, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), 63, cashamount.Width, cashamount.Height), Color.White);
 
             if(score > 0)
@@ -122,7 +156,7 @@ namespace TD3d
             spriteBatch.Draw(two, new Rectangle((Window.ClientBounds.Width + (1 * two.Width)) / 2 + xModifier, 35, two.Width, two.Height), Color.White);
             spriteBatch.Draw(zero, new Rectangle((Window.ClientBounds.Width + (3 * zero.Width)) / 2 + xModifier, 35, zero.Width, zero.Height), Color.White);
 
-            drawNumber(cash, Window.ClientBounds.Width - 5, 75, true);
+            drawNumber(cash, Window.ClientBounds.Width - 5, 75, true, false);
                         
             drawTowerInfo(mouseXPos, mouseYPos, cash);
             
@@ -136,7 +170,10 @@ namespace TD3d
 
             spriteBatch.Draw(upgradecost, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), 83, upgradecost.Width, upgradecost.Height), Color.White);
 
-            drawNumber((selectedTower.getCost() * selectedTower.getLevel()), Window.ClientBounds.Width - 5, 95, true);
+            if(selectedTower.getLevel() < 5)
+                drawNumber((selectedTower.getCost() * selectedTower.getLevel()), Window.ClientBounds.Width - 5, 95, true, false);
+            else
+                spriteBatch.Draw(notapplicable, new Rectangle((Window.ClientBounds.Width - notapplicable.Width - 5), (83), notapplicable.Width, notapplicable.Height), Color.White);
 
             if(selectedTower.getTileType() == Tile.TileType.NORMALTOWER)
                 spriteBatch.Draw(scout, new Rectangle((Window.ClientBounds.Width - scout.Width - 30), (235), scout.Width, scout.Height), Color.White);
@@ -147,14 +184,14 @@ namespace TD3d
 
             spriteBatch.Draw(towerdata, new Rectangle((Window.ClientBounds.Width - towerdata.Width - 90), (265), towerdata.Width, towerdata.Height), Color.White);
 
-            drawNumber(selectedTower.getLevel(), Window.ClientBounds.Width - 10, 277, false);
-            drawNumber(selectedTower.getRange(), Window.ClientBounds.Width - 10, 298, false);
-            drawNumber((long)((1.0f / selectedTower.getFireSpeed()) * 10000), Window.ClientBounds.Width - 10, 319, false);
-            drawNumber(selectedTower.getDamage(), Window.ClientBounds.Width - 10, 340, false);
+            drawNumber(selectedTower.getLevel(), Window.ClientBounds.Width - 10, 277, false, false);
+            drawNumber(selectedTower.getRange(), Window.ClientBounds.Width - 10, 298, false, false);
+            drawNumber((long)((1.0f / selectedTower.getFireSpeed()) * 10000), Window.ClientBounds.Width - 10, 319, false, false);
+            drawNumber(selectedTower.getDamage(), Window.ClientBounds.Width - 10, 340, false, false);
 
             if(selectedTower.getTarget() != null)
-                drawNumber(selectedTower.getTarget().getHealth(), Window.ClientBounds.Width - 10, 360, false);
-            else drawNumber(0, Window.ClientBounds.Width - 10, 360, false);
+                drawNumber(selectedTower.getTarget().getHealth(), Window.ClientBounds.Width - 10, 360, false, false);
+            else drawNumber(0, Window.ClientBounds.Width - 10, 360, false, false);
 
             if(selectedTower.getLevel() >= 5 || cash < (selectedTower.getCost() * selectedTower.getLevel()))
                 spriteBatch.Draw(upgradefade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
@@ -166,7 +203,7 @@ namespace TD3d
             else spriteBatch.Draw(upgrade, new Rectangle((Window.ClientBounds.Width - upgrade.Width - 45), (375), upgrade.Width, upgrade.Height), Color.White);
         }
 
-        private void drawNumber(long number, int xPos, int yPos, bool dollars) // xPos and YPos are bottom right corner of number, numbers must be >= 0 and <= 999,999
+        private void drawNumber(long number, int xPos, int yPos, bool dollars, bool red) // xPos and YPos are bottom right corner of number, numbers must be >= 0 and <= 999,999
         {
             int ones, tens, hundreds, thousands, tenT, hundredT, places;
             ones = tens = hundreds = thousands = tenT = hundredT = 0;
@@ -237,12 +274,12 @@ namespace TD3d
 
             //System.Console.WriteLine(hundredT + "," + tenT + "," + thousands + "," + hundreds + "," + tens + "," + ones);
 
-            onesImg = getNumberImg(ones, true);
-            tensImg = getNumberImg(tens, true);
-            hundredsImg = getNumberImg(hundreds, true);
-            thousandsImg = getNumberImg(thousands, true);
-            tenTImg = getNumberImg(tenT, true);
-            hundredTImg = getNumberImg(hundredT, true);
+            onesImg = getNumberImg(ones, true, red);
+            tensImg = getNumberImg(tens, true, red);
+            hundredsImg = getNumberImg(hundreds, true, red);
+            thousandsImg = getNumberImg(thousands, true, red);
+            tenTImg = getNumberImg(tenT, true, red);
+            hundredTImg = getNumberImg(hundredT, true, red);
 
             int xMod = 10;
                         
@@ -279,16 +316,18 @@ namespace TD3d
                 xMod += 10;
             }
 
-            if(dollars)
+            if(dollars && !red)            
                 spriteBatch.Draw(smalldollar, new Rectangle((xPos - xMod), (yPos - onesImg.Height), smalldollar.Width, smalldollar.Height), Color.White);
+            else if(dollars && red)
+                spriteBatch.Draw(smalldollarred, new Rectangle((xPos - xMod), (yPos - onesImg.Height), smalldollarred.Width, smalldollarred.Height), Color.White);
 
         }
 
-        private Texture2D getNumberImg(int switchOn, bool small)
+        private Texture2D getNumberImg(int switchOn, bool small, bool red)
         {
             Texture2D img = null;
 
-            if(small)
+            if(small && !red)
                 switch (switchOn)
                 {
                     case 0: img = smallzero; break;
@@ -301,6 +340,20 @@ namespace TD3d
                     case 7: img = smallseven; break;
                     case 8: img = smalleight; break;
                     case 9: img = smallnine; break;
+                }
+            else if(small && red)
+                switch (switchOn)
+                {
+                    case 0: img = smallzerored; break;
+                    case 1: img = smallonered; break;
+                    case 2: img = smalltwored; break;
+                    case 3: img = smallthreered; break;
+                    case 4: img = smallfourred; break;
+                    case 5: img = smallfivered; break;
+                    case 6: img = smallsixred; break;
+                    case 7: img = smallsevenred; break;
+                    case 8: img = smalleightred; break;
+                    case 9: img = smallninered; break;
                 }
             else switch (switchOn)
                 {
