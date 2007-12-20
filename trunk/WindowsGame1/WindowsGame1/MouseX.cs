@@ -54,6 +54,8 @@ namespace TD3d
 
             if (this.cameraDist < 5)
                 this.cameraDist = 5;
+            else if (this.cameraDist > 100)
+                this.cameraDist = 100;
 
             if (ms.X > (Window.ClientBounds.Width - 231) &&
                ms.Y > 40 &&
