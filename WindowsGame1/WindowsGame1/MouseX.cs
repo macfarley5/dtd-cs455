@@ -167,16 +167,14 @@ namespace TD3d
 
                             if (tmpTower != null)
                                 selectedTower = tmpTower;
-                        }
-
-                        if (!this.map.placeTower(tow))
-                        {
                             return thePath;
                         }
+
+                        this.map.placeTower(tow);
                         
                         if (planner.isPath())
                         {
-                            thePath = planner.getPath();
+                            ArrayList tempPath = planner.getPath();
                             bool anyBlocked = false;
                             
                             if (this.cash < 0)
@@ -197,6 +195,7 @@ namespace TD3d
                             }
                             else
                             {
+                                thePath = tempPath;
                                 selectedTower = this.map.getTower((int)(iPoint.X), (int)(iPoint.Y));
 
                                 foreach (Creep creep in creeps)
