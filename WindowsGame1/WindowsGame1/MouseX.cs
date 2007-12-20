@@ -52,8 +52,8 @@ namespace TD3d
             this.cameraDist -= dWheel / 50;
             previousWheel = ms.ScrollWheelValue;
 
-            if (this.cameraDist < 5)
-                this.cameraDist = 5;
+            if (this.cameraDist < 17)
+                this.cameraDist = 17;
             else if (this.cameraDist > 100)
                 this.cameraDist = 100;
 
