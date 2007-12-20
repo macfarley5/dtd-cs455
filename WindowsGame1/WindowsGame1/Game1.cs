@@ -281,6 +281,7 @@ namespace TD3d
 
             thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
             cash = mouse.getCash();
+            cameraDist = mouse.getCameraDist();
 
             foreach (Tower t in this.map.towers)
             {
@@ -432,9 +433,9 @@ namespace TD3d
                 tow.setPosition(xPos, yPos);
 
                 if (this.map.canPlaceTower(tow))
-                {
+                {                    
                     tow.setAlpha(.5f);
-                    tow.draw(viewMatrix, projectionMatrix, true);
+                    tow.draw(viewMatrix, projectionMatrix, true);                    
                 }
                 else
                 {
@@ -454,7 +455,7 @@ namespace TD3d
             }
 
             base.Draw(gameTime);
-            hud.Draw(score, cash, waveNum, mouse.getScreenXPos(), mouse.getScreenYPos());
+            hud.Draw(score, cash, waveNum, mouse.getScreenXPos(), mouse.getScreenYPos(), keyboard.getTowerNum());
 
             Matrix hudView = Matrix.CreateLookAt(new Vector3(0, 0, 8), new Vector3(this.WIDTH / 2 - 7.1f, this.HEIGHT / 2, -2.7f), new Vector3(0, -0.35f, 1));
             Matrix hudProjection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
