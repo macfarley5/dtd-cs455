@@ -159,17 +159,20 @@ namespace TD3d
                         }
                         tow.setPosition(xPos, yPos);
 
-                        if (!this.map.isOccupied(xPos, yPos))
+                        if (!this.map.isOccupied(xPos, yPos) && this.map.canPlaceTower(tow))
                             this.cash = this.cash - tow.getCost();
                         else
                         {
-                            Tower tmpTower = this.map.getTower(xPos, yPos);
+                            Tower tmpTower = this.map.getTower((int)(iPoint.X), (int)(iPoint.Y));
 
                             if (tmpTower != null)
                                 selectedTower = tmpTower;
                         }
 
-                        this.map.placeTower(tow);
+                        if (!this.map.placeTower(tow))
+                        {
+                            return thePath;
+                        }
                         
                         if (planner.isPath())
                         {
@@ -194,7 +197,7 @@ namespace TD3d
                             }
                             else
                             {
-                                selectedTower = this.map.getTower(xPos, yPos);
+                                selectedTower = this.map.getTower((int)(iPoint.X), (int)(iPoint.Y));
 
                                 foreach (Creep creep in creeps)
                                 {
@@ -278,6 +281,11 @@ namespace TD3d
         public float getCameraDist()
         {
             return this.cameraDist;
+        }
+
+        internal void setCameraDist(float p)
+        {
+            this.cameraDist = p;
         }
     }
 }
