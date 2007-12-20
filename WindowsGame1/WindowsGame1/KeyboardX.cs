@@ -48,15 +48,15 @@ namespace TD3d
             {
                 cameraDist += .5f;
 
-                if (cameraDist > this.WIDTH * 3)
-                    cameraDist = this.WIDTH * 3;
+                if (cameraDist > 100)
+                    cameraDist = 100;
             }
             if (keys.IsKeyDown(Keys.W))
             {
                 cameraDist -= .5f;
 
-                if (cameraDist < 5.25f)
-                    cameraDist = 5.25f;
+                if (cameraDist < 5f)
+                    cameraDist = 5f;
             }
 
             if (keys.IsKeyDown(Keys.D1))
