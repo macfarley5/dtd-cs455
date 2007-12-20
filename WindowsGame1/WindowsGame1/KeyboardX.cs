@@ -90,5 +90,10 @@ namespace TD3d
         {
             return this.towerNum;
         }
+
+        internal void setCameraDist(float cameraDist)
+        {
+            this.cameraDist = cameraDist;
+        }
     }
 }
