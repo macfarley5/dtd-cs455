@@ -59,7 +59,7 @@ namespace TD3d
         Texture2D[] skyboxtextures;
 
         Vector3 cameraRot = new Vector3(0, 0, 1);
-        float cameraDist = 5;
+        float cameraDist = 10;
 
         VertexPositionNormalTexture[] verticesarray;
         ArrayList verticeslist = new ArrayList();
@@ -281,7 +281,7 @@ namespace TD3d
 
             thePath = mouse.update(cameraRot, cameraDist, planner, thePath, creeps, cash);
             cash = mouse.getCash();
-            //cameraDist = mouse.getCameraDist();
+            cameraDist = mouse.getCameraDist();
 
             foreach (Tower t in this.map.towers)
             {
@@ -331,11 +331,11 @@ namespace TD3d
         private void UpdateCamera()
         {
             Vector3 campos = new Vector3((float)Math.Cos(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.WIDTH / 2,
-                                         (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.HEIGHT / 2,
+                                         (float)Math.Sin(this.cameraRot.X) * (float)Math.Cos(this.cameraRot.Z)* this.cameraDist + this.HEIGHT / 2 + 1,
                                          (float)Math.Sin(this.cameraRot.Z) * this.cameraDist);
             Vector3 camup = new Vector3(0, 0, 1);
 
-            viewMatrix = Matrix.CreateLookAt(campos, new Vector3(this.WIDTH/2,this.HEIGHT/2,0), camup);
+            viewMatrix = Matrix.CreateLookAt(campos, new Vector3(this.WIDTH/2, this.HEIGHT/2 + 1,0), camup);
             projectionMatrix = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, (float)this.Window.ClientBounds.Width / (float)this.Window.ClientBounds.Height, 0.2f, 500.0f);
         }
 
