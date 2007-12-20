@@ -95,11 +95,11 @@ namespace TD3d
                           this.cameraDist + this.WIDTH / 2;
             float fromY = (float)Math.Sin(cameraRot.X) * 
                           (float)Math.Cos(cameraRot.Z) * 
-                          this.cameraDist + this.HEIGHT / 2;
+                          this.cameraDist + this.HEIGHT / 2 + 1;
             float fromZ = (float)Math.Sin(cameraRot.Z) * this.cameraDist;
 
             Vector3 LookFrom = new Vector3(fromX, fromY, fromZ);
-            Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2, 0);            
+            Vector3 LookAt = new Vector3(this.WIDTH / 2, this.HEIGHT / 2 + 1, 0);            
             Vector3 ViewUp = new Vector3(0, 0, 1);
             
             Vector3 W = LookFrom - LookAt;
