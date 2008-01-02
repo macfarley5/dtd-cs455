@@ -88,7 +88,7 @@ namespace TD3d
                     currenteffect.Parameters["k_r"].SetValue(new Vector4(.1f, .2f, .3f, 1f));
                     currenteffect.Parameters["alph"].SetValue(this.alphaVal);
                     currenteffect.Parameters["noisescale"].SetValue(.50f);
-                    if (count == 1 || count == 4 || count == 5)
+                    if (count == 3 || count == 4 || count == 10) // switch to 3, 4, 5 if using comp_newTower.x
                     {
                         currenteffect.Parameters["World"].SetValue(Matrix.CreateRotationZ(-this.rot) * wm);
                     }
